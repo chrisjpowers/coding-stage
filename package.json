@@ -1,5 +1,10 @@
 {
   "author": "Chris Powers <chrisjpowers@gmail.com> (http://chrisjpowers.com)",
+  "contributors": [
+    "Ben Mills",
+    "Jeremy Kahn",
+    "Mike Gibson"
+  ],
   "name": "coding_stage",
   "description": "Real-time Social Coding",
   "version": "0.0.1",
