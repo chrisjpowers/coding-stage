@@ -1,0 +1,125 @@
+$dkgray: #4a525a;
+$mdgray: #656c74;
+$ltgray: #b7bcc2;
+$beige: #d7d7b8;
+$ltbeige: #f5f6d7;
+$turq: #4da4a4;
+$ltturq: #92ccbf;
+$black: #1d2929;
+$white: #e8efef;
+$pink: #bd5ca3;
+$green: #92d05c;
+
+@mixin sans($weight) {
+	font-family: museo-sans, Helmet, Freesans, sans-serif;
+	font-weight: $weight;
+}
+
+@mixin serif($weight) {
+	font-family: adelle, 'Book Antiqua', Georgia, serif;
+	font-weight: $weight;
+}
+
+@mixin float($dir) {
+	float: $dir;
+	display: inline;
+} 
+
+
+
+
+/*-  VANITY STYLES
+----------------------------------------------------------------------*/
+
+::selection { background: #fff; text-shadow: none; }
+::-moz-selection { background: #fff; text-shadow: none; }
+img::selection { background: transparent; }
+img::-moz-selection { background: transparent; }
+
+@media only screen and (max-device-width: 480px) {
+
+	html {-webkit-text-size-adjust: none}
+	a:link {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+	
+}
+
+
+
+
+
+/*- SHARED STYLES PLUS SUB 480PX MEDIA QUERY STYLES
+----------------------------------------------------------------------*/
+
+body {
+	font-size: 62.5%; /* Reset 1em to 10px */
+	line-height: 1.3;
+	@include serif(400);
+}
+
+body, select, input, textarea { color: $black; }
+
+
+
+
+
+/* MEDIA QUERIES
+-------------------------------------------------------------------------------*/
+
+@media screen and (min-width: 480px) {
+
+}/*/mediaquery*/
+
+@media screen and (min-width: 600px) {
+	
+}/*/mediaquery*/
+
+@media screen and (min-width: 768px) {
+	
+	#main {
+		width: 62.5%; /* 560 / 960 */	
+		margin-left: 2.08033333%; /* 20 / 960 */
+		@include float(left);
+	}
+
+	#editor, #chat, #video-chat, #attendees {
+		background: #eee;
+		margin-bottom: 20px;
+		padding: 3.5714286%; /* 20 / 560 */
+	}
+	
+	#video-chat, #attendees {
+		padding: 7.6923077%; /* 20 / 260 */
+	}
+	
+	aside {
+		width: 31.25%; /* 300 / 960 */
+		margin-right: 2.08033333%; /* 20 / 960 */
+		margin-top: 2.08033333%; /* 20 / 960 */
+		@include float(right);
+	}
+	
+	footer {
+		clear: both;
+	}
+	
+}/*/mediaquery*/
+
+@media screen and (min-width: 1024px) {
+	
+}/*/mediaquery*/
+
+@media screen and (min-width: 1200px) {
+	
+}/*/mediaquery*/
+
+
+
+
+
+/*- BROWSER PATCHES
+----------------------------------------------------------------------*/
+
+.ie6 {}
+.ie7 {}
+.ie8 {}
+.ie9 {}

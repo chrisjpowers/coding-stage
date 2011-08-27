@@ -1,8 +1,80 @@
-<html>
-  <head>
-    <title>Coding Stage</title>
-  </head>
-  <body>
-    <%- body %>
-  </body>
+<!doctype html>  
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" manifest="default.appcache?v=1" lang="en"><!--<![endif]-->
+
+<head>
+
+  <meta charset="utf-8" />
+  
+  <!--[if IE]><![endif]-->
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+
+  <title>Coding Stage</title>
+  
+  <meta name="description" content="To come..." />
+
+  <meta name="author" content="Chris J. Powers, Ben Mills, Jeremy C. Kahn and Michael Gibson" />
+  <meta name="copyright" content="Copyright Coding Stage 2011. All Rights Reserved." />
+
+  <meta name="DC.title" content="Coding Stage" />
+  <meta name="DC.subject" content="To come..." />
+  <meta name="DC.creator" content="Chris J. Powers, Ben Mills, Jeremy C. Kahn and Michael Gibson" />
+  
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/_/img/fav/apple-touch-icon.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/_/img/fav/apple-touch-icon.png" />
+  <link rel="apple-touch-icon-precomposed" href="/_/img/fav/apple-touch-icon-precomposed.png" />
+  <link rel="shortcut icon" href="/_/img/fav/favicon.ico" />
+  
+  <link rel="stylesheet" href="/_/css/reset.css" />
+  <link rel="stylesheet" href="/_/css/style.css" />
+
+  <script src="/_/js/modernizr.js"></script>
+
+  <script type="text/javascript" src="http://use.typekit.com/cmp4nec.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</head>
+  
+<body>
+
+<script>
+  var b = document.documentElement;
+  b.setAttribute('data-useragent',  navigator.userAgent);
+  b.setAttribute('data-platform', navigator.platform );
+</script>
+
+  <%- body %>
+    
+</body>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/_/js/jquery-1.6.2.min.js"%3E%3C/script%3E'))</script>
+<!--[if (gte IE 6)&(lte IE 8)]>
+  <script type="text/javascript" src="/_/js/selectivizr.js"></script>
+<![endif]-->
+  <script src="/_/js/libs.js"></script>
+  <script src="/_/js/plugins.js"></script>
+  <script src="/_/js/functions.js"></script>
+
+<!-- this is a variation of the official analytics snippet: http://mathiasbynens.be/notes/async-analytics-snippet 
+   replace XXXXXX-XX with your site's ID and uncomment to put this into effect
+  <script>
+  var _gaq = [['_setAccount', 'UA-XXXXXX-XX'], ['_trackPageview']];
+  (function(d, t) {
+  var g = d.createElement(t),
+  s = d.getElementsByTagName(t)[0];
+  g.async = true;
+  g.src = '//www.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g, s);
+  })(document, 'script');
+  </script> -->
+  
 </html>

@@ -1,0 +1,29 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  Backend: Chris J. Powers
+  Site: http://chrisjpowers.com 
+  Twitter: @chrisjpowers
+  Location: Chicago Suburbs
+
+  Backend: Ben Mills
+  Site: http://benmillsdesigns.com 
+  Twitter: @benemills
+  Location: Chicago
+
+  Front End: Jeremy Kahn
+  Site: http://jeremyckahn.com 
+  Twitter: @jeremyckahn
+  Location: Chicago
+
+  Front End: Michael Gibson
+  Site: http://lovehasnologic.com 
+  Twitter: @lovehasnologic
+  Location: Chicago
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery, Underscore, Backbone, MinPubSub, Extend, Modernizr, Selectivizr, HTML 5 Placeholder jQuery plugin, jqModal, Formalize, Ace Editor, Tokbox, Heroku, Node
+  Software: Coda, Textmate, Illustrator, Photoshop

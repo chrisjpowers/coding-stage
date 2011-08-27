@@ -1,1 +1,145 @@
-<h1>Coding Stage</h1>
+<header>
+
+	<h1><a href="/" title="Coding Stage's Front Door">Coding Stage</a></h1>
+
+	<nav>
+		<ol>
+			<li class="profile"><a href="/profile" title="Your Account Details">Profile</a></li>
+			<li class="support"><a href="/support" title="Having Problems?">Support</a></li>
+			<li class="create-room"><a href="/create-room" title="Create a Room and Start Coding">Create a Room</a></li>
+			<li class="login"><a href="/login" title="Create Your Account">Signup <span>or</span> Login</a></li>
+		</ol>
+	</nav>
+
+</header>
+
+<div id="main">
+
+	<section id="room">
+	
+		<h1>Room Name Goes Here</h1>
+		<a href="/invite" title="Invite coders to join you" class="button">Invite Coders</a>
+	
+		<form id="room-settings">
+	
+			<fieldset>
+				<legend>Update Your Room Settings</legend>
+	
+				<label for="private">Private Room?</label>
+				<input type="checkbox" name="private" id="private" value="" />
+	
+				<label for="limit">Room Limit</label>
+				<input type="text" placeholder="15" name="limit" id="limit" /> 
+				<!-- The placeholder should be a default and then update depending on the user changed setting -->
+				
+				<input type="submit" value="Update Room Settings" />
+				
+			</fieldset>
+		</form>
+		
+		<section id="editor">
+	
+			<label for="files">Room Files</label>
+			<select id="files" name="files">
+				<option data-file="file-info-here">File Name Goes Here</option>
+				<option data-file="file-info-here">File Name Goes Here</option>
+				<option data-file="file-new">Create a New File</option>
+			</select>
+		
+			<a href="#" title="Import a Gist" class="button">Import a Gist File</a>
+		
+			<section id="ace-editor">
+				[ACE Editor Goes Here]
+			</section>
+			
+		</section>
+		
+	</section>
+	
+	<section id="chat">
+		
+		<section id="conversation">
+	
+			<article class="attendee">
+				<p><strong>Username:</strong> This is the text of an attendee</p>
+			</article>
+	
+			<article class="attendee coder">
+				<p><strong>Username:</strong> This is the text of a coder</p>
+			</article>
+	
+			<article class="attendee coder owner">
+				<p><strong>Username:</strong> This is the text of a room owner</p>
+			</article>
+	
+			<article class="attendee coder active">
+				<p><strong>Username:</strong> This is the text of a coder that has the baton</p>
+			</article>
+	
+		</section>
+		
+		<form id="text-chat">
+			
+			<input type="text" placeholder="Speak Up" />
+			<input type="submit" value="Be Heard" />
+			
+		</form>
+		
+	</section>
+
+</div>
+
+<aside>
+
+	<section id="video-chat">
+		[Content to come when tokbox is integrated]
+	</section>
+	
+	<section id="attendees">
+		
+		<a href="#" class="button">Request The Baton</a>
+		
+		<h1>Who's Watching</h1>
+		
+		<ol>
+	
+			<li class="attendee coder owner">
+				Username
+				<a href="#" title="Interact with this Attendee">Interact with this Attendee</a>
+			</li>
+	
+			<li class="attendee coder">
+				Username
+				<a href="#" title="Interact with this Attendee">Interact with this Attendee</a>
+			</li>
+	
+			<li class="attendee coder baton">
+				Username
+				<a href="#" title="Interact with this Attendee">Interact with this Attendee</a>
+			</li>
+	
+			<li class="attendee">
+				Username
+				<a href="#" title="Interact with this Attendee">Interact with this Attendee</a>
+			</li>
+	
+		</ol>
+		
+	</section>
+
+</aside>
+
+<footer>
+	
+	<nav>
+		<ol>
+			<li class="profile"><a href="/profile" title="Your Account Details">Profile</a></li>
+			<li class="support"><a href="/support" title="Having Problems?">Support</a></li>
+			<li class="create-room"><a href="/create-room" title="Create a Room and Start Coding">Create a Room</a></li>
+			<li class="login"><a href="/login" title="Create Your Account">Signup <span>or</span> Login</a></li>
+		</ol>
+	</nav>
+
+	<small><a href="/" title="Coding Stage's Front Door">Coding Stage</a> was built for 2011's <a href="http://nodeknockout.com/">Node Knockout</a> by <a href="http://chrisjpowers.com" title="Chris' website" rel="me">Chris J. Powers</a> (<a href="http://twitter.com/chrisjpowers" title="@chrisjpowers on Twitter" rel="me">@chrisjpowers</a>), <a href="http://benmillsdesigns.com" title="Ben's website" rel="me">Ben Mills</a> (<a href="http://twitter.com/benemills" title="@benemills on Twitter" rel="me">@benemills</a>), <a href="http://jeremyckahn.com" title="Jeremy's website" rel="me">Jeremy C. Kahn</a> (<a href="http://twitter.com/jeremyckahn" title="@jeremyckahn on Twitter" rel="me">@jeremyckahn</a>) & <a href="http://lovehasnologic.com" title="Mike's website" rel="me">Michael Gibson</a> (<a href="http://twitter.com/lovehasnologic" title="@lovehasnologic on Twitter" rel="me">@lovehasnologic</a>)</small>
+	
+</footer>
