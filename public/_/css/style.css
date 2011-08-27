@@ -33,8 +33,14 @@ body {
 body, select, input, textarea {
   color: #1d2929; }
 
+a {
+  text-decoration: none; }
+
 header {
-  background: #4a525a url(../img/bg/noise.png) center top repeat; }
+  overflow: hidden;
+  background: #4a525a url(../img/bg/noise.png) center top repeat;
+  font-family: museo-sans, Helmet, Freesans, sans-serif;
+  font-weight: 700; }
 
 /* MEDIA QUERIES
 -------------------------------------------------------------------------------*/
@@ -46,7 +52,53 @@ header {
     /* 10 & 20 / 960 */
     margin-bottom: 20px;
     width: 95.833333%;
-    /* 920 / 960 */ }
+    /* 920 / 960 */
+    border-bottom: 1px solid #656c74;
+    -webkit-box-shadow: 0 1px 0 #1d2929;
+    -moz-box-shadow: 0 1px 0 #1d2929;
+    -o-box-shadow: 0 1px 0 #1d2929;
+    box-shadow: 0 1px 0 #1d2929; }
+
+  .no-boxshadow header {
+    border-bottom: 2px solid #1d2929; }
+
+  header nav {
+    float: right;
+    display: inline;
+    overflow: hidden; }
+
+  header nav li {
+    float: left;
+    display: inline;
+    overflow: hidden;
+    padding: 1px;
+    margin: 0 5px; }
+
+  header nav li a {
+    padding: 6px 5px 5px;
+    font-size: 1.4em;
+    color: #e8efef;
+    opacity: 0.6;
+    text-transform: uppercase;
+    text-shadow: 0 -1px #1d2929;
+    display: block;
+    position: relative;
+    line-height: 1;
+    border-top: 1px solid transparent;
+    -webkit-transition: all ease-in-out 0.2s;
+    -moz-transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px; }
+    header nav li a:hover {
+      opacity: 1;
+      background: rgba(232, 239, 239, 0.25);
+      -webkit-box-shadow: 0 1px 0 #b7bcc2;
+      -moz-box-shadow: 0 1px 0 #b7bcc2;
+      -o-box-shadow: 0 1px 0 #b7bcc2;
+      box-shadow: 0 1px 0 #b7bcc2;
+      border-top: 1px solid rgba(29, 41, 41, 0.75); }
 
   #main {
     width: 62.5%;
@@ -54,7 +106,8 @@ header {
     margin-left: 2.08033333%;
     /* 20 / 960 */
     float: left;
-    display: inline; }
+    display: inline;
+    overflow: hidden; }
 
   #editor, #chat, #video-chat, #attendees {
     background: #fff;
@@ -72,7 +125,8 @@ header {
     margin-right: 2.08033333%;
     /* 20 / 960 */
     float: right;
-    display: inline; }
+    display: inline;
+    overflow: hidden; }
 
   footer {
     clear: both; } }

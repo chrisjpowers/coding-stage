@@ -6,7 +6,9 @@ $ltbeige: #f5f6d7;
 $turq: #4da4a4;
 $ltturq: #92ccbf;
 $black: #1d2929;
+$black75: rgba(29,41,41,0.75);
 $white: #e8efef;
+$white25: rgba(232,239,239,0.25);
 $pink: #bd5ca3;
 $green: #92d05c;
 
@@ -23,10 +25,23 @@ $green: #92d05c;
 @mixin float($dir) {
   float: $dir;
   display: inline;
+  overflow: hidden;
 }
 
 @mixin bg($color) {
   background: $color url(../img/bg/noise.png) center top repeat;
+}
+
+@mixin animate($time) {
+  -webkit-transition: all ease-in-out $time;
+  -moz-transition: all ease-in-out $time;
+  transition: all ease-in-out $time;
+}
+
+@mixin rounded($size) {
+  -webkit-border-radius: $size;
+  -moz-border-radius: $size;
+  border-radius: $size;
 }
 
 
@@ -62,9 +77,12 @@ body {
 }
 
 body, select, input, textarea { color: $black; }
+a { text-decoration: none; }
 
 header {
+  overflow: hidden;
   @include bg($dkgray);
+  @include sans(700);
 }
 
 
@@ -88,8 +106,51 @@ header {
     padding: 1.0416667% 2.08033333%; /* 10 & 20 / 960 */
     margin-bottom: 20px;
     width: 95.833333%; /* 920 / 960 */
+    border-bottom: 1px solid $mdgray;
+    -webkit-box-shadow: 0 1px 0 $black;
+    -moz-box-shadow: 0 1px 0 $black;
+    -o-box-shadow: 0 1px 0 $black;
+    box-shadow: 0 1px 0 $black;
   }
   
+  .no-boxshadow header {
+    border-bottom: 2px solid $black;
+  }
+  
+  header nav {
+    @include float(right);
+  }
+  
+  header nav li {
+    @include float(left);
+    padding: 1px;
+    margin: 0 5px;
+  }
+  
+  header nav li a {
+    padding: 6px 5px 5px;
+    font-size: 1.4em;
+    color: $white;
+    opacity: 0.6;
+    text-transform: uppercase;
+    text-shadow: 0 -1px $black;
+    display: block;
+    position: relative;
+    line-height: 1;
+    border-top: 1px solid transparent;
+    @include animate(0.2s);
+    @include rounded(4px);
+    &:hover {
+      opacity: 1;
+      background: $white25;
+      -webkit-box-shadow: 0 1px 0 $ltgray;
+      -moz-box-shadow: 0 1px 0 $ltgray;
+      -o-box-shadow: 0 1px 0 $ltgray;
+      box-shadow: 0 1px 0 $ltgray;
+      border-top: 1px solid $black75;
+    }
+  }
+    
   #main {
     width: 62.5%; /* 560 / 960 */ 
     margin-left: 2.08033333%; /* 20 / 960 */
