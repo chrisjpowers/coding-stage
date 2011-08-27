@@ -1,10 +1,21 @@
+<h3><a href="/stages/new">Create a New Stage</a></h3>
 <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Language</th>
+      <th>Stub</th>
+      <th>Channel</th>
+    </tr>
+  </thead>
+  <tbody>
   <% stages.forEach(function(stage) { %>
     <tr>
-      <td><%= stage.name %></td>
+      <td><a href="/stages/<%= stage.stub %>"><%= stage.name %></a></td>
       <td><%= stage.language %></td>
       <td><%= stage.stub %></td>
       <td><%= stage.channel %></td>
     </tr>
   <% }) %>
+  </tbody>
 </table>

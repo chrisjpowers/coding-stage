@@ -9,7 +9,7 @@ ot = new opentok.OpenTokSDK(OPENTOK_API_KEY,OPENTOK_API_SECRET)
 
 exports.run = (express, app) ->
   app.get "/", (req, res) ->
-    res.render "homepage"
+    res.redirect "/stages"
 
   app.get "/stages", (req, res) ->
     Stage.find {}, (err, stages) ->
