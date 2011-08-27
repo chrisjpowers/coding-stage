@@ -30,7 +30,7 @@
 	<section id="room">
 	
 		<h1>Room Name Goes Here</h1>
-		<a href="/invite" title="Invite coders to join you" class="button">Invite Coders</a>
+		<a href="/invite" title="Invite coders to join you" class="button invite">Invite Coders</a>
 	
 		<form id="room-settings">
 	
@@ -51,6 +51,9 @@
 		
 		<section id="editor">
 	
+			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
+			<section id="ace-editor"></section>
+
 			<label for="files">Room Files</label>
 			<select id="files" name="files">
 				<option data-file="file-info-here">File Name Goes Here</option>
@@ -58,10 +61,7 @@
 				<option data-file="file-new">Create a New File</option>
 			</select>
 		
-			<a href="#" title="Import a Gist" class="button">Import a Gist File</a>
-		
-			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
-			<section id="ace-editor"></section>
+			<a href="#" title="Import a Gist" class="button import">Import a Gist File</a>
 			
 		</section>
 		
