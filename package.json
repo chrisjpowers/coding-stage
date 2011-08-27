@@ -25,7 +25,8 @@
     "postageapp": "0.0.5",
     "coffee-script": "1.1.2",
     "ejs": "0.4.3",
-    "mongoose-types": "1.0.3"
+    "mongoose-types": "1.0.3",
+    "opentok": "0.1.2"
   },
   "devDependencies": {}
 }
