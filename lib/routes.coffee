@@ -1,6 +1,8 @@
 User = require "./models/user"
 Stage = require "./models/stage"
 Comment = require "./models/comment"
+pusher = require "./pusher"
+
 
 opentok = require 'opentok'
 OPENTOK_API_KEY = '3703831'
@@ -8,6 +10,10 @@ OPENTOK_API_SECRET = '07f243ac253b365d2410c2cbc617b468cab49450'
 ot = new opentok.OpenTokSDK(OPENTOK_API_KEY,OPENTOK_API_SECRET)
 
 exports.run = (express, app) ->
+  app.use (req, res, next) ->
+    res.local 'pusher', pusher
+    next()
+
   app.get "/", (req, res) ->
     res.redirect "/stages"
 
