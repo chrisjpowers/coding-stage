@@ -2,6 +2,8 @@
 	
 	var pusherInst;
 	
+	extend('DEBUG.userHoldsBaton', true);
+	
 	pusherInst = codingstage.pusher.inst;
 	
 	if (!pusherInst) {
@@ -26,6 +28,7 @@
 		 * @param {Backbone.View} view
 		 */
 		,'initialize': function initialize (options) {
+			
 			var self;
 			
 			if (!options.aceEditor || !options.channelName || !options.view) {
@@ -34,13 +37,26 @@
 			
 			self = this;
 			_.defaults(this, options);
+			this.sendDataToServer = _.throttle(this.sendDataToServer, 500);
+			
+			if (pusherInst.connection.state === 'connected') {
+				this.pusherInit();
+			} else {
+				pusherInst.connection.bind('connected', function () {
+					self.pusherInit();
+				});
+			}
+		}
+		
+		,'pusherInit': function pusherInit () {
+			var self;
+			
+			self = this;
 			this.connectToServer();
 			
  			this.bindToServerEvent('editor-updated', function (data) {
 				self.getDataFromServer(data);
 			});
-			
-			this.sendDataToServer = _.throttle(this.sendDataToServer, 500);
 		}
 		
 		,'change': function change () {
@@ -64,7 +80,10 @@
 		
 		,'getDataFromServer': function getDataFromServer (data) {
 			// Will need this commented out for the moment.
-			//this.view.overwriteContents(this.aceEditor, data['lines'].join(''));
+			
+			if (DEBUG.userHoldsBaton !== true) {
+				this.view.overwriteContents(this.aceEditor, data['lines'].join(''));
+			}
 		}
 		
 		,'sendDataToServer': function sendDataToServer (data) {
