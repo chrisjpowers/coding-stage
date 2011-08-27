@@ -16,6 +16,6 @@ app.get "/", (req, res) ->
 
 app.listen
 
-port = parseInt(process.env.PORT) || 8080
+port = if process.env.NODE_ENV == "production" then 80 else 8080
 app.listen port, '0.0.0.0'
 console.log "Listening on #{app.address().port}"
