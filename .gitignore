@@ -1,4 +1,5 @@
 node_modules
+config/config.json
 
 /public/_/.sass-cache/a80bac49aa8e32fc7ad45e2c0a632c0981f23fdd/style.scssc
 .DS_Store
