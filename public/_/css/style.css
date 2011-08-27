@@ -54,6 +54,17 @@ header {
   font-family: Univers, 'Helvetica Neue', Helmet, FreeSans, sans-serif;
   font-weight: 900; }
 
+header h1 {
+  width: 300px;
+  height: 74px;
+  float: left; }
+  header h1 a {
+    text-indent: -9999px;
+    display: block;
+    height: 74px;
+    width: 300px;
+    background: url(../img/logo/cs-logo.png) left top no-repeat; }
+
 .button {
   background: #4da4a4 url(../img/bg/grad-button.png) left top repeat-x;
   padding: 5px 10px 4px;
@@ -79,19 +90,6 @@ header {
     background-color: #92d05c;
     border-color: #92d05c; }
 
-/*- ACE HAMMERS
-----------------------------------------------------------------------*/
-.ace_gutter {
-  width: 7.1428571428571% !important;
-  /* 50 / 560 */ }
-
-.ace_scroller {
-  width: 89.2857142857143% !important;
-  /* 500 / 560 */ }
-
-.ace_content {
-  width: 100% !important; }
-
 /* MEDIA QUERIES
 -------------------------------------------------------------------------------*/
 /*/mediaquery*/
@@ -99,7 +97,7 @@ header {
 @media screen and (min-width: 768px) {
   /* HEADER */
   header {
-    padding: 1.0416667% 2.08033333%;
+    padding: 10px 2.08033333%;
     /* 10 & 20 / 960 */
     margin-bottom: 20px;
     width: 95.833333%;
@@ -116,7 +114,8 @@ header {
   header nav {
     float: right;
     display: inline;
-    overflow: hidden; }
+    overflow: hidden;
+    margin-top: 34px; }
 
   header nav li {
     float: left;
@@ -184,7 +183,7 @@ header {
     border: 1px solid #d7d7b8; }
 
   #room {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.7);
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
@@ -214,7 +213,7 @@ header {
     overflow: hidden; }
 
   #room-settings {
-    margin: 1em 0 0; }
+    margin: .5em 0 0; }
     #room-settings legend {
       color: #b7bcc2;
       font-size: 1.2em;
@@ -253,16 +252,28 @@ header {
     #room-settings label {
       margin-right: 0.5em; }
 
+  /* ACE HAMMERS */
+  .ace_gutter {
+    width: 7.1428571428571% !important;
+    /* 50 / 560 */ }
+
+  .ace_scroller {
+    width: 89.2857142857143% !important;
+    /* 500 / 560 */ }
+
+  .ace_content {
+    width: 100% !important; }
+
   /* FOOTER */
   footer {
     clear: both; }
 
   /* TYPOGRAPHY */
   section h1 {
-    font-size: 2.4em;
+    font-size: 2.8em;
     color: #4da4a4;
     text-transform: uppercase;
-    text-shadow: 0 -1px 0 rgba(29, 41, 41, 0.75);
+    text-shadow: 0 -1px 1px rgba(29, 41, 41, 0.5), 0 1px 0 white;
     line-height: 1;
     font-family: ostrich-sans, Univers, 'Helvetica Neue', Helmet, sans-serif;
     font-weight: 900; }
