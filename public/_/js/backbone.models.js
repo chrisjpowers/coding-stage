@@ -2,6 +2,8 @@
 	
 	var pusherInst;
 	
+	extend('DEBUG.userHoldsBaton', true);
+	
 	pusherInst = codingstage.pusher.inst;
 	
 	if (!pusherInst) {
@@ -64,7 +66,10 @@
 		
 		,'getDataFromServer': function getDataFromServer (data) {
 			// Will need this commented out for the moment.
-			//this.view.overwriteContents(this.aceEditor, data['lines'].join(''));
+			
+			if (DEBUG.userHoldsBaton !== true) {
+				this.view.overwriteContents(this.aceEditor, data['lines'].join(''));
+			}
 		}
 		
 		,'sendDataToServer': function sendDataToServer (data) {

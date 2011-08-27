@@ -72,6 +72,8 @@
       if (window.console && window.console.log) window.console.log(message);
     };
 
+	window.console.log = $.noop
+
 	extend('codingstage.pusher.inst', new Pusher('<%= pusher.key %>'));
   </script>
   <script src="/_/js/backbone.models.js"></script>
