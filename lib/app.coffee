@@ -1,4 +1,5 @@
 require('nko')('2IXyUTQrpwP5nnHC')
+require "../config/mongo"
 
 express = require "express"
 app = express.createServer()
@@ -10,11 +11,7 @@ app.configure 'development', () ->
 app.configure 'production', () ->
   require("../config/environments/production").run express, app
 
-
-app.get "/", (req, res) ->
-  res.render "homepage"
-
-app.listen
+require("./routes").run express, app
 
 port = parseInt(process.env.PORT) || 8080
 app.listen port, '0.0.0.0'
