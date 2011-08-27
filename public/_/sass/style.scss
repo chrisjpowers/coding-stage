@@ -523,7 +523,6 @@ a{
       position: relative;
       list-style-type: none;
       color: $ltturq;
-      @include animate(0.2s, all);
       &:hover {
         background-color: $white;
         cursor: pointer;
@@ -531,6 +530,7 @@ a{
     }
     li.attendee {
       border-top: 1px solid $white;
+      text-shadow: 0 1px 0 #fff, 0 -1px 0 $black50;
       ul {
         position: absolute;
         right: 0;
@@ -546,6 +546,7 @@ a{
           padding: 2px 5px;
           a {
             font-weight: normal;
+            text-shadow: none;
             &:hover {
               background: none;
               cursor: pointer;
