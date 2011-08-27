@@ -189,7 +189,7 @@ a {
     overflow: hidden; }
 
   /* PAGE COMPONENTS */
-  #room, #chat, #video-chat, #attendees {
+  #room, #chat, #attendees {
     margin-bottom: 20px;
     padding: 2.6785714285714% 3.5714286%;
     /* 20 / 560 */
@@ -212,7 +212,7 @@ a {
     border-radius: 6px;
     -webkit-box-shadow: inset 0 0 5px rgba(29, 41, 41, 0.5); }
 
-  #video-chat, #attendees {
+  #attendees {
     padding: 7.6923077%;
     /* 20 / 260 */ }
 
@@ -356,6 +356,53 @@ a {
       color: #fff;
       background-color: #92d05c;
       border-color: #92d05c; }
+
+  /* VIDEO CHAT */
+  #video-chat {
+    text-align: center; }
+    #video-chat article {
+      background: #b7bcc2 url(../img/bg/empty-video.png) 50% 50% no-repeat;
+      position: relative;
+      padding-bottom: 18.75%;
+      /* 16:9 */
+      height: 0;
+      width: 30%;
+      height: auto !important;
+      margin: 0 5% 5% 0;
+      float: left;
+      display: inline;
+      overflow: hidden;
+      -webkit-box-shadow: inset 0 0 5px rgba(29, 41, 41, 0.5); }
+      #video-chat article object, #video-chat article embed   {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; }
+    #video-chat article:last-of-type {
+      margin-right: 0; }
+    #video-chat .baton {
+      padding-bottom: 56.25%;
+      /* 16:9 */
+      width: 100%;
+      height: auto;
+      display: block; }
+    #video-chat .button {
+      font-size: 1.5em;
+      margin: 0 auto;
+      display: inline-block;
+      background-color: #b7bcc2;
+      border-color: #b7bcc2; }
+      #video-chat .button:hover {
+        background-color: #656c74;
+        border-color: #656c74; }
+
+  #video-chat.pair article {
+    padding-bottom: 56.25%;
+    /* 16:9 */
+    width: 100%;
+    height: auto;
+    display: block; }
 
   /* FOOTER */
   footer {

@@ -249,7 +249,7 @@ a{
   
   /* PAGE COMPONENTS */
   
-  #room, #chat, #video-chat, #attendees {
+  #room, #chat, #attendees {
     margin-bottom: 20px;
     padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
     overflow: hidden;
@@ -272,7 +272,7 @@ a{
     @include insetshadow;
   }
   
-  #video-chat, #attendees {
+  #attendees {
     padding: 7.6923077%; /* 20 / 260 */
   }
 
@@ -435,6 +435,62 @@ a{
 
   }
   
+  /* VIDEO CHAT */
+  
+  #video-chat {
+    text-align: center;
+        
+    article {
+      background: $ltgray url(../img/bg/empty-video.png) 50% 50% no-repeat;
+      position: relative;
+      padding-bottom: 18.75%; /* 16:9 */
+      height: 0;
+      width: 30%;
+      height: auto !important;
+      margin: 0 5% 5% 0;
+      @include float(left);
+      @include insetshadow;
+      object, embed  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    
+    article:last-of-type {
+      margin-right: 0;
+    }
+    
+    .baton {
+      padding-bottom: 56.25%; /* 16:9 */
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .button {
+      font-size: 1.5em;
+      margin: 0 auto;
+      display: inline-block;
+      background-color: $ltgray;
+      border-color: $ltgray;
+      &:hover {
+        background-color: $mdgray;
+        border-color: $mdgray;
+      }
+    }
+    
+  }
+
+  #video-chat.pair article {
+    padding-bottom: 56.25%; /* 16:9 */
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   /* FOOTER */
   
   footer {
