@@ -18,20 +18,25 @@ Stage = new Schema
   contributorIds:
     type: Array
   comments: [Comment]
-  openTokSessionId:
+  channel:
     type: String
   stub:
     type: String
     
 Stage.pre "save", (next) ->
-  unless this.get("openTokSessionId")
+  if this.get("channel")
+    next()
+  else
     stage = this
     ot.createSession 'localhost', {}, (session) ->
-      stage.openTokSessionId = session.sessionId
+      stage.channel = session.sessionId
       next()
 
 Stage.pre "save", (next) ->
-  unless this.get "stub"
+  if this.get "stub"
+    next()
+  else
     this.stub = this.name.toLowerCase().replace /\W+/g, "-"
+    next()
 
 module.exports = mongoose.model 'Stage', Stage

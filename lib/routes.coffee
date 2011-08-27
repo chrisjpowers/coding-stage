@@ -11,9 +11,21 @@ exports.run = (express, app) ->
   app.get "/", (req, res) ->
     res.render "homepage"
 
+  app.get "/stages", (req, res) ->
+    Stage.find {}, (err, stages) ->
+      res.render "stages/index", stages: stages
+
+  app.get "/stages/new", (req, res) ->
+    res.render "stages/new"
+
+  app.post "/stages", (req, res) ->
+    stage = new Stage req.param("stage")
+    stage.save (err) ->
+      res.redirect "/stages/#{stage.stub}"
+
   app.get "/stages/:stub", (req, res) ->
     Stage.findOne stub: req.param("stub"), (err, stage) ->
       otToken = ot.generateToken
         'connection_data': "userid_#{new Date().getTime()}",
         'role': "publisher"
-      res.render "stage", stage: stage, otToken: otToken
+      res.render "homepage", stage: stage, otToken: otToken

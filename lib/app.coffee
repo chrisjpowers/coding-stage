@@ -7,6 +7,9 @@ app = express.createServer()
 app.set 'view engine', 'ejs'
 app.configure () ->
   app.set "views", "#{__dirname}/../views"
+  app.use express.methodOverride()
+  app.use express.bodyParser()
+
 
 app.configure 'development', () ->
   require("../config/environments/development").run express, app
