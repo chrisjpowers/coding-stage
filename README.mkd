@@ -1,0 +1,8 @@
+Coding Stage
+================
+
+Setup
+---------------
+
+1. Add ssh config record: `echo "Host nko\n  Port 22\n  Hostname 69.164.220.218" >> ~/.ssh/config`
+2. Make sure that everything in `scripts/` is executable: `chmod +x scripts/*`
