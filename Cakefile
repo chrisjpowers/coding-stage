@@ -1,6 +1,16 @@
 {exec, spawn} = require 'child_process'
 output = (data) -> console.log data.toString()
 
+task "run", (option) ->
+  exec 'npm install .', (err, stdout) ->
+    throw err if err?
+    console.log stdout
+
+    deploy = spawn 'node', ['server.js']
+    deploy.stdout.on 'data', output
+    deploy.stderr.on 'data', output
+    deploy.on 'exit', ->
+
 task "deploy", (option) ->
   deploy = spawn './scripts/deploy', ['linode']
   deploy.stdout.on 'data', output
