@@ -1,4 +1,4 @@
-(function (global) {
+(function backboneViews (global) {
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
