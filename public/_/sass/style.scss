@@ -245,11 +245,12 @@ a{
     width: 31.25%; /* 300 / 960 */
     margin-right: 2.08033333%; /* 20 / 960 */
     @include float(right);
+    overflow: visible;
   }
   
   /* PAGE COMPONENTS */
   
-  #room, #chat, #attendees {
+  #room, #chat {
     margin-bottom: 20px;
     padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
     overflow: hidden;
@@ -273,7 +274,7 @@ a{
   }
   
   #attendees {
-    padding: 7.6923077%; /* 20 / 260 */
+    padding: 7.6923077% 0 0; /* 20 / 260 */
   }
 
   #chat {
@@ -489,7 +490,119 @@ a{
     height: auto;
     display: block;
   }
+  
+  /* ATTENDEES */
+  
+  #attendees {
+    overflow: visible;
+    h1 > a {
+      font-size: .5em; /* 12 / 20 */
+      padding: 4px 5px 5px 20px;
+      position: relative;
+      top: -3px;
+      text-shadow: none;
+      background: {
+        image: url(../img/icons/sprite.png);
+        position: -228px -29px;
+        repeat: no-repeat;
+      }
+      @include rounded(4px);
+      @include sans(500);
+      @include float(right);
+      @include animate(0.1s, background-color);
+      &:hover {
+        background-position: -28px -29px;
+      }
+    }
+    ol {
+      font-size: 1.5em;
+      margin-top: 0.4em;
+    }
+    li {
+      padding: 4px 5px;
+      position: relative;
+      list-style-type: none;
+      color: $ltturq;
+      @include animate(0.2s, all);
+      &:hover {
+        background-color: $white;
+        cursor: pointer;
+      }
+    }
+    li.attendee {
+      border-top: 1px solid $white;
+      ul {
+        position: absolute;
+        right: 0;
+        top: 20px;
+        display: none;
+        z-index: 500;
+        background: $white;
+        padding-bottom: 5px;
+        @include rounded(0 0 4px 4px);
+        li {
+          font-size: .7em;
+          text-align: right;
+          padding: 2px 5px;
+          a {
+            font-weight: normal;
+            &:hover {
+              background: none;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      section {
+        float: right;
+        display: none;
+        margin-top: 2px;
+        h1 {
+          width: 16px;
+          height: 16px;
+          background: url(../img/icons/sprite.png) -204px -64px no-repeat;
+          text-indent: -9999px;
+          @include animate(0s, none);
+        }
+        &:hover h1 {
+          background-position: -4px -64px;
+          cursor: pointer;
+        }
+      }
+    }
+    li.attendee:hover {
+      cursor: pointer;
+      section {
+        display: inline;
+      }
+      section:hover ul {
+        display: block;
+      }
+    }
+    li.baton:before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      background: url(../img/icons/sprite.png) -33px -33px no-repeat;
+      position: absolute;
+      left: -13px;
+      top: 7px;
+    }
+    .coder {
+      color: $turq;
+    } 
 
+    .owner {
+      color: $green;
+    }
+
+    .baton {
+      color: $black
+    }
+    
+  }
+  
   /* FOOTER */
   
   footer {
@@ -508,7 +621,7 @@ a{
   }
   
   aside h1 {
-    font-size: 2em;
+    font-size: 2.6em;
     color: $dkgray;
     text-shadow: 0 1px 0 $white;
   }
