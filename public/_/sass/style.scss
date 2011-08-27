@@ -4,6 +4,7 @@ $ltgray: #b7bcc2;
 $beige: #d7d7b8;
 $ltbeige: #f5f6d7;
 $turq: #4da4a4;
+$turq25: rgba(77,164,164,0.25);
 $turq50: rgba(77,164,164,0.5);
 $ltturq: #92ccbf;
 $black: #1d2929;
@@ -14,6 +15,7 @@ $white25: rgba(238,242,242,0.25);
 $white60: rgba(238,242,242,0.6);
 $pink: #bd5ca3;
 $green: #92d05c;
+$green50: rgba(146,208,92,0.5);
 $mdgreen: #b6ec86;
 
 @mixin sans($weight) {
@@ -41,10 +43,10 @@ $mdgreen: #b6ec86;
   background: $color url(../img/bg/noise.png) center top repeat;
 }
 
-@mixin animate($time) {
-  -webkit-transition: all ease-in-out $time;
-  -moz-transition: all ease-in-out $time;
-  transition: all ease-in-out $time;
+@mixin animate($time, $scope) {
+  -webkit-transition: $scope ease-in-out $time;
+  -moz-transition: $scope ease-in-out $time;
+  transition: $scope ease-in-out $time;
 }
 
 @mixin rounded($size) {
@@ -72,8 +74,9 @@ $mdgreen: #b6ec86;
   text-shadow: 0 -1px 0 $turq50;
   @include rounded(4px);
   @include sans(700);
-  @include animate(0.1s);
+  @include animate(0.1s, all);
   &:hover {
+    color: #fff;
     background-color: $green;
     border-color: $green;
   }
@@ -84,15 +87,15 @@ $mdgreen: #b6ec86;
 /*-  VANITY STYLES
 ----------------------------------------------------------------------*/
 
-::selection { background: #fff; text-shadow: none; }
-::-moz-selection { background: #fff; text-shadow: none; }
+::selection { background: $green50; text-shadow: none; }
+::-moz-selection { background: $green50; text-shadow: none; }
 img::selection { background: transparent; }
 img::-moz-selection { background: transparent; }
 
 @media only screen and (max-device-width: 480px) {
 
   html {-webkit-text-size-adjust: none}
-  a:link {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+  a:link {-webkit-tap-highlight-color: $green50;}
   
 }
 
@@ -112,7 +115,7 @@ body {
 }
 
 body, select, input, textarea { color: $black; }
-a { text-decoration: none; }
+a { text-decoration: none; color: $turq; }
 
 header {
   overflow: hidden;
@@ -127,21 +130,42 @@ header {
 }
 
 header h1 {
-  width: 203px;
-  height: 50px;
+  width: 213px;
+  height: 60px;
   float: left;
   a {
     text-indent: -9999px;
     display: block;
-    height: 74px;
-    width: 300px;
-    background: url(../img/logo/cs-logo.png) left top no-repeat;
+    height: 50px;
+    width: 203px;
+    padding: 5px;
+    background: url(../img/logo/cs-logo.png) 5px 5px no-repeat;
+    border-top: 1px solid transparent;
+    @include rounded(5px);
+    &:hover {
+      background-color: $white25;
+      border-top: 1px solid $black75;
+      color: $white;
+    }
+  }
+}
+
+/* LINKS */
+
+a{
+  padding: 0 1px;
+  @include animate(0.1s, all);
+  &:hover {
+    color: $black;
+    background-color: $ltturq;
+    background-color: $turq25;
   }
 }
 
 .button {
   @include button;
 }
+
 
 
 
@@ -179,7 +203,7 @@ header h1 {
   
   header nav {
     @include float(right);
-    margin-top: 10px;
+    margin-top: 15px;
   }
   
   header nav li {
@@ -199,12 +223,13 @@ header h1 {
     position: relative;
     line-height: 1;
     border-top: 1px solid transparent;
-    @include animate(0.2s);
+    @include animate(0.2s, all);
     @include rounded(4px);
     &:hover {
       opacity: 1;
       background: $white25;
       border-top: 1px solid $black75;
+      color: $white;
     }
   }
     
@@ -250,6 +275,13 @@ header h1 {
   #video-chat, #attendees {
     padding: 7.6923077%; /* 20 / 260 */
   }
+
+  #chat {
+    background: $white;
+    background: rgba(255,255,255,.7);
+    padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
+    @include rounded(10px);
+  }
   
     /* ROOM */
     
@@ -260,19 +292,28 @@ header h1 {
     }
     
     #room-settings, #editor {
+
       label { 
         font-size: 1.2em;
         display: inline-block;
         margin-right: .5em;
       }
+
       select {
         margin-right: 1.5em;
         background-position: 100% 8px;
         width: 60%;
+        
+        option[data-file="file-new"] {
+          font-style: italic;
+        }
+        
       }
+
       .import {
         @include float(right);
       }
+
     }
     
     #room-settings {
@@ -282,15 +323,16 @@ header h1 {
         font-size: 1.2em;
         font-weight: 700;
         text-transform: uppercase;
-        background: url(../img/forms/select_arrow.gif) 100% 7px no-repeat;
+        background: url(../img/forms/select_arrow.gif) 100% 6px no-repeat;
         padding-right: 16px;
+        @include animate(0.1s, color);
         &:hover {
           cursor: pointer;
           color: $mdgray;
         }
       }
       legend.open {
-        background-position: 100% -24px;
+        background-position: 100% -25px;
       }
       input, label {
         display: none;
@@ -313,7 +355,7 @@ header h1 {
         color: $turq;
         font-weight: 500;
         margin-top: 0;
-        @include animate(0.2s);
+        @include animate(0.2s, all);
         &:hover {
           color: $dkgray;
         }
@@ -337,6 +379,62 @@ header h1 {
     width: 100% !important;
   }
 
+  /* TEXT CHAT */
+  
+  #conversation {
+    height: 150px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+
+    article {
+      font-size: 1.3em;
+      margin: 0 0 .4em;
+
+      p {
+        color: $mdgray;
+      }
+
+      strong {
+        color: $ltturq;
+      }
+
+    }
+
+    .empty {
+      font-style: italic;
+    }
+    
+    .coder strong {
+      color: $turq;
+    } 
+
+    .owner strong {
+      color: $green;
+    }
+
+    .baton strong {
+      color: $black
+    }
+    
+  }
+  
+  #chat {
+
+    input[type="text"] {
+      width: 80%;
+      margin-right: 3%;
+    }
+    
+    input[type="submit"] {
+      width: 16%;
+      padding-left: 0;
+      padding-right: 0;
+      @include float(right);
+      @include button;
+    }
+
+  }
+  
   /* FOOTER */
   
   footer {
