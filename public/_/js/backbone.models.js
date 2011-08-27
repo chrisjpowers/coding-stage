@@ -9,6 +9,14 @@
 	}
 	
 	extend('codingstage.models.sharedBuffer', Backbone.Model.extend({
+
+		'events': {
+			'change': 'change'
+		}
+		
+		,'defaults': {
+			'lines': []
+		}
 		
 		/**
 		 * Expects, in options:
@@ -17,7 +25,7 @@
 		 * @param {String} channelName
 		 * @param {Backbone.View} view
 		 */
-		'initialize': function initialize (options) {
+		,'initialize': function initialize (options) {
 			if (!options.aceEditor || !options.channelName || !options.view) {
 				throw 'codingstage.models.sharedBuffer is missing necessary params.';
 			}
@@ -25,6 +33,12 @@
 			_.defaults(this, options);
 			this.connectToServer();
  			this.bindToServerEvent('editor-updated', this.getDataFromServer);
+		}
+		
+		,'change': function change () {
+			/*this.sendDataToServer({
+				'lines': this.get('lines')
+			});*/
 		}
 		
 		,'connectToServer': function connectToServer () {
@@ -37,17 +51,10 @@
 		
 		,'bindToServerEvent': function bindToServerEvent (eventName, handler) {
 			pusherInst.back_channel.bind(eventName, handler);
-			//pusherInst.channel(this.channelName).bind(eventName, handler);
-			this.channel.bind(eventName, function(thing) {
-			  alert('A thing was created: ' + thing.name);
-			});
+			this.channel.bind(eventName, handler);
 		}
 		
 		,'getDataFromServer': function getDataFromServer (data) {
-			alert(data)
-			
-			data = $.parseJSON(data);
-			
 			// TODO:  `editorContents` WILL PROBABLY HAVE TO CHANGE
 			this.view.overwriteContents(data['editorContents']);
 		}

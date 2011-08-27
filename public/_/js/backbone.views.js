@@ -17,8 +17,13 @@
 		}
 		
 		,'initialize': function initialize (options) {
+			var self = this;
+			
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
+			this.bindToAceEvent('change', function () {
+				self.aceChange();
+			});
 			
 			this.model = new this.MODEL_TYPE({
 				'view': this
@@ -28,17 +33,31 @@
 		}
 		
 		,'initAce': function initAce (elId) {
-			var editorInst
-				,mode;
+			var editorInst;
 				
 			editorInst = ace.edit(elId);
-			//mode = require("ace/mode/javascript").Mode;
-			//get(editorInst).setMode(new mode());
+			
 			return editorInst;
+		}
+		
+		,'aceChange': function aceChange (ev) {
+			var session
+				,lines;
+			
+			session = get(this.aceEditor);
+			lines = session.getLines(0, session.getLength());
+			
+			this.model.set({
+				'lines': lines
+			});
 		}
 		
 		,'bindAce': function bindAce (aceInst, event, handler) {
 			get(aceInst).on(event, handler);
+		}
+		
+		,'bindToAceEvent': function bindToAceEvent (eventName, handler) {
+			get(this.aceEditor).on(eventName, handler);
 		}
 		
 		,'sendContentsToServer': function sendContentsToServer (aceInst) {
