@@ -357,7 +357,7 @@ select[multiple] {
   select {
     background-image: url(../img/forms/select_arrow.gif);
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: right 8px;
     padding-right: 20px;
   }
 

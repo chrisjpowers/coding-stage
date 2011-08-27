@@ -237,7 +237,6 @@ a {
     margin-right: .5em; }
   #room-settings select, #editor select {
     margin-right: 1.5em;
-    background-position: 100% 8px;
     width: 60%; }
     #room-settings select option[data-file="file-new"], #editor select option[data-file="file-new"] {
       font-style: italic; }
