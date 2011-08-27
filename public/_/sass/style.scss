@@ -7,8 +7,9 @@ $turq: #4da4a4;
 $ltturq: #92ccbf;
 $black: #1d2929;
 $black75: rgba(29,41,41,0.75);
-$white: #e8efef;
-$white25: rgba(232,239,239,0.25);
+$white: #fff;
+$white25: rgba(255,255,255,0.25);
+$white80: rgba(255,255,255,0.8);
 $pink: #bd5ca3;
 $green: #92d05c;
 
@@ -42,6 +43,10 @@ $green: #92d05c;
   -webkit-border-radius: $size;
   -moz-border-radius: $size;
   border-radius: $size;
+}
+
+@mixin insetshadow {
+  -webkit-box-shadow: inset 0 0 5px $black75;
 }
 
 
@@ -83,6 +88,26 @@ header {
   overflow: hidden;
   @include bg($dkgray);
   @include sans(700);
+}
+
+
+
+
+
+
+/*- ACE HAMMERS
+----------------------------------------------------------------------*/
+
+.ace_gutter {
+  width: 7.1428571428571% !important; /* 50 / 560 */
+}
+
+.ace_scroller {
+  width: 89.2857142857143% !important; /* 500 / 560 */
+}
+
+.ace_content {
+  width: 100% !important;
 }
 
 
@@ -143,10 +168,6 @@ header {
     &:hover {
       opacity: 1;
       background: $white25;
-      -webkit-box-shadow: 0 1px 0 $ltgray;
-      -moz-box-shadow: 0 1px 0 $ltgray;
-      -o-box-shadow: 0 1px 0 $ltgray;
-      box-shadow: 0 1px 0 $ltgray;
       border-top: 1px solid $black75;
     }
   }
@@ -158,9 +179,20 @@ header {
   }
 
   #editor, #chat, #video-chat, #attendees {
-    background: #fff;
     margin-bottom: 20px;
     padding: 3.5714286%; /* 20 / 560 */
+  }
+  
+  #ace-editor {
+    height: 300px !important;
+    position: relative;
+    background: $white;
+  }
+  
+  #room {
+    background: $white;
+    @include rounded(6px);
+    @include insetshadow;
   }
   
   #video-chat, #attendees {
