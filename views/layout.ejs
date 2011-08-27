@@ -49,6 +49,7 @@
   var b = document.documentElement;
   b.setAttribute('data-useragent',  navigator.userAgent);
   b.setAttribute('data-platform', navigator.platform );
+  b.setAttribute('data-pusherchannel', 'temporary' );
 </script>
 
   <%- body %>
@@ -63,9 +64,20 @@
   <script src="/_/js/libs.js"></script>
   <script src="/_/js/plugins.js"></script>
   <script src="/_/js/functions.js"></script>
+  <script src="/_/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="http://js.pusherapp.com/1.10.0-pre/pusher.min.js"></script> 
+  <script type="text/javascript">
+    Pusher.host = "ws.darling.pusher.com"
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) window.console.log(message);
+    };
+
+	extend('codingstage.pusher.inst', new Pusher('<%= pusher.key %>'));
+  </script>
+  <script src="/_/js/backbone.models.js"></script>
   <script src="/_/js/backbone.views.js"></script>
   <script src="/_/js/coderoom.js"></script>
-  <script src="/_/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
 
 <!-- this is a variation of the official analytics snippet: http://mathiasbynens.be/notes/async-analytics-snippet 
    replace XXXXXX-XX with your site's ID and uncomment to put this into effect

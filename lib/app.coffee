@@ -5,6 +5,7 @@ express = require "express"
 app = express.createServer()
 
 app.set 'view engine', 'ejs'
+
 app.configure () ->
   app.set "views", "#{__dirname}/../views"
   app.use express.methodOverride()

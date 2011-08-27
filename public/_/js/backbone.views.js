@@ -1,5 +1,7 @@
 (function backboneViews (global) {
 	
+	var CHANNEL_NAME = $(document.documentElement).data('pusherchannel');
+	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
 		return aceInst.getSession();
@@ -7,6 +9,8 @@
 
 	extend('codingstage.views.editor', Backbone.View.extend({
 		'EDITOR_ID': 'ace-editor'
+		
+		,'MODEL_TYPE': codingstage.models.sharedBuffer
 	
 		,'events': {
 		
@@ -15,6 +19,12 @@
 		,'initialize': function initialize (options) {
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
+			
+			this.model = new this.MODEL_TYPE({
+				'view': this
+				,'aceEditor': this.aceEditor
+				,'channelName': CHANNEL_NAME
+			});
 		}
 		
 		,'initAce': function initAce (elId) {
@@ -22,8 +32,8 @@
 				,mode;
 				
 			editorInst = ace.edit(elId);
-			mode = require("ace/mode/javascript").Mode;
-			get(editorInst).setMode(new mode());
+			//mode = require("ace/mode/javascript").Mode;
+			//get(editorInst).setMode(new mode());
 			return editorInst;
 		}
 		
