@@ -6,7 +6,7 @@ app = express.createServer()
 
 app.set 'view engine', 'ejs'
 app.configure () ->
-  app.set "#{__dirname}/../views"
+  app.set "views", "#{__dirname}/../views"
 
 app.configure 'development', () ->
   require("../config/environments/development").run express, app
