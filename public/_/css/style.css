@@ -215,7 +215,8 @@ a {
 
   #attendees {
     padding: 7.6923077% 0 0;
-    /* 20 / 260 */ }
+    /* 20 / 260 */
+    margin-bottom: 20px; }
 
   #chat {
     background: #eef2f2;
@@ -238,7 +239,7 @@ a {
     margin-right: .5em; }
   #room-settings select, #editor select {
     margin-right: 1.5em;
-    width: 60%; }
+    width: 50%; }
     #room-settings select option[data-file="file-new"], #editor select option[data-file="file-new"] {
       font-style: italic; }
   #room-settings .import, #editor .import {
@@ -408,11 +409,12 @@ a {
   #attendees {
     overflow: visible; }
     #attendees h1 > a {
+      left: -17px;
+      margin-bottom: 5px;
       font-size: .5em;
       /* 12 / 20 */
       padding: 4px 5px 5px 20px;
       position: relative;
-      top: -3px;
       text-shadow: none;
       background-image: url(../img/icons/sprite.png);
       background-position: -228px -29px;
@@ -422,7 +424,7 @@ a {
       border-radius: 4px;
       font-family: Univers, 'Helvetica Neue', Helmet, FreeSans, sans-serif;
       font-weight: 500;
-      float: right;
+      float: left;
       display: inline;
       overflow: hidden;
       -webkit-transition: background-color ease-in-out 0.1s;
@@ -432,7 +434,8 @@ a {
         background-position: -28px -29px; }
     #attendees ol {
       font-size: 1.5em;
-      margin-top: 0.4em; }
+      margin-top: 0.4em;
+      clear: both; }
     #attendees li {
       padding: 4px 5px;
       position: relative;
@@ -544,7 +547,68 @@ a {
     color: #4a525a;
     text-shadow: 0 1px 0 #eef2f2; } }
 /*/mediaquery*/
-/*/mediaquery*/
+@media screen and (min-width: 1024px) {
+  /* COLUMNS */
+  #main {
+    width: 72.7272727272727%;
+    /* 800 / 1100 */
+    margin-left: 2.2727272727273%;
+    /* 25 / 1100 */ }
+
+  aside {
+    width: 20.4545454545455%;
+    /* 225 / 1100 */
+    margin-right: 2.2727272727273%;
+    /* 25 / 1100 */ }
+
+  /* PAGE COMPONENTS */
+  #room {
+    width: 62.5%;
+    /* 500 / 800 */
+    padding: 3.125%;
+    /* 25 / 800 */
+    float: left;
+    display: inline;
+    overflow: hidden; }
+
+  #chat {
+    width: 25%;
+    /* 200 / 800 */
+    padding: 1.875%;
+    /* 10 / 800 */
+    float: right;
+    display: inline;
+    overflow: hidden; }
+
+  #ace-editor {
+    height: 500px !important; }
+
+  #attendees {
+    padding: 10% 0 0; }
+
+  /* ROOM */
+  #editor select {
+    margin-right: 0;
+    width: 55%; }
+  #editor label, #editor select {
+    float: left;
+    display: inline;
+    overflow: hidden; }
+
+  /* TEXT CHAT */
+  #conversation {
+    height: 500px;
+    margin-bottom: 5px; }
+    #conversation article {
+      font-size: 1.2em;
+      margin: 0 0 .5em; }
+
+  #chat input[type="text"] {
+    width: 100%;
+    margin-right: 0%; }
+  #chat input[type="submit"] {
+    width: auto;
+    margin-top: 10px; } }
 /*/mediaquery*/
 /*- BROWSER PATCHES
 ----------------------------------------------------------------------*/
