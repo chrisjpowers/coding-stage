@@ -1,0 +1,1 @@
+ssh deploy@nko "tail -f app/shared/logs/node.log" 

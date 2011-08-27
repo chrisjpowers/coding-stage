@@ -55,6 +55,19 @@ header {
 .ace_content {
   width: 100% !important; }
 
+/*- ACE HAMMERS
+----------------------------------------------------------------------*/
+.ace_gutter {
+  width: 7.1428571428571% !important;
+  /* 50 / 560 */ }
+
+.ace_scroller {
+  width: 89.2857142857143% !important;
+  /* 500 / 560 */ }
+
+.ace_content {
+  width: 100% !important; }
+
 /* MEDIA QUERIES
 -------------------------------------------------------------------------------*/
 /*/mediaquery*/
@@ -118,10 +131,18 @@ header {
     display: inline;
     overflow: hidden; }
 
+  #ace-editor {
+    width: 100% !important;
+    display: block;
+    position: relative;
+    height: 300px !important;
+    margin-top: 20px; }
+
   #editor, #chat, #video-chat, #attendees {
     margin-bottom: 20px;
     padding: 3.5714286%;
-    /* 20 / 560 */ }
+    /* 20 / 560 */
+    overflow: hidden; }
 
   #ace-editor {
     height: 300px !important;
