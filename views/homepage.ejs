@@ -29,8 +29,8 @@
 
 	<section id="room">
 	
-		<h1>Room Name Goes Here</h1>
-		<a href="/invite" title="Invite coders to join you" class="button">Invite Coders</a>
+            <h1><%= stage.name %></h1>
+		<a href="/invite" title="Invite coders to join you" class="button invite">Invite Coders</a>
 	
 		<form id="room-settings">
 	
@@ -51,6 +51,9 @@
 		
 		<section id="editor">
 	
+			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
+			<section id="ace-editor"></section>
+
 			<label for="files">Room Files</label>
 			<select id="files" name="files">
 				<option data-file="file-info-here">File Name Goes Here</option>
@@ -58,10 +61,7 @@
 				<option data-file="file-new">Create a New File</option>
 			</select>
 		
-			<a href="#" title="Import a Gist" class="button">Import a Gist File</a>
-		
-			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
-			<section id="ace-editor"></section>
+			<a href="#" title="Import a Gist" class="button import">Import a Gist File</a>
 			
 		</section>
 		
@@ -71,8 +71,12 @@
 		
 		<section id="conversation">
 	
+			<article class="empty">
+				<p>Welcome to the [name of the room] stage. Start chatting away&hellip;</p>
+			</article>
+
 			<article class="attendee">
-				<p><strong>Username:</strong> This is the text of an attendee</p>
+				<p><strong>Username:</strong> This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee.</p>
 			</article>
 	
 			<article class="attendee coder">
@@ -83,7 +87,7 @@
 				<p><strong>Username:</strong> This is the text of a room owner</p>
 			</article>
 	
-			<article class="attendee coder active">
+			<article class="attendee coder baton">
 				<p><strong>Username:</strong> This is the text of a coder that has the baton</p>
 			</article>
 	
@@ -92,7 +96,7 @@
 		<form id="text-chat">
 			
 			<input type="text" placeholder="Speak Up" />
-			<input type="submit" value="Be Heard" />
+			<input type="submit" value="Be Heard" class="button" />
 			
 		</form>
 		
@@ -105,19 +109,18 @@
 	<section id="video-chat">
 
 		<article id="tokbox-team-1" class="baton">
-			[Baton holding Tokbox User]
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="437" height="370" id="viddler_f6cb9e50"><param name="movie" value="http://www.viddler.com/player/f6cb9e50/" /><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="true" /><embed src="http://www.viddler.com/player/f6cb9e50/" width="437" height="370" type="application/x-shockwave-flash" allowScriptAccess="always" allowFullScreen="true" name="viddler_f6cb9e50"></embed></object>
 		</article>
 
-		<article id="tokbox-team-2" class="baton">
-			[Tokbox User]
+		<article id="tokbox-team-2">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="437" height="370" id="viddler_f6cb9e50"><param name="movie" value="http://www.viddler.com/player/f6cb9e50/" /><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="true" /><embed src="http://www.viddler.com/player/f6cb9e50/" width="437" height="370" type="application/x-shockwave-flash" allowScriptAccess="always" allowFullScreen="true" name="viddler_f6cb9e50"></embed></object>
 		</article>
 
-		<article id="tokbox-team-3" class="baton">
-			[Tokbox User]
+		<article id="tokbox-team-3">
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="437" height="370" id="viddler_f6cb9e50"><param name="movie" value="http://www.viddler.com/player/f6cb9e50/" /><param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="true" /><embed src="http://www.viddler.com/player/f6cb9e50/" width="437" height="370" type="application/x-shockwave-flash" allowScriptAccess="always" allowFullScreen="true" name="viddler_f6cb9e50"></embed></object>
 		</article>
 
 		<article id="tokbox-team-4">
-			[Tokbox User]
 		</article>
 
 		<a href="#" class="button">Join the video chat</a>

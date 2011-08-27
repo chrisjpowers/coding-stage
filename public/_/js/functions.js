@@ -8,7 +8,14 @@ var Site = window.Site || {};
 	//same as $(document).ready();
 	$(function() {
 		
+		// Placeholder support for non-HTML5 supporting browsers
 		$('input, textarea').placeholder();
+		
+		// Hide/show Room Settings
+		$('#room-settings legend').click(function() {
+		  $(this).parent().children().not(this).slideToggle(100);
+		  $(this).toggleClass('open')
+		});
 
 	});
 

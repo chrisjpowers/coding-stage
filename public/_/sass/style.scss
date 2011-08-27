@@ -4,22 +4,32 @@ $ltgray: #b7bcc2;
 $beige: #d7d7b8;
 $ltbeige: #f5f6d7;
 $turq: #4da4a4;
+$turq25: rgba(77,164,164,0.25);
+$turq50: rgba(77,164,164,0.5);
 $ltturq: #92ccbf;
 $black: #1d2929;
+$black50: rgba(29,41,41,0.5);
 $black75: rgba(29,41,41,0.75);
-$white: #fff;
-$white25: rgba(255,255,255,0.25);
-$white80: rgba(255,255,255,0.8);
+$white: #eef2f2;
+$white25: rgba(238,242,242,0.25);
+$white60: rgba(238,242,242,0.6);
 $pink: #bd5ca3;
 $green: #92d05c;
+$green50: rgba(146,208,92,0.5);
+$mdgreen: #b6ec86;
 
 @mixin sans($weight) {
-  font-family: museo-sans, Helmet, Freesans, sans-serif;
+  font-family: Univers, 'Helvetica Neue', Helmet, FreeSans, sans-serif;
   font-weight: $weight;
 }
 
 @mixin serif($weight) {
-  font-family: adelle, 'Book Antiqua', Georgia, serif;
+  font-family: Palatino, Cambria, 'Book Antiqua', Caslon, 'Times New Roman', Times, serif;
+  font-weight: $weight;
+}
+
+@mixin display($weight) {
+  font-family: ostrich-sans, Univers, 'Helvetica Neue', Helmet, sans-serif;
   font-weight: $weight;
 }
 
@@ -33,10 +43,10 @@ $green: #92d05c;
   background: $color url(../img/bg/noise.png) center top repeat;
 }
 
-@mixin animate($time) {
-  -webkit-transition: all ease-in-out $time;
-  -moz-transition: all ease-in-out $time;
-  transition: all ease-in-out $time;
+@mixin animate($time, $scope) {
+  -webkit-transition: $scope ease-in-out $time;
+  -moz-transition: $scope ease-in-out $time;
+  transition: $scope ease-in-out $time;
 }
 
 @mixin rounded($size) {
@@ -46,24 +56,46 @@ $green: #92d05c;
 }
 
 @mixin insetshadow {
-  -webkit-box-shadow: inset 0 0 5px $black75;
+  -webkit-box-shadow: inset 0 0 5px $black50;
 }
 
+@mixin button {
+  background: $turq url(../img/bg/grad-button.png) left top repeat-x;
+  padding: 5px 10px 4px;
+  display: inline-block;
+  border: 1px solid $turq;
+  color: #fff;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0 0 3px $black50;
+  -moz-box-shadow: 0 0 3px $black50;
+  -o-box-shadow: 0 0 3px $black50;
+  box-shadow: 0 0 3px $black50;
+  text-shadow: 0 -1px 0 $turq50;
+  @include rounded(4px);
+  @include sans(700);
+  @include animate(0.1s, all);
+  &:hover {
+    color: #fff;
+    background-color: $green;
+    border-color: $green;
+  }
+}
 
 
 
 /*-  VANITY STYLES
 ----------------------------------------------------------------------*/
 
-::selection { background: #fff; text-shadow: none; }
-::-moz-selection { background: #fff; text-shadow: none; }
+::selection { background: $green50; text-shadow: none; }
+::-moz-selection { background: $green50; text-shadow: none; }
 img::selection { background: transparent; }
 img::-moz-selection { background: transparent; }
 
 @media only screen and (max-device-width: 480px) {
 
   html {-webkit-text-size-adjust: none}
-  a:link {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+  a:link {-webkit-tap-highlight-color: $green50;}
   
 }
 
@@ -77,58 +109,64 @@ img::-moz-selection { background: transparent; }
 body {
   font-size: 62.5%; /* Reset 1em to 10px */
   line-height: 1.3;
-  @include serif(400);
-  @include bg($ltbeige);
+  @include sans(500);
+  @include bg($white);
+  min-height: 100%;
 }
 
 body, select, input, textarea { color: $black; }
-a { text-decoration: none; }
+a { text-decoration: none; color: $turq; }
 
 header {
   overflow: hidden;
-  @include bg($dkgray);
-  @include sans(700);
+  background-color: $dkgray;
+  background-image:  url(../img/bg/noise.png), -webkit-gradient(linear, left top, left bottom, from($mdgray), to($dkgray)); /* Saf4+, Chrome */
+  background-image: url(../img/bg/noise.png), -webkit-linear-gradient(top, $mdgray, $dkgray); /* Chrome 10+, Saf5.1+ */
+  background-image:    url(../img/bg/noise.png), -moz-linear-gradient(top, $mdgray, $dkgray); /* FF3.6 */
+  background-image:     url(../img/bg/noise.png), -ms-linear-gradient(top, $mdgray, $dkgray); /* IE10 */
+  background-image:      url(../img/bg/noise.png), -o-linear-gradient(top, $mdgray, $dkgray); /* Opera 11.10+ */
+  background-image:         url(../img/bg/noise.png), linear-gradient(top, $mdgray, $dkgray);
+  @include sans(900);
+}
+
+header h1 {
+  width: 213px;
+  height: 60px;
+  float: left;
+  a {
+    text-indent: -9999px;
+    display: block;
+    height: 50px;
+    width: 203px;
+    padding: 5px;
+    background: url(../img/logo/cs-logo.png) 5px 5px no-repeat;
+    border-top: 1px solid transparent;
+    @include rounded(5px);
+    &:hover {
+      background-color: $white25;
+      border-top: 1px solid $black75;
+      color: $white;
+    }
+  }
+}
+
+/* LINKS */
+
+a{
+  padding: 0 1px;
+  @include animate(0.1s, all);
+  &:hover {
+    color: $black;
+    background-color: $ltturq;
+    background-color: $turq25;
+  }
+}
+
+.button {
+  @include button;
 }
 
 
-
-
-
-
-/*- ACE HAMMERS
-----------------------------------------------------------------------*/
-
-.ace_gutter {
-  width: 7.1428571428571% !important; /* 50 / 560 */
-}
-
-.ace_scroller {
-  width: 89.2857142857143% !important; /* 500 / 560 */
-}
-
-.ace_content {
-  width: 100% !important;
-}
-
-
-
-
-
-
-/*- ACE HAMMERS
-----------------------------------------------------------------------*/
-
-.ace_gutter {
-  width: 7.1428571428571% !important; /* 50 / 560 */
-}
-
-.ace_scroller {
-  width: 89.2857142857143% !important; /* 500 / 560 */
-}
-
-.ace_content {
-  width: 100% !important;
-}
 
 
 
@@ -146,8 +184,10 @@ header {
 
 @media screen and (min-width: 768px) {
   
+  /* HEADER */
+  
   header {
-    padding: 1.0416667% 2.08033333%; /* 10 & 20 / 960 */
+    padding: 10px 2.08033333%; /* 10 & 20 / 960 */
     margin-bottom: 20px;
     width: 95.833333%; /* 920 / 960 */
     border-bottom: 1px solid $mdgray;
@@ -163,6 +203,7 @@ header {
   
   header nav {
     @include float(right);
+    margin-top: 15px;
   }
   
   header nav li {
@@ -172,7 +213,7 @@ header {
   }
   
   header nav li a {
-    padding: 6px 5px 5px;
+    padding: 6px 5px 8px;
     font-size: 1.4em;
     color: $white;
     opacity: 0.6;
@@ -182,65 +223,301 @@ header {
     position: relative;
     line-height: 1;
     border-top: 1px solid transparent;
-    @include animate(0.2s);
+    @include animate(0.2s, all);
     @include rounded(4px);
     &:hover {
       opacity: 1;
       background: $white25;
       border-top: 1px solid $black75;
+      color: $white;
     }
   }
     
+  /* COLUMNS */
+  
   #main {
     width: 62.5%; /* 560 / 960 */ 
     margin-left: 2.08033333%; /* 20 / 960 */
     @include float(left);
   }
 
-  #ace-editor {
-    width: 100% !important;
-    display: block;
-    position: relative;
-    height: 300px !important;
-    margin-top: 20px;
-  }
-  
-  #editor, #chat, #video-chat, #attendees {
-    margin-bottom: 20px;
-    padding: 3.5714286%; /* 20 / 560 */
-    overflow: hidden;
-  }
-  
-  #ace-editor {
-    height: 300px !important;
-    position: relative;
-    background: $white;
-  }
-  
-  #room {
-    background: $white;
-    @include rounded(6px);
-    @include insetshadow;
-  }
-  
-  #video-chat, #attendees {
-    padding: 7.6923077%; /* 20 / 260 */
-  }
-  
   aside {
     width: 31.25%; /* 300 / 960 */
     margin-right: 2.08033333%; /* 20 / 960 */
     @include float(right);
   }
   
+  /* PAGE COMPONENTS */
+  
+  #room, #chat, #attendees {
+    margin-bottom: 20px;
+    padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
+    overflow: hidden;
+    position: relative;
+  }
+  
+  #ace-editor {
+    width: 100% !important;
+    display: block;
+    position: relative;
+    height: 300px !important;
+    margin: 15px 0;
+    background: #fff;
+    border: 1px solid $beige;
+  }
+  
+  #room {
+    background: rgba(255,255,255,.7);
+    @include rounded(6px);
+    @include insetshadow;
+  }
+  
+  #attendees {
+    padding: 7.6923077%; /* 20 / 260 */
+  }
+
+  #chat {
+    background: $white;
+    background: rgba(255,255,255,.7);
+    padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
+    @include rounded(10px);
+  }
+  
+    /* ROOM */
+    
+    .invite {
+      position: absolute;
+      top: 4.1%;
+      right: 3.5714286%;
+    }
+    
+    #room-settings, #editor {
+
+      label { 
+        font-size: 1.2em;
+        display: inline-block;
+        margin-right: .5em;
+      }
+
+      select {
+        margin-right: 1.5em;
+        background-position: 100% 8px;
+        width: 60%;
+        
+        option[data-file="file-new"] {
+          font-style: italic;
+        }
+        
+      }
+
+      .import {
+        @include float(right);
+      }
+
+    }
+    
+    #room-settings {
+      margin: .5em 0 0;
+      legend {
+        color: $ltgray;
+        font-size: 1.2em;
+        font-weight: 700;
+        text-transform: uppercase;
+        background: url(../img/forms/select_arrow.gif) 100% 6px no-repeat;
+        padding-right: 16px;
+        @include animate(0.1s, color);
+        &:hover {
+          cursor: pointer;
+          color: $mdgray;
+        }
+      }
+      legend.open {
+        background-position: 100% -25px;
+      }
+      input, label {
+        display: none;
+        margin-top: 1em;
+      }
+      input[type="text"] {
+        width: 40px;
+        position: relative;
+        top: -7px;
+        margin-right: 1em;
+      }
+      input { 
+        margin-right: 1.5em;
+      }
+      input[type="submit"] {
+        background: transparent;
+        border: 0;
+        padding: 0;
+        text-shadow: none;
+        color: $turq;
+        font-weight: 500;
+        margin-top: 0;
+        @include animate(0.2s, all);
+        &:hover {
+          color: $dkgray;
+        }
+      }
+      label {
+        margin-right: 0.5em;
+      }
+    }
+  
+  /* ACE HAMMERS */
+  
+  .ace_gutter {
+    width: 7.1428571428571% !important; /* 50 / 560 */
+  }
+  
+  .ace_scroller {
+    width: 89.2857142857143% !important; /* 500 / 560 */
+  }
+  
+  .ace_content {
+    width: 100% !important;
+  }
+
+  /* TEXT CHAT */
+  
+  #conversation {
+    height: 150px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+
+    article {
+      font-size: 1.3em;
+      margin: 0 0 .4em;
+
+      p {
+        color: $mdgray;
+      }
+
+      strong {
+        color: $ltturq;
+      }
+
+    }
+
+    .empty {
+      font-style: italic;
+    }
+    
+    .coder strong {
+      color: $turq;
+    } 
+
+    .owner strong {
+      color: $green;
+    }
+
+    .baton strong {
+      color: $black
+    }
+    
+  }
+  
+  #chat {
+
+    input[type="text"] {
+      width: 80%;
+      margin-right: 3%;
+    }
+    
+    input[type="submit"] {
+      width: 16%;
+      padding-left: 0;
+      padding-right: 0;
+      @include float(right);
+      @include button;
+    }
+
+  }
+  
+  /* VIDEO CHAT */
+  
+  #video-chat {
+    text-align: center;
+        
+    article {
+      background: $ltgray url(../img/bg/empty-video.png) 50% 50% no-repeat;
+      position: relative;
+      padding-bottom: 18.75%; /* 16:9 */
+      height: 0;
+      width: 30%;
+      height: auto !important;
+      margin: 0 5% 5% 0;
+      @include float(left);
+      @include insetshadow;
+      object, embed  {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    
+    article:last-of-type {
+      margin-right: 0;
+    }
+    
+    .baton {
+      padding-bottom: 56.25%; /* 16:9 */
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .button {
+      font-size: 1.5em;
+      margin: 0 auto;
+      display: inline-block;
+      background-color: $ltgray;
+      border-color: $ltgray;
+      &:hover {
+        background-color: $mdgray;
+        border-color: $mdgray;
+      }
+    }
+    
+  }
+
+  #video-chat.pair article {
+    padding-bottom: 56.25%; /* 16:9 */
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* FOOTER */
+  
   footer {
     clear: both;
+  }
+  
+  /* TYPOGRAPHY */
+  
+  section h1 {
+    font-size: 2.8em;
+    color: $turq;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 1px $black50, 0 1px 0 #fff;
+    line-height: 1;
+    @include display(900);
+  }
+  
+  aside h1 {
+    font-size: 2em;
+    color: $dkgray;
+    text-shadow: 0 1px 0 $white;
   }
   
 }/*/mediaquery*/
 
 @media screen and (min-width: 1024px) {
-  
+
 }/*/mediaquery*/
 
 @media screen and (min-width: 1200px) {
