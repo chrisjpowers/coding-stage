@@ -271,6 +271,7 @@ a{
   
   #attendees {
     padding: 7.6923077% 0 0; /* 20 / 260 */
+    margin-bottom: 20px;
   }
 
   #chat {
@@ -298,7 +299,7 @@ a{
 
       select {
         margin-right: 1.5em;
-        width: 60%;
+        width: 50%;
         
         option[data-file="file-new"] {
           font-style: italic;
@@ -492,10 +493,11 @@ a{
   #attendees {
     overflow: visible;
     h1 > a {
+      left: -17px;
+      margin-bottom: 5px;
       font-size: .5em; /* 12 / 20 */
       padding: 4px 5px 5px 20px;
       position: relative;
-      top: -3px;
       text-shadow: none;
       background: {
         image: url(../img/icons/sprite.png);
@@ -504,7 +506,7 @@ a{
       }
       @include rounded(4px);
       @include sans(500);
-      @include float(right);
+      @include float(left);
       @include animate(0.1s, background-color);
       &:hover {
         background-position: -28px -29px;
@@ -513,6 +515,7 @@ a{
     ol {
       font-size: 1.5em;
       margin-top: 0.4em;
+      clear: both;
     }
     li {
       padding: 4px 5px;
@@ -651,9 +654,80 @@ a{
 
 @media screen and (min-width: 1024px) {
 
-}/*/mediaquery*/
+  /* COLUMNS */
+  
+  #main {
+    width: 72.7272727272727%; /* 800 / 1100 */ 
+    margin-left: 2.2727272727273%; /* 25 / 1100 */
+  }
 
-@media screen and (min-width: 1200px) {
+  aside {
+    width: 20.4545454545455%; /* 225 / 1100 */
+    margin-right: 2.2727272727273%; /* 25 / 1100 */
+  }
+  
+  /* PAGE COMPONENTS */
+  
+  #room {
+    width: 62.5%; /* 500 / 800 */
+    padding: 3.125%; /* 25 / 800 */
+    @include float(left);
+  }
+  #chat {
+    width: 25%; /* 200 / 800 */
+    padding: 1.875%; /* 10 / 800 */
+    @include float(right);
+  }
+  
+  #ace-editor {
+    height: 500px !important;
+  }
+  
+  #attendees {
+    padding: 10% 0 0;
+  }
+
+    /* ROOM */
+    
+    #editor {
+
+      select {
+        margin-right: 0;
+        width: 55%;
+      }
+      
+      label, select {
+        @include float(left);
+      }
+
+    }
+  /* TEXT CHAT */
+  
+  #conversation {
+    height: 500px;
+    margin-bottom: 5px;
+
+    article {
+      font-size: 1.2em;
+      margin: 0 0 .5em;
+
+    }
+
+  }
+  
+  #chat {
+
+    input[type="text"] {
+      width: 100%;
+      margin-right: 0%;
+    }
+    
+    input[type="submit"] {
+      width: auto;
+      margin-top: 10px;
+    }
+
+  }
   
 }/*/mediaquery*/
 
