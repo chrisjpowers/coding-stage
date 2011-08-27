@@ -5,7 +5,7 @@
 		return aceInst.getSession();
 	}
 
-	var editorView = new Backbone.View.extend({
+	extend('codingstage.views.editor', Backbone.View.extend({
 		'EDITOR_ID': 'ace-editor'
 	
 		,'events': {
@@ -23,7 +23,7 @@
 				
 			editorInst = ace.edit(elId);
 			mode = require("ace/mode/javascript").Mode;
-			get(editorInst).setMode(new JavaScriptMode());
+			get(editorInst).setMode(new mode());
 			return editorInst;
 		}
 		
@@ -40,17 +40,17 @@
 		,'overwriteContents': function overwriteContents (aceInst, contents) {
 			get(aceInst).setValue(contents);
 		}
-	});
+	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
 	
 	
 	
 	// TOKBOX VIEWS ///////////////////////////////////
-	var videoChatSectionView = new Backbone.View.extend({
+	extend('codingstage.views.videoChatSection', new Backbone.View.extend({
 		
-	});
+	}));
 	
-	var videoView = new Backbone.View.extend({
+	extend('codingstage.views.video', new Backbone.View.extend({
 		'events': {
 		
 		}
@@ -76,6 +76,6 @@
 			
 			this._options = _.extend({}, options);
 		}
-	});
+	}));
 	/////////////////////////////////// TOKBOX VIEWS //
 } (this));
