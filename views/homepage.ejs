@@ -1,3 +1,20 @@
+<script>
+  document.documentElement.setAttribute('data-pusherchannel', '<%= stage.channel %>' );
+</script>
+
+<style type="text/css">
+	/* Goodness gracious, I don't belong here! */
+        /* Mike is going to hunt down the author of this code, beware */
+	.ace-editor-wrapper,
+	#ace-editor {
+		height: 400px;
+	}
+	
+	#ace-editor {
+		position: relative;
+	}
+</style>
+
 <header>
 
 	<h1><a href="/" title="Coding Stage's Front Door">Coding Stage</a></h1>
@@ -118,7 +135,13 @@
 		<h1>Who's Watching<br /><a href="#">Request The Baton</a></h1>
 		
 		<ol>
-	
+	            <% stage.watchers.forEach(function(watcher) { %>
+                      <li class="attendee">
+                      <%= watcher.name %>
+                      </li>
+                    <% }) %>
+                </ol>
+                <!--
 			<li class="attendee coder owner">
 				Owner
 				<section class="interact" title="Interact with this Attendee">
@@ -218,7 +241,7 @@
 			</li>
 	
 		</ol>
-		
+                -->	
 	</section>
 
 </aside>
