@@ -1,0 +1,25 @@
+{
+  "author": "Chris Powers <chrisjpowers@gmail.com> (http://chrisjpowers.com)",
+  "name": "coding_stage",
+  "description": "Real-time Social Coding",
+  "version": "0.0.1",
+  "homepage": "http://codingstage.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko2/team-honey-badger.git"
+  },
+  "engines": {
+    "node": "~v0.4.11"
+  },
+  "dependencies": {
+    "nko": "~0.1.0",
+    "express": "2.4.6",
+    "underscore": "1.1.7",
+    "mongoose": "2.0.2",
+    "everyauth": "0.2.18",
+    "postageapp": "0.0.5",
+    "coffee-script": "1.1.2",
+    "ejs": "0.4.3"
+  },
+  "devDependencies": {}
+}
