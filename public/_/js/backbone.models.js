@@ -21,8 +21,8 @@ jQuery(function () {
   }
 
   var stagePicker = jQuery("#filter.stagePicker select");
-  var allStages = jQuery(".allStages");
-  var myStages = jQuery(".myStages");
+  var allStages = jQuery("section.all");
+  var myStages = jQuery("section.mine");
 
   allStages.show();
   myStages.hide();
