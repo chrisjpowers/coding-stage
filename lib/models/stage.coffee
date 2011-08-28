@@ -29,6 +29,8 @@ Stage = new Schema
     required: true
   creatorId:
     type: ObjectId
+  batonHolderId:
+    type: ObjectId
   language:
     type: String
   contributorIds:
