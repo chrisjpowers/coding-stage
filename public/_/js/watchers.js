@@ -27,12 +27,12 @@
   function onWatcherJoined(data) {
     var li = $("<li>", {"class": "attendee", "text": data.name, "id": "watcher-" + data.id});
     $("#attendees ol").append(li);
-    incrementCount();
+    //incrementCount();
   }
 
   function onWatcherLeft(data) {
     $("watcher-" + data.id).remove();
-    decrementCount();
+    //decrementCount();
   }
 
   function incrementCount() {
