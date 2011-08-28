@@ -27,7 +27,7 @@ body {
   /* Reset 1em to 10px */
   line-height: 1.3;
   min-height: 100%;
-  background: url(../img/bg/noise.png) center top repeat, url(../img/logo/stamp.png) 90% 105% no-repeat #eef2f2;
+  background: url(../img/bg/noise.png) center top repeat, url(../img/logos/stamp.png) 90% 105% no-repeat #eef2f2;
   font-family: Helmet, FreeSans, sans-serif;
   font-weight: 500; }
 
@@ -76,7 +76,7 @@ header h1 {
     height: 50px;
     width: 203px;
     padding: 5px;
-    background: url(../img/logo/cs-logo.png) 5px 5px no-repeat;
+    background: url(../img/logos/cs-logo.png) 5px 5px no-repeat;
     border-top: 1px solid transparent;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -646,7 +646,7 @@ footer {
   left: 50%;
   margin-left: -300px;
   width: 600px;
-  background: url(../img/bg/noise.png) center top repeat, url(../img/logo/stamp.png) 98% 150% no-repeat #eef2f2;
+  background: url(../img/bg/noise.png) center top repeat, url(../img/logos/stamp.png) 98% 150% no-repeat #eef2f2;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -655,6 +655,25 @@ footer {
     position: relative;
     left: 20px;
     top: -15px; }
+
+.git-modal {
+  padding: 20px;
+  overflow: hidden; }
+  .git-modal img {
+    float: left;
+    display: inline;
+    overflow: hidden; }
+  .git-modal a.login {
+    display: block;
+    text-align: center;
+    font-size: 2.2em;
+    margin-top: 10px;
+    margin-bottom: .75em;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px; }
+  .git-modal p {
+    font-size: 1.6em; }
 
 .jqmOverlay {
   background-color: #000; }

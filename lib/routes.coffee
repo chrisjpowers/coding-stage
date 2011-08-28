@@ -20,7 +20,9 @@ exports.run = (express, app) ->
         res.end "::error"
 
   app.get "/", (req, res) ->
-    res.render "front"
+    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
+      stages ?= []
+      res.render "front", stages: stages
 
   app.get "/stages", (req, res) ->
     Stage.find {}, (err, stages) ->
@@ -33,6 +35,8 @@ exports.run = (express, app) ->
     atts = req.param("stage")
     atts.creatorId = req.user.id
     atts.batonHolderId = req.user.id
+    atts.creatorName = req.user.github.name
+    atts.createdAt = new Date()
     stage = new Stage atts
     stage.save (err) ->
       console.log "ERROR CREATING STAGE", err if err

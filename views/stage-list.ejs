@@ -2,11 +2,25 @@
 
   <h1>Join a recently active stage</h1>
 
+  <!--
   <form id="search">
     <input type="text" placeholder="Search for a specific stage">
   </form>
-  
-  <a href="#" id="stage1"> <!-- NOTE: These stage IDs can be whatever id we give them in the db, and don't need to be 1, 2, 3, etc. -->
+  -->
+
+  <% stages.forEach(function(stage) { %>
+  <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
+    <h1><%= stage.name %></h1>
+    <h2><%= stage.language %></h2>
+    <% watcherCount = stage.watchers.length %>
+    <p>There's <%= watcherCount %> <%= watcherCount == 1 ? "person" : "people" %> in here</p>
+    <% if(stage.creatorName) { %>
+      <small>Stage created by <%= stage.creatorName %></small>
+      <% } %>
+    </a>
+  <% }) %> 
+  <!--
+  <a href="#" id="stage1">
     <h1>Stage Name</h1>
     <h2>Language</h2>
     <p>There's 4 people in here</p>
@@ -68,9 +82,17 @@
     <p>There's 4 people in here</p>
     <small>Stage created by Chris Powers</small>
   </a>
-
+  -->
+  <% if(everyauth.loggedIn) { %>
   <a href="/stages/new" id="create">
     <p>Create your own stage&nbsp;now</p>
   </a>
+  <% } %>
+
+  <% if(!everyauth.loggedIn) { %>
+  <a href="/auth/github" id="create">
+    <p>Login to create your own&nbsp;stage</p>
+  </a>
+  <% } %>
 
 </section>

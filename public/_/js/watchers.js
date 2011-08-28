@@ -12,6 +12,10 @@
     pusher.channel(channel).bind("watcher-joined", onWatcherJoined);
     pusher.channel(channel).bind("watcher-left", onWatcherLeft);
 
+    if(codingstage.user.name) {
+      cookies.set("name", codingstage.user.name, 30);
+    }
+
     var name = cookies.get("name"),
         watcherId = cookies.get("watcherId");
     if(!name) { 
@@ -27,12 +31,12 @@
   function onWatcherJoined(data) {
     var li = $("<li>", {"class": "attendee", "text": data.name, "id": "watcher-" + data.id});
     $("#attendees ol").append(li);
-    incrementCount();
+    //incrementCount();
   }
 
   function onWatcherLeft(data) {
     $("watcher-" + data.id).remove();
-    decrementCount();
+    //decrementCount();
   }
 
   function incrementCount() {
