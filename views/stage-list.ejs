@@ -89,4 +89,10 @@
   </a>
   <% } %>
 
+  <% if(!everyauth.loggedIn) { %>
+  <a href="/auth/github" id="create">
+    <p>Login to create your own&nbsp;stage</p>
+  </a>
+  <% } %>
+
 </section>
