@@ -40,6 +40,14 @@
 			return editorInst;
 		}
 		
+		,'giveEditingPrivileges': function giveEditingPrivileges () {
+			
+		}
+		
+		,'removeEditingPrivileges': function removeEditingPrivileges () {
+			
+		}
+		
 		,'aceChange': function aceChange (ev) {
 			var session
 				,lines;
@@ -80,7 +88,7 @@
 			} else {
 				console.log('fail')
 			}
-			//codingstage.instance.ace.userBuffer.aceEditor.setScrollSpeed(0)
+			//this.aceEditor.setScrollSpeed(0)
 		}
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
