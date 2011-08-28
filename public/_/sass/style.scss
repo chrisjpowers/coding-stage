@@ -223,6 +223,70 @@ header nav li a {
   }
 }
 
+/* FEATURED ROOMS */
+
+#featured {
+  padding: 30px 20px 20px;
+  border-bottom: 1px dotted #fff;
+  > h1 {
+    font-weight: 400;
+    font-size: 3.75em;
+    text-align: center;
+    color: $ltgray;
+  }  
+  > a {
+    background: #fff;
+    display: block;
+    margin: 10px 0;
+    padding: 10px 10px 0;
+    overflow: hidden;
+    -webkit-box-shadow: 0 1px 2px $black50;
+    -moz-box-shadow: 0 1px 2px $black50;
+    -o-box-shadow: 0 1px 2px $black50;
+    box-shadow: 0 1px 2px $black50;
+    img {
+      width: 100px;
+      height: 100px;
+      @include float(left);
+      margin: 0 10px 10px 0;
+    }
+    h1 {
+      font-size: 2em;
+      color: $dkgray;
+      text-shadow: none;
+    }
+    h2 {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.2em;
+    }
+    time {
+      display: block;
+      font-size: 1.2em;
+      color: $dkgray;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    time.now {
+      color: $green;
+      text-transform: uppercase;
+    }
+    p {
+      color: $ltgray;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      @include animate (0.1s, all);
+    }
+    &:hover {
+      background: #f2f8ff;
+      p, time.now, time {
+        color: $black;
+      }
+    }
+  }
+  
+}
+
 /* TYPOGRAPHY */
 
 section h1 {
@@ -280,8 +344,12 @@ a{
   margin-top: -20px;
 }
 
-.invite {
+.invite, #run-code {
   margin-top: 10px;
+}
+
+#run-code {
+  margin-left: 10px;
 }
 
 #stage-settings, #editor {
@@ -524,7 +592,7 @@ aside {
     text-shadow: none;
     background: {
       image: url(../img/icons/sprite.png);
-      position: -228px -29px;
+      position: -258px -29px;
       repeat: no-repeat;
     }
     @include rounded(4px);
@@ -532,7 +600,7 @@ aside {
     @include float(left);
     @include animate(0.1s, background-color);
     &:hover {
-      background-position: -28px -29px;
+      background-position: -58px -29px;
     }
   }
   ol {
@@ -582,7 +650,17 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -33px -33px no-repeat;
+    background: url(../img/icons/sprite.png) -63px -33px no-repeat;
+    position: absolute;
+    left: -13px;
+    top: 7px;
+  }
+  li.request:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(../img/icons/sprite.png) -3px -94px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px;
@@ -671,10 +749,10 @@ footer {
     -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards;
 }
 
-#close {
+.cssanimations.csstransforms #close {
   display: none;
 }
-.no-cssanimations #close, .no-csstransforms #close {
+#close {
   display: inline;
   color: $dkgray;
   text-shadow: none;
@@ -816,6 +894,29 @@ form[action="/stages"] {
   #leader:before {
     content: '{';
     left: 0;
+  }
+    
+  /* FEATURED ROOMS */
+  
+  #featured {
+  
+    padding: 4.1666666666667% 0 4.1666666666667% 4.1666666666667%; /* 20 / 480 */
+    overflow: hidden;
+    
+    > a {
+      width: 41.6666666666667%; /* 200 / 480 */
+      margin: 2.0833333333333% 4.1666666666667% 0 0; /* 20 / 480 */
+      padding: 2.0833333333333%; /* 10 / 480 */
+      @include float(left);
+      img {
+        width: 75px;
+        height: 75px;
+      }
+    }
+    
+    > a:nth-of-type(2n+1) {
+      clear: left;
+    }
   }
   
   /* STAGE LIST */
@@ -969,11 +1070,14 @@ form[action="/stages"] {
   
     /* STAGE */
     
-    .invite {
+    .invite, #run-code {
       position: absolute;
       top: 4.1%;
       right: 3.5714286%;
       margin-top: 0;
+    }
+    #run-code {
+      right: 28%;
     }
     
     #stage-settings, #editor {
@@ -1162,7 +1266,7 @@ form[action="/stages"] {
         h1 {
           width: 16px;
           height: 16px;
-          background: url(../img/icons/sprite.png) -204px -64px no-repeat;
+          background: url(../img/icons/sprite.png) -234px -64px no-repeat;
           text-indent: -9999px;
           @include animate(0s, none);
         }
@@ -1244,6 +1348,31 @@ form[action="/stages"] {
     padding: 10% 0 0;
   }
 
+  /* FEATURED */
+
+  #featured {
+  
+    padding: 2.2727272727273% 0 2.2727272727273% 2.2727272727273%; /* 25 / 1100 */
+    
+    > a {
+      width: 28.372093023256%; /* 310 / 1075 */
+      margin: 1.8604651162791% 2.3255813953488% 0 0; /* 25 / 1075 */
+      padding: 0.9302325581395%; /* 10 / 1075 */
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+    
+    > a:nth-of-type(2n+1) {
+      clear: none;
+    }
+
+    > a:nth-of-type(3n+1) {
+      clear: left;
+    }
+  }
+  
     /* STAGE */
     
     #editor {
@@ -1259,11 +1388,15 @@ form[action="/stages"] {
 
     }
 
+    #run-code {
+      right: 25%;
+    }
+
   /* STAGE LIST */
   
   #stage-list {
   
-    padding: 2.2727272727273% 0 2.2727272727273% 2.2727272727273%; /* 20 / 768 */
+    padding: 2.2727272727273% 0 2.2727272727273% 2.2727272727273%; /* 25 / 1100 */
     
     #search {
       width: 40%;

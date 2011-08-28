@@ -2,11 +2,22 @@ User = require "models/user"
 Stage = require "models/stage"
 TokBox = require "tokbox"
 pusher = require "pusher"
+remotexec = require 'remotexec'
 
 exports.run = (express, app) ->
   app.use (req, res, next) ->
     res.locals pusher: pusher
     next()
+
+  app.post "/run", (req, res) ->
+    remotexec
+      json: JSON.stringify(req.body)
+      timeout: ->
+        res.end "::timeout"
+      callback: (output) ->
+        res.end output
+      error: ->
+        res.end "::error"
 
   app.get "/", (req, res) ->
     res.render "front"
