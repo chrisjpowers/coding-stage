@@ -27,7 +27,7 @@
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
 			this.codingLanguage = $docEl.data('editorlanguage');
-			this.hasBaton = $docEl.data('hasbaton');
+			this.userHasBaton = $docEl.data('hasbaton');
 			
 			this.bindToAceEvent('change', function () {
 				self.aceChange();
@@ -39,11 +39,18 @@
 				'view': this
 				,'aceEditor': this.aceEditor
 				,'channelName': CHANNEL_NAME
+				,'userHasBaton': this.userHasBaton
 			});
 			
 			$win.bind('resize', function () {
 				self.windowResize();
 			});
+			
+			if (!this.userHasBaton) {
+				this.removeEditingPrivileges();
+			}
+			
+			this.aceChange();
 		}
 		
 		,'initAce': function initAce (elId) {
@@ -153,12 +160,6 @@
 			get(this.aceEditor).on(eventName, handler);
 		}
 		
-		,'sendContentsToServer': function sendContentsToServer (aceInst) {
-			var contents;
-			
-			contents = get(aceInst).getValue();
-		}
-		
 		,'updateCursorPosition': function updateCursorPosition (cursorPosition) {
 			this.aceEditor.selection.moveCursorTo(cursorPosition.row, cursorPosition.column);
 			this.aceEditor.centerSelection();
@@ -176,9 +177,9 @@
 				|| currentCursorPosition.column !== cursorPosition.column
 				|| currentCursorPosition.row !== cursorPosition.row) {
 				
-				if (this.model.hasReceivedBufferData === true) {
+				//if (this.model.hasReceivedBufferData === true) {
 					session.setValue(contents);
-				}	
+				//}	
 				
 				this.updateCursorPosition(cursorPosition);
 			}
