@@ -26,7 +26,6 @@ exports.run = (express, app) ->
     events = []
 
     Event.find({}).desc("createdAt").limit(9).exec (err, events) ->
-
       Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
         if req.loggedIn
           Stage.find creatorId: req.user.id, (err, myStages) ->
