@@ -28,11 +28,14 @@ exports.run = (express, app) ->
 
   app.get "/stages/:stub", (req, res) ->
     Stage.findOne stub: req.param("stub"), (err, stage) ->
-      otToken = TokBox.generateToken
-        'connection_data': "userid_#{new Date().getTime()}",
-        'role': "publisher"
-      stage.allContributors (contributors) ->
-        res.render "homepage", stage: stage, otToken: otToken, otKey: TokBox.key, contributors: contributors
+      if stage
+        otToken = TokBox.generateToken
+          'connection_data': "userid_#{new Date().getTime()}",
+          'role': "publisher"
+        stage.allContributors (contributors) ->
+          res.render "homepage", stage: stage, otToken: otToken, otKey: TokBox.key, contributors: contributors
+      else
+        res.render status: 404
 
   app.get "/support", (req, res) ->
     res.render "support"

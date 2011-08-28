@@ -2,6 +2,7 @@ mongoose = require "mongoose"
 Schema = mongoose.Schema
 ObjectId = Schema.ObjectId
 _ = require "underscore"
+require "models/user"
 
 opentok = require 'opentok'
 OPENTOK_API_KEY = '3703831'
@@ -76,6 +77,7 @@ Stage.methods.addComment = (data) ->
 
 Stage.methods.getCreator = (callback) ->
   if this.creatorId
+    User = mongoose.model "User"
     User.findById this.creatorId, (err, user) ->
       console.log "Error finding creator", err if err
       callback user
@@ -85,7 +87,8 @@ Stage.methods.getCreator = (callback) ->
 Stage.methods.allContributors = (callback) ->
   this.contributorIds ?= []
   ids = this.contributorIds.concat [this.creatorId]
-  User.find id: ids, (err, users) ->
+  User = mongoose.model "User"
+  User.find id: {"$in": ids}, (err, users) ->
     console.log "Error fetching contributors", err if err
     callback users
 
