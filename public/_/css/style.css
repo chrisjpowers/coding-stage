@@ -463,7 +463,8 @@ a {
     border-color: #92d05c; }
 
 #video-chat {
-  display: none; }
+  display: none;
+  overflow: hidden; }
 
 /* ATTENDEES */
 aside {
@@ -472,6 +473,16 @@ aside {
 #attendees {
   overflow: visible;
   margin-bottom: 20px; }
+  #attendees .button {
+    font-size: 1.4em;
+    margin: 0 0 10px;
+    display: block;
+    background-color: #b7bcc2;
+    border-color: #b7bcc2;
+    text-align: center; }
+    #attendees .button:hover {
+      background-color: #656c74;
+      border-color: #656c74; }
   #attendees mark {
     font-size: .9em;
     color: #4da4a4;

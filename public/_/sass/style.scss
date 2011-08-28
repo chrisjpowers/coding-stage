@@ -576,6 +576,7 @@ width: 100% !important;
   
 #video-chat {
   display: none;
+  overflow: hidden;
 }
   
 /* ATTENDEES */
@@ -587,6 +588,18 @@ aside {
 #attendees {
   overflow: visible;
   margin-bottom: 20px;
+  .button {
+    font-size: 1.4em;
+    margin: 0 0 10px;
+    display: block;
+    background-color: $ltgray;
+    border-color: $ltgray;
+    text-align: center;
+    &:hover {
+      background-color: $mdgray;
+      border-color: $mdgray;
+    }
+  }
   mark {
     font-size: .9em;
     color: $turq;
