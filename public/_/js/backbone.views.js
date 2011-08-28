@@ -6,8 +6,6 @@
 		
 		// Probably doesn't belong here?
 		,isContributor = $docEl.data('iscontributor');
-		
-	extend('DEBUG.notificationTest', true);
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -212,25 +210,25 @@
 		}
 		
 		,'initialize': function initialize (option) {
-			if (DEBUG.notificationTest === true) {
-				var tempInternals = $('#notification').html();
-				$('#notification').remove();
-				
-				this.createNotification(tempInternals);
-			}
+			
 		}
 		
 		,'createNotification': function createNotification (contents) {
-			this.currentNotification = $(document.createElement('div'));
 			
-			this.currentNotification.attr({
-				'id': 'notification'
-			});
-			
-			this.currentNotification.html(contents)
-			this.currentNotification.show();
-			
-			$('body').append(this.currentNotification);
+			if (typeof this.currentNotification === 'undefined') {
+				this.currentNotification = $(document.createElement('div'));
+
+				this.currentNotification
+					.attr({
+						'id': 'notification'
+					})
+					.html(contents)
+					.show()
+					.appendTo('body');
+					
+			} else {
+				this.currentNotification.append(contents);
+			}
 		}
 		
 		,'destroyNotification': function destroyNotification () {
