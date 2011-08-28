@@ -6,7 +6,7 @@
   <% events.forEach(function(event) { %>
     <a href="<%= event.stageUrl || "#" %>">
       <figure>
-        <img src="<%= event.imageUrl %>" />
+        <img src="<%= event.imageUrl || "/_/img/users/default-user.png" %>" />
       </figure>
       <hgroup>
         <h1><%= event.title %></h1>
