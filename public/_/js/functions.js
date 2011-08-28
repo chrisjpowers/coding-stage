@@ -28,7 +28,6 @@ var Site = window.Site || {};
       target: 'article'
     });
     
-  
 	});
 
 
