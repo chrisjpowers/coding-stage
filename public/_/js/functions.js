@@ -19,6 +19,13 @@ var Site = window.Site || {};
   		  $(this).toggleClass('open')
 		  }
 		});
+		
+		// Modal Boxes
+		$('.modal').jqm({
+		  ajax:'@href',
+		  modal:true,
+		  trigger: 'a[href="/stages/new"]'
+		});
 
 	});
 
