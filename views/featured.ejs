@@ -11,9 +11,11 @@
       <hgroup>
         <h1><%= event.title %></h1>
         <h2><%= event.language %></h2>
-        <time datetime="<%= event.startDate %>">
-        <%= event.startDate.getMonth() %>/<%= event.startDate.getDay() %>/<%= event.startDate.getYear() %> <%= event.startDate.getHours() %>:<%= event.startDate.getMinutes() %>
-        </time>
+        <% if (event.startDate) { %>
+          <time datetime="<%= event.startDate %>">
+          <%= event.startDate.getMonth() %>/<%= event.startDate.getDay() %>/<%= event.startDate.getYear() %> <%= event.startDate.getHours() %>:<%= event.startDate.getMinutes() %>
+          </time>
+        <% } %>
       </hgroup>
       <article>
         <p><%= event.desc %></p>
