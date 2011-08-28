@@ -93,6 +93,10 @@
 		}
 		
 		,'removeEditingPrivileges': function removeEditingPrivileges () {
+			if (this.inputBlockerLayer && this.inputBlockerLayer.length > 0) {
+				return;
+			}
+			
 			this.hasEditingPrivileges = false;
 			this.aceEditor.setScrollSpeed(0);	
 			
@@ -197,6 +201,18 @@
 				this.updateCursorPosition(cursorPosition);
 			}
 		}
+		
+		,'giveUserBaton': function giveUserBaton () {
+			this.giveEditingPrivileges();
+			this.userHasBaton = true;
+			this.model.giveUserBaton();
+		}
+		
+		,'removeUserBaton': function removeUserBaton () {
+			this.removeEditingPrivileges();
+			this.userHasBaton = false;
+			this.model.removeUserBaton();
+		}
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
 	
@@ -207,6 +223,7 @@
 		,'events': {
 			'click #notification .approve': 'clickApprove'
 			,'click #notification .dismiss': 'clickDismiss'
+			//,'click #notification .acknowledge': 'clickAcknowledge'
 		}
 		
 		,'initialize': function initialize (option) {

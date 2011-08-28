@@ -183,6 +183,14 @@ jQuery(function () {
 				'cursorPosition': this.get('cursorPosition')
 			});
 		}
+		
+		,'giveUserBaton': function giveUserBaton () {
+			this.userHasBaton = true;
+		}
+		
+		,'removeUserBaton': function removeUserBaton () {
+			this.userHasBaton = false;
+		}
 	}));
 
 } (this));
