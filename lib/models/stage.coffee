@@ -36,10 +36,8 @@ Stage = new Schema
   watchers: [Watchers]
   channel:
     type: String
-    required: true
   stub:
     type: String
-    required: true
   content:
     type: String
     default: ""
@@ -75,5 +73,20 @@ Stage.methods.removeWatcher = (id) ->
 Stage.methods.addComment = (data) ->
   this.comments ?= []
   this.comments = [author: data.author, message: data.message, createdAt: data.createdAt].concat this.comments
+
+Stage.methods.getCreator = (callback) ->
+  if this.creatorId
+    User.findById this.creatorId, (err, user) ->
+      console.log "Error finding creator", err if err
+      callback user
+  else
+    callback(null)
+
+Stage.methods.allContributors = (callback) ->
+  this.contributorIds ?= []
+  ids = this.contributorIds.concat [this.creatorId]
+  User.find id: ids, (err, users) ->
+    console.log "Error fetching contributors", err if err
+    callback users
 
 module.exports = mongoose.model 'Stage', Stage
