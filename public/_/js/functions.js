@@ -22,11 +22,11 @@ var Site = window.Site || {};
 		
 		// Modal Boxes
     
-    $('.jqModal').jqm({
-      trigger: 'a[href="/stages/new"]',
-      ajax: '@href', 
-      target: 'article'
-    });
+	    $('.jqModal').jqm({
+	      trigger: 'a[href="/stages/new"]',
+	      ajax: '@href', 
+	      target: 'article'
+	    });
     
 	});
 
