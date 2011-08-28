@@ -766,6 +766,19 @@ footer {
   section:nth-of-type(2) {
     border-top: 1px solid $white25;
   }
+  a {
+    display: inline;
+    color: $dkgray;
+    text-shadow: none;
+    font-size: .75em;
+    font-weight: 500;
+    padding: 0;
+    &:hover {
+      color: #000;
+      cursor: pointer;
+      background: transparent;
+    }
+  }
   .approve, .dismiss {
     display: inline-block;
     width: 16px;
@@ -804,20 +817,6 @@ footer {
 
 .cssanimations.csstransforms #close {
   display: none;
-}
-
-#close {
-  display: inline;
-  color: $dkgray;
-  text-shadow: none;
-  font-size: .75em;
-  font-weight: 500;
-  padding: 0;
-  &:hover {
-    color: #000;
-    cursor: pointer;
-    background: transparent;
-  }
 }
 
 /* MODALS */
