@@ -16,8 +16,11 @@
   function onCommentAdded(comment) {
     var markup = $("<article>", {"class": "attendee"}),
         wrapper = $("<p>", {text: " " + comment.message}),
-        username = $("<strong>", {text: comment.author});
+        username = $("<strong>", {text: comment.author}),
+        createdAt = new Date(comment.createdAt),
+        time = $("<time>", {text: formatTime(createdAt)});
 
+    username.prepend(time);
     wrapper.prepend(username);
     markup.prepend(wrapper);
     $("#conversation .empty").remove();
@@ -32,5 +35,15 @@
 
     field.val("");
     pusher.channel(channel).trigger("adding-comment", {author: name, message: message});
+  }
+
+  function formatTime(date) {
+    hour = date.getHours();
+    if(hour > 12) hour = hour - 12;
+    min = date.getMinutes();
+    if(min < 10) min = "0" + min;
+    sec = date.getSeconds();
+    if(sec < 10) sec = "0" + sec;
+    return "(" + hour + ":" + min + ":" + sec + ") ";
   }
 })(window);

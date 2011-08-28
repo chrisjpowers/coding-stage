@@ -103,17 +103,19 @@
 		
 		,'overwriteContents': function overwriteContents (aceInst, contents, cursorPosition) {
 			var session
-				,oldPosition;
+				,oldPosition
+				,currentCursorPosition;
 			
 			session = get(aceInst);
+			currentCursorPosition = this.aceEditor.getCursorPosition()
 			
-			if (contents !== session.getValue()) {
-				//oldPosition = this.aceEditor.getCursorPosition().row;
+			if (contents !== session.getValue()
+				|| currentCursorPosition.column !== cursorPosition.column
+				|| currentCursorPosition.row !== cursorPosition.row) {
+					
 				session.setValue(contents);
-				//this.aceEditor.gotoLine(oldPosition + 1);
-				//this.aceEditor.centerSelection();
-				this.aceEditor.selection.moveCursorTo(cursorPosition.column, cursorPosition.row);
-				console.log(cursorPosition.column, cursorPosition.row)
+				this.aceEditor.selection.moveCursorTo(cursorPosition.row, cursorPosition.column);
+				this.aceEditor.centerSelection();
 			}
 		}
 	}));

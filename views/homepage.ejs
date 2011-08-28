@@ -7,14 +7,7 @@
 	<h1><a href="/" title="Coding Stage's Front Door">Coding Stage</a></h1>
 	<iframe src="http://nodeknockout.com/iframe/team-honey-badger?css=https://raw.github.com/gist/1176404/e336c0efd7c6d78fa1f49fda2f5e813ab747f580/ko-button.css" frameborder=0 scrolling=no allowtransparency=true width=115 height=25 class="vote"></iframe>
 
-	<nav>
-		<ol>
-			<li class="profile"><a href="/profile" title="Your Account Details">Profile</a></li>
-			<li class="support"><a href="/support" title="Having Problems?">Support</a></li>
-			<li class="create-room"><a href="/stages/new" title="Create a Room and Start Coding">Create a Room</a></li>
-			<li class="login"><a href="/login" title="Create Your Account">Signup <span>or</span> Login</a></li>
-		</ol>
-	</nav>
+        <%- partial("nav") %>
 
 </header>
 
@@ -45,7 +38,7 @@
 		<section id="editor">
 	
 			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
-			<section id="ace-editor"></section>
+                        <section id="ace-editor"><%= stage.content %></section>
 
 			<label for="files">Room Files</label>
 			<select id="files" name="files">
@@ -77,7 +70,11 @@
 
                         <% stage.comments.forEach(function(comment) { %>
                           <article class="attendee">
-                            <p><strong><time datetime="2011-08-27T21:51:35-05:00">(9:51:35)</time> <%= comment.author %>:</strong> <%= comment.message %></p>
+                          <p><strong>
+                            <% if(comment.createdAt) { %>
+                            <time datetime="<%= comment.createdAt.toISOString() %>">(<%= commentTime(comment.createdAt) %>)</time> 
+                            <% } %>
+                            <%= comment.author %>:</strong> <%= comment.message %></p>
                           </article>
                         <% }) %>
                         <!--

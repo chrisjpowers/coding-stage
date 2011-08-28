@@ -13,6 +13,8 @@ Comments = new Schema
     type: String
   author:
     type: String
+  createdAt:
+    type: Date
 
 Watchers = new Schema
   name:
@@ -23,6 +25,7 @@ Watchers = new Schema
 Stage = new Schema
   name:
     type: String
+    required: true
   creatorId:
     type: ObjectId
   language:
@@ -33,8 +36,13 @@ Stage = new Schema
   watchers: [Watchers]
   channel:
     type: String
+    required: true
   stub:
     type: String
+    required: true
+  content:
+    type: String
+    default: ""
     
 Stage.pre "save", (next) ->
   if this.get("channel")
@@ -66,6 +74,6 @@ Stage.methods.removeWatcher = (id) ->
 
 Stage.methods.addComment = (data) ->
   this.comments ?= []
-  this.comments = [author: data.author, message: data.message].concat this.comments
+  this.comments = [author: data.author, message: data.message, createdAt: data.createdAt].concat this.comments
 
 module.exports = mongoose.model 'Stage', Stage

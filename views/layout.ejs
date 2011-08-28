@@ -1,3 +1,9 @@
+<%
+  var stage = stage || null,
+      otKey = otKey || null,
+      otToken = otToken || null,
+      pusher = pusher || null;
+%>
 <!doctype html>  
 
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
@@ -80,9 +86,17 @@
   <script src="/_/js/backbone.models.js"></script>
   <script src="/_/js/backbone.views.js"></script>
   <script src="/_/js/coderoom.js"></script>
-  <script src="/_/js/watchers.js"></script>
-  <script src="/_/js/comments.js"></script>
-  <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
+  <% if(stage) { %>
+    <script src="/_/js/watchers.js"></script>
+    <script src="/_/js/comments.js"></script>
+  <% } %>
+  <% if(otKey && otToken) { %>
+    <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
+    <script src="/_/js/tokbox.js"></script>
+    <script>
+      codingstage.tokbox.init({key: <%= otKey %>, token: "<%= otToken %>", sessionId: "<%= stage.channel %>"});
+    </script>
+  <% } %>
 
 <!-- this is a variation of the official analytics snippet: http://mathiasbynens.be/notes/async-analytics-snippet 
    replace XXXXXX-XX with your site's ID and uncomment to put this into effect
