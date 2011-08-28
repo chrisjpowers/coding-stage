@@ -198,6 +198,15 @@ header nav li a {
   }
 }
 
+header nav li.login a {
+  padding-right: 25px;
+  background: {
+    image: url(../img/logos/github-mini.png);
+    position: 97% 48%;
+    repeat: no-repeat;
+  }
+}
+
 /* LEADER */
 
 #leader {
@@ -834,9 +843,9 @@ footer {
   @include rounded(10px);
   -webkit-box-shadow: 0 0 20px $black50;
   .close {
-    position: relative;
-    left: 20px;
-    top: -15px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
   }
 }
 
