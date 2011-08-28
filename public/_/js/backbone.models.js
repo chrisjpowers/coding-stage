@@ -1,16 +1,24 @@
 jQuery(function () {
-  jQuery("#run-code").click(function (e) {
-    e.preventDefault();
-    code = codingstage.instance.ace.userBuffer.aceEditor.getSession().getValue()
-    lang = $(document.documentElement).data('editorlanguage');
-    if (lang === "JavaScript") lang = "js"
-    if (lang === "Ruby") lang = "ruby"
-    if (lang === "CoffeeScript") lang = "coffee"
   
-    $.post("/run", {lang: lang, code: code}, function (output) {
-      alert(output);
+  var lang = jQuery(document.documentElement).data('editorlanguage');
+  var run = jQuery("#run-code");
+
+  if (['JavaScript', 'Ruby', 'CoffeeScript'].indexOf(lang) < 0) {
+    run.hide()
+  } else {
+    run.click(function (e) {
+      e.preventDefault();
+      var code = codingstage.instance.ace.userBuffer.aceEditor.getSession().getValue()
+
+      if (lang === "JavaScript") lang = "js"
+      if (lang === "Ruby") lang = "ruby"
+      if (lang === "CoffeeScript") lang = "coffee"
+    
+      jQuery.post("/run", {lang: lang, code: code}, function (output) {
+        alert(output);
+      });
     });
-  });
+  }
 });
 
 (function backboneModels (global) {
