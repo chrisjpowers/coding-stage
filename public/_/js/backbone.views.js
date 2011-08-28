@@ -6,8 +6,6 @@
 		
 		// Probably doesn't belong here?
 		,isContributor = $docEl.data('iscontributor');
-		
-	extend('DEBUG.notificationTest', true);
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -212,12 +210,7 @@
 		}
 		
 		,'initialize': function initialize (option) {
-			if (DEBUG.notificationTest === true) {
-				var tempInternals = $('#notification').html();
-				$('#notification').remove();
-				
-				this.createNotification(tempInternals);
-			}
+			
 		}
 		
 		,'createNotification': function createNotification (contents) {
