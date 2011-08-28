@@ -285,9 +285,6 @@ a {
 .invite, #run-code {
   margin-top: 10px; }
 
-#run-code {
-  margin-left: 10px; }
-
 #stage-settings label, #editor label {
   font-size: 1.2em;
   display: inline-block;
@@ -346,9 +343,9 @@ a {
   padding: 20px;
   margin-bottom: 20px;
   overflow: hidden; }
-  #stage-list #search {
+  #stage-list #search, #stage-list #filter {
     width: 100%; }
-    #stage-list #search input {
+    #stage-list #search input, #stage-list #filter input {
       width: 100%; }
   #stage-list > a {
     background: #fff;
@@ -600,7 +597,6 @@ footer {
 
 /* NOTIFICATIONS */
 #notification {
-  display: block;
   position: absolute;
   z-index: 101;
   top: 0;
@@ -677,7 +673,7 @@ footer {
 
 /* MODALS */
 /* jqModal base Styling courtesy of;
-	Brice Burgess <bhb@iceburg.net> */
+	 Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
 .jqModal {
@@ -848,7 +844,7 @@ form[action="/stages"] {
   #stage-list {
     padding: 4.1666666666667% 0 4.1666666666667% 4.1666666666667%;
     /* 20 / 480 */ }
-    #stage-list #search {
+    #stage-list #search, #stage-list #filter {
       width: 95.6521739130435%; }
     #stage-list > a {
       width: 41.6666666666667%;
@@ -877,9 +873,17 @@ form[action="/stages"] {
   #stage-list {
     padding: 3.3333333333333% 0 3.3333333333333% 3.3333333333333%;
     /* 20 / 600 */ }
+    #stage-list > h1 {
+      float: left;
+      display: inline;
+      overflow: hidden; }
     #stage-list #search {
       width: 96.551724137931%;
       /* 560 / 580 */ }
+    #stage-list #filter {
+      padding-left: 10px;
+      display: inline-block;
+      width: auto; }
     #stage-list > a {
       width: 26.45%;
       /* 150 / 580 */
@@ -979,9 +983,6 @@ form[action="/stages"] {
     right: 3.5714286%;
     margin-top: 0; }
 
-  #run-code {
-    right: 28%; }
-
   #stage-settings select, #editor select {
     width: 50%; }
   #stage-settings .import, #editor .import {
@@ -1017,10 +1018,6 @@ form[action="/stages"] {
   #stage-list {
     padding: 2.6041666666667% 0 2.6041666666667% 2.6041666666667%;
     /* 20 / 768 */ }
-    #stage-list > h1 {
-      float: left;
-      display: inline;
-      overflow: hidden; }
     #stage-list #search {
       width: 32.5520833333333%;
       /* 250 / 768 */
@@ -1065,15 +1062,13 @@ form[action="/stages"] {
     #video-chat article {
       background: #b7bcc2 url(../img/bg/empty-video.png) 50% 50% no-repeat;
       position: relative;
-      padding-bottom: 18.75%;
+      padding-bottom: 56.25%;
       /* 16:9 */
       height: 0;
-      width: 30%;
+      width: 100%;
       height: auto !important;
-      margin: 0 5% 5% 0;
-      float: left;
-      display: inline;
-      overflow: hidden;
+      display: block;
+      margin: 0 0 5% 0;
       -webkit-box-shadow: inset 0 0 5px rgba(29, 41, 41, 0.5); }
       #video-chat article object, #video-chat article embed   {
         position: absolute;
@@ -1083,12 +1078,6 @@ form[action="/stages"] {
         height: 100%; }
     #video-chat article:last-of-type {
       margin-right: 0; }
-    #video-chat .baton {
-      padding-bottom: 56.25%;
-      /* 16:9 */
-      width: 100%;
-      height: auto;
-      display: block; }
     #video-chat .button {
       font-size: 1.5em;
       margin: 0 auto;
@@ -1234,9 +1223,6 @@ form[action="/stages"] {
     float: left;
     display: inline;
     overflow: hidden; }
-
-  #run-code {
-    right: 25%; }
 
   /* STAGE LIST */
   #stage-list {

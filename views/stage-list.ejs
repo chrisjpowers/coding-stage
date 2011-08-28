@@ -8,6 +8,13 @@
   </form>
   -->
 
+  <form id="filter">
+    <select>
+      <option>Show me all the stages</option>
+      <option>Show me all of my stages</option>
+    </select>
+  </form>
+
   <% stages.forEach(function(stage) { %>
   <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
     <h1><%= stage.name %></h1>

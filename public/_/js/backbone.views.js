@@ -228,6 +228,7 @@
 			});
 			
 			this.currentNotification.html(contents)
+			this.currentNotification.show();
 			
 			$('body').append(this.currentNotification);
 		}
