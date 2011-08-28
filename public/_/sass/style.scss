@@ -227,7 +227,7 @@ header nav li a {
 
 #featured {
   padding: 30px 20px 20px;
-  border-bottom: 1px dotted #fff;
+  border-bottom: 1px dashed #fff;
   > h1 {
     font-weight: 400;
     font-size: 3.75em;
@@ -446,7 +446,10 @@ width: 100% !important;
     }
   }
   
-  > a {
+  section {
+    clear: left;
+  }
+  section > a {
     background: #fff;
     display: block;
     margin: 10px 0;
@@ -484,7 +487,7 @@ width: 100% !important;
       }
     }
   }
-  > a#create {
+  section > a#create {
     p {
       font-size: 1.4em;
       text-align: center;
@@ -993,14 +996,14 @@ form[action="/stages"] {
       width: 95.6521739130435%;
     }
     
-    > a {
+    section > a {
       width: 41.6666666666667%; /* 200 / 480 */
       margin: 2.0833333333333% 4.1666666666667% 0 0; /* 20 / 480 */
       padding: 2.0833333333333%; /* 10 / 480 */
       @include float(left);
     }
     
-    > a:nth-of-type(2n+1) {
+    section > a:nth-of-type(2n+1) {
       clear: left;
     }
   }
@@ -1043,13 +1046,13 @@ form[action="/stages"] {
       width: auto;
     }
         
-    > a {
+    section > a {
       width: 26.45%; /* 150 / 580 */
       margin: 1.7241379310345% 3.448275862069% 0 0; /* 20 / 580 */
       padding: 1.7241379310345%; /* 10 / 580 */
     }
     
-    > a:nth-of-type(2n+1) {
+    section > a:nth-of-type(2n+1) {
       clear: none;
     }
     
@@ -1202,17 +1205,17 @@ form[action="/stages"] {
       @include float(right);
     }
     
-    > a {
+    section > a {
       width: 19.6524064171123%; /* 147 / 748 */
       margin: 1.3368983957219% 2.6737967914439% 0 0; /* 20 / 748 */
       padding: 1.3368983957219%; /* 10 / 748 */
     }
     
-    > a:nth-of-type(3n+1) {
+    section > a:nth-of-type(3n+1) {
       clear: none;
     }
     
-    > a:nth-of-type(4n+1) {
+    section > a:nth-of-type(4n+1) {
       clear: left;
     }
   }
@@ -1458,17 +1461,17 @@ form[action="/stages"] {
       margin-right: 2.272727272727273%;
     }
     
-    > a {
+    section > a {
       width: 15.8139534883721%; /* 170 / 1075 */
       margin: 1.8604651162791% 2.3255813953488% 0 0; /* 25 / 1075 */
       padding: 0.9302325581395%; /* 10 / 1075 */
     }
     
-    > a:nth-of-type(4n+1) {
+    section > a:nth-of-type(4n+1) {
       clear: none;
     }
     
-    > a:nth-of-type(5n+1) {
+    section > a:nth-of-type(5n+1) {
       clear: left;
     }
   }

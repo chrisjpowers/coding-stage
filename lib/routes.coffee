@@ -13,23 +13,52 @@ exports.run = (express, app) ->
     remotexec
       json: JSON.stringify(req.body)
       timeout: ->
-        res.end "::timeout"
+        res.end "Timeout"
       callback: (output) ->
         res.end output
       error: ->
-        res.end "::error"
+        res.end "Error"
 
   app.get "/", (req, res) ->
+    stages = []
+    myStages = []
+
     Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
-      stages ?= []
-      res.render "front", stages: stages
+      if req.loggedIn
+        Stage.find creatorId: req.user.id, (err, myStages) ->
+          res.render "front", {
+            stages: stages
+            myStages: myStages
+          }
+      else
+        res.render "front", {
+          stages: stages
+          myStages: myStages
+        }
 
   app.get "/stages", (req, res) ->
-    Stage.find {}, (err, stages) ->
-      res.render "stages/index", stages: stages
+    stages = []
+    myStages = []
+
+    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
+      if req.loggedIn
+        Stage.find creatorId: req.user.id, (err, myStages) ->
+          res.render "front", {
+            stages: stages
+            myStages: myStages
+          }
+      else
+        res.render "front", {
+          stages: stages
+          myStages: myStages
+        }
 
   app.get "/stages/new", (req, res) ->
     res.render "stages/new"
+
+  app.get "/all-stages", (req, res) ->
+    Stage.find creatorId: "4e59afa8f01d694939000003", (err, stages) ->
+      res.end("<pre>"+stages+"</pre>")
 
   app.post "/stages", (req, res) ->
     atts = req.param("stage")
