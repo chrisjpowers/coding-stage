@@ -67,15 +67,19 @@
 		}
 		
 		,'overwriteContents': function overwriteContents (aceInst, contents) {
-			var oldPosition;
+			var session
+				,oldPosition;
 			
-			oldPosition = this.aceEditor.getCursorPosition().row;
-			get(aceInst).setValue(contents);
+			session = get(aceInst);
 			
-			// Yes yes, I know.  This is wrong.
-			this.aceEditor.gotoLine(oldPosition + 1);
-			this.aceEditor.gotoLine(oldPosition + 1);
-
+			if (contents !== session.getValue()) {
+				oldPosition = this.aceEditor.getCursorPosition().row;
+				session.setValue(contents);
+				this.aceEditor.gotoLine(oldPosition + 1);
+				this.aceEditor.centerSelection();
+			} else {
+				console.log('fail')
+			}
 			//codingstage.instance.ace.userBuffer.aceEditor.setScrollSpeed(0)
 		}
 	}));
