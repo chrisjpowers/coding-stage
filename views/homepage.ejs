@@ -62,7 +62,14 @@
 	
 	<section id="chat">
 		
-		<section id="conversation">
+		<form id="text-chat">
+			
+			<input id="chat-field" type="text" placeholder="Speak Up" />
+			<input type="submit" value="Be Heard" class="button" />
+			
+		</form>
+		
+    <section id="conversation">
 	
 			<article class="empty">
                           <p>Welcome to the <%= stage.name %> stage. Start chatting away&hellip;</p>
@@ -70,7 +77,7 @@
 
                         <% stage.comments.forEach(function(comment) { %>
                           <article class="attendee">
-                            <p><strong><%= comment.author %>:</strong> <%= comment.message %></p>
+                            <p><strong><time datetime="2011-08-27T21:51:35-05:00">(9:51:35)</time> <%= comment.author %>:</strong> <%= comment.message %></p>
                           </article>
                         <% }) %>
                         <!--
@@ -91,14 +98,7 @@
 			</article>
                         -->	
 		</section>
-		
-		<form id="text-chat">
-			
-			<input id="chat-field" type="text" placeholder="Speak Up" />
-			<input type="submit" value="Be Heard" class="button" />
-			
-		</form>
-		
+
 	</section>
 
 </div>

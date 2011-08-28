@@ -343,10 +343,15 @@ width: 100% !important;
   border-bottom: 2px solid $ltgray;
 }
 
+#text-chat {
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
 #conversation {
   height: 200px;
   overflow-y: auto;
-  margin-bottom: 5px;
+  margin-top: 5px;
 
   article {
     font-size: 1.1em;
@@ -385,6 +390,11 @@ width: 100% !important;
   input[type="text"] {
     width: 100%;
     margin-right: 0%;
+      &:focus {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
   }
   
   input[type="submit"] {
@@ -919,7 +929,7 @@ footer {
   
   #conversation {
     height: 500px;
-    margin-bottom: 5px;
+    margin-top: 5px;
 
     article {
       font-size: 1.2em;
@@ -939,6 +949,7 @@ footer {
     input[type="submit"] {
       width: auto;
       margin-top: 10px;
+      float: none;
     }
 
   }

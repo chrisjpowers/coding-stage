@@ -262,10 +262,14 @@ a {
   border-top: 2px solid #b7bcc2;
   border-bottom: 2px solid #b7bcc2; }
 
+#text-chat {
+  overflow: hidden;
+  margin-bottom: 10px; }
+
 #conversation {
   height: 200px;
   overflow-y: auto;
-  margin-bottom: 5px; }
+  margin-top: 5px; }
   #conversation article {
     font-size: 1.1em;
     margin: 0 0 .4em; }
@@ -285,6 +289,10 @@ a {
 #chat input[type="text"] {
   width: 100%;
   margin-right: 0%; }
+  #chat input[type="text"]:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
 #chat input[type="submit"] {
   width: auto;
   padding-left: 0;
@@ -760,7 +768,7 @@ footer {
   /* TEXT CHAT */
   #conversation {
     height: 500px;
-    margin-bottom: 5px; }
+    margin-top: 5px; }
     #conversation article {
       font-size: 1.2em;
       margin: 0 0 .5em; }
@@ -770,7 +778,8 @@ footer {
     margin-right: 0%; }
   #chat input[type="submit"] {
     width: auto;
-    margin-top: 10px; }
+    margin-top: 10px;
+    float: none; }
 
   footer nav {
     font-size: 1.2em; }
