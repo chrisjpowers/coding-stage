@@ -21,8 +21,13 @@
 			
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
-			this.bindToAceEvent('change', function () {
+			
+			/*this.bindToAceEvent('change', function () {
 				self.aceChange();
+			});*/
+			
+			get(this.aceEditor).selection.on('changeCursor', function () {
+				self.cursorChange();
 			});
 			
 			this.model = new this.MODEL_TYPE({
@@ -65,6 +70,20 @@
 			
 			this.model.set({
 				'lines': lines
+				,'cursorPosition': this.aceEditor.getCursorPosition()
+			});
+		}
+		
+		,'cursorChange': function cursorChange () {
+			var session
+				,lines;
+			
+			session = get(this.aceEditor);
+			lines = session.getLines(0, session.getLength());
+			
+			this.model.set({
+				'lines': lines
+				,'cursorPosition': this.aceEditor.getCursorPosition()
 			});
 		}
 		
@@ -82,19 +101,19 @@
 			contents = get(aceInst).getValue();
 		}
 		
-		,'overwriteContents': function overwriteContents (aceInst, contents) {
+		,'overwriteContents': function overwriteContents (aceInst, contents, cursorPosition) {
 			var session
 				,oldPosition;
 			
 			session = get(aceInst);
 			
 			if (contents !== session.getValue()) {
-				oldPosition = this.aceEditor.getCursorPosition().row;
+				//oldPosition = this.aceEditor.getCursorPosition().row;
 				session.setValue(contents);
-				this.aceEditor.gotoLine(oldPosition + 1);
-				this.aceEditor.centerSelection();
-			} else {
-				console.log('fail')
+				//this.aceEditor.gotoLine(oldPosition + 1);
+				//this.aceEditor.centerSelection();
+				this.aceEditor.selection.moveCursorTo(cursorPosition.column, cursorPosition.row);
+				console.log(cursorPosition.column, cursorPosition.row)
 			}
 		}
 	}));
