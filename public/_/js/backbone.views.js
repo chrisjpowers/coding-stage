@@ -1,6 +1,7 @@
 (function backboneViews (global) {
 	
-	var CHANNEL_NAME = $(document.documentElement).data('pusherchannel');
+	var CHANNEL_NAME = $(document.documentElement).data('pusherchannel')
+		$win = $(window);
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -32,6 +33,10 @@
 				'view': this
 				,'aceEditor': this.aceEditor
 				,'channelName': CHANNEL_NAME
+			});
+			
+			$win.bind('resize', function () {
+				self.windowResize();
 			});
 		}
 		
@@ -76,22 +81,14 @@
 				'position': 'absolute'
 				,'top': 0
 				,'left': 0
-				,'height': this.el.height()
-				,'width': this.el.width()
 				,'z-index': 1000
 			});
 			
 			this.el.append(this.inputBlockerLayer);
-			
-			this.inputBlockerLayer.position({
-				'my': 'left top'
-				,'at': 'left top'
-				,'of': this.el.find('#' + this.EDITOR_ID)
-				,'collision': 'none'
-			});
+			this.updateInputBlocker();
 		}
 		
-		,'aceChange': function aceChange (ev) {
+		,'aceChange': function aceChange () {
 			var session
 				,lines;
 			
@@ -121,6 +118,25 @@
 			//		//this.updateCursorPosition(modelCursorPosition);
 			//	}
 			//}
+		}
+		
+		,'windowResize': function windowResize (ev) {
+			this.updateInputBlocker();
+		}
+		
+		,'updateInputBlocker': function updateInputBlocker () {
+			if (this.inputBlockerLayer) {
+				this.inputBlockerLayer
+					.css({
+						'height': this.el.height()
+						,'width': this.el.width()
+					}).position({
+						'my': 'left top'
+						,'at': 'left top'
+						,'of': this.el.find('#' + this.EDITOR_ID)
+						,'collision': 'none'
+					});
+			}
 		}
 		
 		,'bindAce': function bindAce (aceInst, event, handler) {
