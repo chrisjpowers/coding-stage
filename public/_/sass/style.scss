@@ -590,7 +590,7 @@ aside {
   margin-bottom: 20px;
   .button {
     font-size: 1.4em;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     display: block;
     background-color: $ltgray;
     border-color: $ltgray;
@@ -615,7 +615,7 @@ aside {
     text-shadow: none;
     background: {
       image: url(../img/icons/sprite.png);
-      position: -258px -29px;
+      position: -318px -29px;
       repeat: no-repeat;
     }
     @include rounded(4px);
@@ -623,7 +623,7 @@ aside {
     @include float(left);
     @include animate(0.1s, background-color);
     &:hover {
-      background-position: -58px -29px;
+      background-position: -118px -29px;
     }
   }
   ol {
@@ -673,7 +673,7 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -63px -33px no-repeat;
+    background: url(../img/icons/sprite.png) -123px -33px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px;
@@ -683,7 +683,7 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -3px -94px no-repeat;
+    background: url(../img/icons/sprite.png) -63px -94px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px;
@@ -747,13 +747,39 @@ footer {
   color: $white;
   text-shadow: 0 -1px 0 $black50;
   text-align: center;
-  line-height: 2.5;
+  line-height: 2.25;
   overflow: hidden;
   -webkit-box-shadow: 0 0 5px black;
   -moz-box-shadow:    0 0 5px black;
   box-shadow:         0 0 5px black;
-  font-size: 2em;
+  font-size: 1.8em;
   @include sans(700);
+  padding: 0 25px;
+  section:nth-of-type(2) {
+    border-top: 1px solid $white25;
+  }
+  article {
+    display: inline;
+    margin-right: 10px;
+    .approve, .dismiss {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      text-indent: -9999px;
+      background: url(../img/icons/sprite.png) no-repeat;
+      vertical-align: baseline;
+      position: relative;
+      margin: 0 -3px 0 0;
+      padding: 0;
+      top: 2px;
+    }
+    .dismiss {
+      background-position: -33px -123px;
+    }
+    .approve {
+      background-position: -3px -153px;
+    }
+  }
 }
 
 @-webkit-keyframes slideDown {
@@ -1308,12 +1334,12 @@ form[action="/stages"] {
         h1 {
           width: 16px;
           height: 16px;
-          background: url(../img/icons/sprite.png) -234px -64px no-repeat;
+          background: url(../img/icons/sprite.png) -294px -64px no-repeat;
           text-indent: -9999px;
           @include animate(0s, none);
         }
         &:hover h1 {
-          background-position: -4px -64px;
+          background-position: -64px -64px;
           cursor: pointer;
         }
       }
