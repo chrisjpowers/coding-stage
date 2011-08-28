@@ -141,10 +141,10 @@ header nav li a {
     font-family: ostrich-sans, Univers, 'Helvetica Neue', Helmet, sans-serif;
     font-weight: 400; }
   #leader p {
-    font-size: 1.7em;
+    font-size: 1.5em;
     text-shadow: 0 1px 0 #fff;
     color: #1d2929;
-    font-family: Cambria, 'Book Antiqua', Caslon, 'Times New Roman', Times, serif;
+    font-family: Helmet, FreeSans, sans-serif;
     font-weight: 500; }
 
 /* FEATURED ROOMS */
@@ -802,7 +802,7 @@ form[action="/stages"] {
     #leader h1 {
       font-size: 3.8em; }
     #leader p {
-      font-size: 1.5em; }
+      font-size: 1.4em; }
 
   #leader:before, #leader:after {
     color: #fff;
@@ -867,7 +867,7 @@ form[action="/stages"] {
   #leader h1 {
     font-size: 4.5em; }
   #leader p {
-    font-size: 1.6em; }
+    font-size: 1.5em; }
 
   /* STAGE LIST */
   #stage-list {
@@ -1169,7 +1169,7 @@ form[action="/stages"] {
     #leader h1 {
       font-size: 6.8em; }
     #leader p {
-      font-size: 2em; }
+      font-size: 1.8em; }
 
   /* PAGE COMPONENTS */
   #stage {
