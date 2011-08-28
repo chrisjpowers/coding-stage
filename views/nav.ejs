@@ -1,0 +1,15 @@
+<nav>
+        <ol>
+            <% if(everyauth.loggedIn) { %>
+                <li class="profile"><a href="/profile" title="Your Account Details">Profile</a></li>
+            <% } %>
+                <li class="support"><a href="/support" title="Having Problems?">Support</a></li>
+            <% if(everyauth.loggedIn) { %>
+                <li class="create-room"><a href="/stages/new" title="Create a Room and Start Coding">Create a Room</a></li>
+            <% } %>
+            <% if(!everyauth.loggedIn) { %>
+                <li class="login"><a href="/login" title="Create Your Account">Signup <span>or</span> Login</a></li>
+            <% } %>
+        </ol>
+</nav>
+

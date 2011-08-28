@@ -23,6 +23,7 @@ Watchers = new Schema
 Stage = new Schema
   name:
     type: String
+    required: true
   creatorId:
     type: ObjectId
   language:
@@ -33,10 +34,13 @@ Stage = new Schema
   watchers: [Watchers]
   channel:
     type: String
+    required: true
   stub:
     type: String
+    required: true
   content:
     type: String
+    default: ""
     
 Stage.pre "save", (next) ->
   if this.get("channel")
