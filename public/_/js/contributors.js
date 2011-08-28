@@ -18,7 +18,7 @@
 
   pusher.channel(channel).bind("contributor-requested", function(data) {
     if($(document.documentElement).data("hasbaton")) {
-      var html = $("<div id='approve-handoff'>" + data.name + " would like to become a contributor. </div>");
+      var html = $("<section id='approve-handoff'>" + data.name + " would like to become a contributor. </section>");
       var approve = $("<a href='#' class='approve'>Yes</a> "); 
       approve.click(function() {
         codingstage.contributors.give(data.userId, data.name);
@@ -35,7 +35,7 @@
       $(document.documentElement).data("iscontributor", true); 
       $("#contributor").hide();
       message = "You are now a contributor!";
-      var html = "<div>" + message + " <a href='#' class='dismiss'>Close</a></div>";
+      var html = "<section>" + message + " <a href='#' class='dismiss'>Close</a></section>";
       codingstage.instance.notification.stage.createNotification(html);
     }
   });
