@@ -93,6 +93,10 @@
 		}
 		
 		,'removeEditingPrivileges': function removeEditingPrivileges () {
+			if (this.inputBlockerLayer && this.inputBlockerLayer.length > 0) {
+				return;
+			}
+			
 			this.hasEditingPrivileges = false;
 			this.aceEditor.setScrollSpeed(0);	
 			
