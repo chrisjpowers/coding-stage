@@ -1,6 +1,11 @@
 (function backboneViews (global) {
 	
-	var CHANNEL_NAME = $(document.documentElement).data('pusherchannel');
+	var $win = $(window)
+		,$docEl = $(document.documentElement)
+		,CHANNEL_NAME = $docEl.data('pusherchannel')
+		
+		// Probably doesn't belong here?
+		,isContributor = $docEl.data('iscontributor');
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -21,6 +26,8 @@
 			
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
+			this.codingLanguage = $docEl.data('editorlanguage');
+			this.hasBaton = $docEl.data('hasbaton');
 			
 			this.bindToAceEvent('change', function () {
 				self.aceChange();
@@ -32,6 +39,10 @@
 				'view': this
 				,'aceEditor': this.aceEditor
 				,'channelName': CHANNEL_NAME
+			});
+			
+			$win.bind('resize', function () {
+				self.windowResize();
 			});
 		}
 		
@@ -55,6 +66,10 @@
 			this.hasEditingPrivileges = true;
 			this.aceEditor.setScrollSpeed(1);
 			this.el.find('textarea').removeAttr('disabled');
+			
+			if (this.inputBlockerLayer) {
+				this.inputBlockerLayer.remove();
+			}
 		}
 		
 		,'removeEditingPrivileges': function removeEditingPrivileges () {
@@ -65,9 +80,21 @@
 				.attr({
 					'disabled': 'disabled'
 				});
+				
+			this.inputBlockerLayer = $(document.createElement('div'), {
+				'class': "blocker-layer"
+			}).css({
+				'position': 'absolute'
+				,'top': 0
+				,'left': 0
+				,'z-index': 1000
+			});
+			
+			this.el.append(this.inputBlockerLayer);
+			this.updateInputBlocker();
 		}
 		
-		,'aceChange': function aceChange (ev) {
+		,'aceChange': function aceChange () {
 			var session
 				,lines;
 			
@@ -97,6 +124,25 @@
 			//		//this.updateCursorPosition(modelCursorPosition);
 			//	}
 			//}
+		}
+		
+		,'windowResize': function windowResize (ev) {
+			this.updateInputBlocker();
+		}
+		
+		,'updateInputBlocker': function updateInputBlocker () {
+			if (this.inputBlockerLayer) {
+				this.inputBlockerLayer
+					.css({
+						'height': this.el.height()
+						,'width': this.el.width()
+					}).position({
+						'my': 'left top'
+						,'at': 'left top'
+						,'of': this.el.find('#' + this.EDITOR_ID)
+						,'collision': 'none'
+					});
+			}
 		}
 		
 		,'bindAce': function bindAce (aceInst, event, handler) {
@@ -129,8 +175,11 @@
 			if (contents !== session.getValue()
 				|| currentCursorPosition.column !== cursorPosition.column
 				|| currentCursorPosition.row !== cursorPosition.row) {
-					
-				session.setValue(contents);
+				
+				if (this.model.hasReceivedBufferData === true) {
+					session.setValue(contents);
+				}	
+				
 				this.updateCursorPosition(cursorPosition);
 			}
 		}

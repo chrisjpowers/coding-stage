@@ -1,13 +1,13 @@
 (function(global) {
-  var session, video;
+  var session, enableVideo;
 
   extend("codingstage.tokbox", {
-    init: init,
-    video: function() { video; }
+    init: init
   });
       
   function init(options) {
     session = TB.initSession(options.sessionId);
+    enableVideo = $(document.documentElement).data("iscontributor");
     
     session.addEventListener("sessionConnected", sessionConnectedHandler);
     session.addEventListener("streamCreated", streamCreatedHandler);
@@ -16,8 +16,9 @@
 
   function sessionConnectedHandler(event) {
                subscribeToStreams(event.streams);
-               video = session.publish("tokbox-team-1-placeholder");
-               console.log("video", video);
+               if(enableVideo) {
+                 session.publish("tokbox-team-1-placeholder");
+               }
       }
       
       function streamCreatedHandler(event) {
