@@ -75,7 +75,10 @@
   <script type="text/javascript">
     Pusher.host = "ws.darling.pusher.com"
     Pusher.log = function(message) {
-    //  if (window.console && window.console.log) window.console.log(message);
+      if (window.console && window.console.log
+          && window.DEBUG && window.DEBUG.plog) {
+        window.console.log(message);
+      }
     };
 
 	//window.console.log = $.noop;

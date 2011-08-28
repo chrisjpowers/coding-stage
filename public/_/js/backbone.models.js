@@ -29,12 +29,13 @@
 		 * @param {ACEEditor} aceEditor
 		 * @param {String} channelName
 		 * @param {Backbone.View} view
+		 * @param {Boolean} userHasBaton
 		 */
 		,'initialize': function initialize (options) {
 			
 			var self;
 			
-			if (!options.aceEditor || !options.channelName || !options.view) {
+			if (!options.aceEditor || !options.channelName || !options.view || typeof options.userHasBaton === 'undefined') {
 				throw 'codingstage.models.sharedBuffer is missing necessary params.';
 			}
 			
@@ -64,7 +65,7 @@
 		}
 		
 		,'change': function change () {
-			if (DEBUG.userHoldsBaton === true) {
+			if (this.userHasBaton === true) {
 				this.createThrottledUpdate();
 			}
 		}
@@ -83,7 +84,7 @@
 		}
 		
 		,'getDataFromServer': function getDataFromServer (data) {
-			if (DEBUG.userHoldsBaton !== true) {
+			if (this.userHasBaton === false) {
 				if (typeof data['lines'] !== 'undefined') {
 					this.hasReceivedBufferData = true;
 					this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'), data['cursorPosition']);
