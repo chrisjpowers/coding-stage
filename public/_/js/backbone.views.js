@@ -26,9 +26,7 @@
 				self.aceChange();
 			});
 			
-			get(this.aceEditor).selection.on('changeCursor', function () {
-				self.cursorChange();
-			});
+			this.bindCursorChange();
 			
 			this.model = new this.MODEL_TYPE({
 				'view': this
@@ -43,6 +41,14 @@
 			editorInst = ace.edit(elId);
 			
 			return editorInst;
+		}
+		
+		,'bindCursorChange': function bindCursorChange () {
+			self = this;
+			
+			get(this.aceEditor).selection.addEventListener('changeCursor', function () {
+				self.cursorChange();
+			});
 		}
 		
 		,'giveEditingPrivileges': function giveEditingPrivileges () {
@@ -75,9 +81,22 @@
 		}
 		
 		,'cursorChange': function cursorChange () {
-			this.model.set({
-				'cursorPosition': this.aceEditor.getCursorPosition()
-			});
+			var modelCursorPosition
+				,uiCursorPosition;
+			
+			//modelCursorPosition = this.model.get('cursorPosition');
+			uiCursorPosition = this.aceEditor.getCursorPosition();
+			
+			//if (this.hasEditingPrivileges === true) {
+				this.model.set({
+					'cursorPosition': uiCursorPosition
+				});
+			//} else {
+			//	if (modelCursorPosition.column !== uiCursorPosition.column
+			//		||modelCursorPosition.row !== uiCursorPosition.row) {
+			//		//this.updateCursorPosition(modelCursorPosition);
+			//	}
+			//}
 		}
 		
 		,'bindAce': function bindAce (aceInst, event, handler) {
@@ -112,8 +131,6 @@
 				|| currentCursorPosition.row !== cursorPosition.row) {
 					
 				session.setValue(contents);
-				//this.aceEditor.selection.moveCursorTo(cursorPosition.row, cursorPosition.column);
-				//this.aceEditor.centerSelection();
 				this.updateCursorPosition(cursorPosition);
 			}
 		}
