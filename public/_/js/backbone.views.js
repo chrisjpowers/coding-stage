@@ -6,6 +6,8 @@
 		
 		// Probably doesn't belong here?
 		,isContributor = $docEl.data('iscontributor');
+		
+	extend('DEBUG.notificationTest', true);
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -205,12 +207,17 @@
 		'el': $('body')
 		
 		,'events': {
-			'click .approve': 'clickApprove'
-			,'click .dismiss': 'clickDismiss'
+			'click #notification .approve': 'clickApprove'
+			,'click #notification .dismiss': 'clickDismiss'
 		}
 		
 		,'initialize': function initialize (option) {
-			
+			if (DEBUG.notificationTest === true) {
+				var tempInternals = $('#notification').html();
+				$('#notification').remove();
+				
+				this.createNotification(tempInternals);
+			}
 		}
 		
 		,'createNotification': function createNotification (contents) {
@@ -220,7 +227,7 @@
 				'id': 'notification'
 			});
 			
-			this.currentNotification.html(options.contents)
+			this.currentNotification.html(contents)
 			
 			$('body').append(this.currentNotification);
 		}
@@ -241,11 +248,36 @@
 			} else if (target.closest('#approve-handoff').length > 0) {
 				this.passBaton();
 			}
+			
+			this.afterClick(target);
 		}
 		
 		,'clickDismiss': function clickDismiss (ev) {
+			var target;
+			
+			target = $(ev.target);
 			ev.preventDefault();
-			sendDeclineResponse();
+			this.sendDeclineResponse();
+			this.afterClick(target);
+		}
+		
+		,'afterClick': function afterClick (target) {
+			// This is just terrible.
+			
+			var parentArticle
+				,parentSection;
+			
+			parentArticle = target.closest('article');
+			parentSection = parentArticle.closest('section');
+			parentArticle.remove();
+			
+			if (parentSection.children().length === 0) {
+				parentSection.remove();
+			}
+			
+			if (this.currentNotification.children().length === 0) {
+				this.destroyNotification();
+			}
 		}
 		
 		,'sendDeclineResponse': function sendDeclineResponse () {

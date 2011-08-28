@@ -600,7 +600,7 @@ footer {
 
 /* NOTIFICATIONS */
 #notification {
-  display: none;
+  display: block;
   position: absolute;
   z-index: 101;
   top: 0;
