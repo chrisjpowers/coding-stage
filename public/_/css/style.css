@@ -124,6 +124,29 @@ header nav li a {
     border-top: 1px solid rgba(29, 41, 41, 0.75);
     color: #eef2f2; }
 
+/* LEADER */
+#leader {
+  position: relative;
+  padding: 15px 10% 30px;
+  width: 80%;
+  margin: 0 auto 30px;
+  text-align: center;
+  border-bottom: 1px dashed #fff; }
+  #leader h1 {
+    font-size: 4.5em;
+    color: #b7bcc2;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 1px rgba(29, 41, 41, 0.5), 0 1px 0 white;
+    line-height: 1;
+    font-family: ostrich-sans, Univers, 'Helvetica Neue', Helmet, sans-serif;
+    font-weight: 400; }
+  #leader p {
+    font-size: 1.7em;
+    text-shadow: 0 1px 0 #fff;
+    color: #1d2929;
+    font-family: Cambria, 'Book Antiqua', Caslon, 'Times New Roman', Times, serif;
+    font-weight: 500; }
+
 /* TYPOGRAPHY */
 section h1 {
   font-size: 2.8em;
@@ -264,7 +287,8 @@ a {
 
 #text-chat {
   overflow: hidden;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  padding-bottom: 5px; }
 
 #conversation {
   height: 200px;
@@ -414,20 +438,24 @@ footer {
   clear: both;
   padding: 20px;
   border-top: 2px solid #b7bcc2; }
-  footer nav li {
-    font-size: 1.2em;
-    float: left;
-    display: inline;
+  footer nav {
+    margin-bottom: 5px;
     overflow: hidden;
-    margin-right: 1em; }
-    footer nav li a {
-      padding: 3px;
-      font-weight: 700;
-      text-transform: uppercase;
-      display: block;
-      -webkit-border-radius: 4px;
-      -moz-border-radius: 4px;
-      border-radius: 4px; }
+    margin-left: -3px; }
+    footer nav li {
+      font-size: 1.2em;
+      float: left;
+      display: inline;
+      overflow: hidden;
+      margin-right: 1em; }
+      footer nav li a {
+        padding: 3px 3px 0;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: block;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px; }
   footer small {
     clear: both;
     display: block;
@@ -440,17 +468,22 @@ footer {
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
-.modal {
+.jqModal {
   display: none;
   position: fixed;
   top: 17%;
   left: 50%;
   margin-left: -300px;
   width: 600px;
-  background-color: #EEE;
-  color: #333;
-  border: 1px solid black;
-  padding: 12px; }
+  background: url(../img/bg/noise.png) center top repeat, url(../img/logo/stamp.png) 98% 150% no-repeat #eef2f2;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 20px rgba(29, 41, 41, 0.5); }
+  .jqModal .jqmClose {
+    position: relative;
+    left: 20px;
+    top: -15px; }
 
 .jqmOverlay {
   background-color: #000; }
@@ -467,9 +500,57 @@ footer {
 /* Fixed posistioning emulation for IE6
      Star selector used to hide definition from browsers other than IE6
      For valid CSS, use a conditional include instead */
-* html .modal {
+* html .jqModal {
   position: absolute;
   top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px'); }
+
+/* FORMS */
+form[action="/stages"] {
+  max-width: 400px;
+  padding: 20px; }
+  form[action="/stages"] h1 {
+    font-size: 2.8em;
+    color: #4da4a4;
+    text-transform: uppercase;
+    line-height: 1;
+    font-family: ostrich-sans, Univers, 'Helvetica Neue', Helmet, sans-serif;
+    font-weight: 900; }
+  form[action="/stages"] label {
+    font-size: 1.4em;
+    color: #4a525a;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 0 5px;
+    font-family: Helmet, FreeSans, sans-serif;
+    font-weight: 700; }
+  form[action="/stages"] input[type="text"], form[action="/stages"] select {
+    width: 100%;
+    margin-bottom: 10px; }
+  form[action="/stages"] input[type="submit"] {
+    background: #4da4a4 url(../img/bg/grad-button.png) left top repeat-x;
+    padding: 5px 10px 4px;
+    display: inline-block;
+    border: 1px solid #4da4a4;
+    color: #fff;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    -moz-box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    -o-box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    text-shadow: 0 -1px 0 rgba(77, 164, 164, 0.5);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-family: Helmet, FreeSans, sans-serif;
+    font-weight: 700;
+    -webkit-transition: all ease-in-out 0.1s;
+    -moz-transition: all ease-in-out 0.1s;
+    transition: all ease-in-out 0.1s; }
+    form[action="/stages"] input[type="submit"]:hover {
+      color: #fff;
+      background-color: #92d05c;
+      border-color: #92d05c; }
 
 /* MEDIA QUERIES
 -------------------------------------------------------------------------------*/
@@ -483,11 +564,41 @@ footer {
 
   header h1 {
     float: left;
-    margin: 0; } }
+    margin: 0; }
+
+  /* LEADER */
+  #leader {
+    padding: 50px 10% 50px;
+    width: 70%; }
+    #leader h1 {
+      font-size: 3.8em; }
+    #leader p {
+      font-size: 1.5em; }
+
+  #leader:before, #leader:after {
+    color: #fff;
+    font-size: 175px;
+    font-weight: 700;
+    position: absolute;
+    top: -35px; }
+
+  #leader:after {
+    content: '}';
+    right: 0; }
+
+  #leader:before {
+    content: '{';
+    left: 0; } }
 /*/mediaquery*/
 @media screen and (min-width: 600px) {
   header nav li a {
-    font-size: 1.3em; } }
+    font-size: 1.3em; }
+
+  /* LEADER */
+  #leader h1 {
+    font-size: 4.5em; }
+  #leader p {
+    font-size: 1.6em; } }
 /*/mediaquery*/
 @media screen and (min-width: 768px) {
   /* HEADER */
@@ -509,6 +620,15 @@ footer {
 
   .vote {
     top: 11px; }
+
+  /* LEADER */
+  #leader {
+    padding: 40px 10%;
+    width: 65%; }
+    #leader h1 {
+      font-size: 5.5em; }
+    #leader p {
+      font-size: 1.6em; }
 
   /* COLUMNS */
   #main {
@@ -730,6 +850,15 @@ footer {
     /* 225 / 1100 */
     margin-right: 2.2727272727273%;
     /* 25 / 1100 */ }
+
+  /* LAYERS */
+  #leader {
+    padding-top: 25px;
+    width: 55%; }
+    #leader h1 {
+      font-size: 6em; }
+    #leader p {
+      font-size: 2em; }
 
   /* PAGE COMPONENTS */
   #room {

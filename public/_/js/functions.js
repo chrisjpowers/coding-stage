@@ -21,12 +21,14 @@ var Site = window.Site || {};
 		});
 		
 		// Modal Boxes
-		$('.modal').jqm({
-		  ajax:'@href',
-		  modal:true,
-		  trigger: 'a[href="/stages/new"]'
-		});
-
+    
+    $('.jqModal').jqm({
+      trigger: 'a[href="/stages/new"]',
+      ajax: '@href', 
+      target: 'article'
+    });
+    
+  
 	});
 
 
