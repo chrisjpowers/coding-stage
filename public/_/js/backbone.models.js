@@ -83,7 +83,11 @@
 		
 		,'getDataFromServer': function getDataFromServer (data) {
 			if (DEBUG.userHoldsBaton !== true) {
-				this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'), data['cursorPosition']);
+				if (typeof data['lines'] !== 'undefined') {
+					this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'), data['cursorPosition']);
+				} else {
+					this.view.updateCursorPosition(data['cursorPosition']);
+				}
 			}
 		}
 		
@@ -94,24 +98,46 @@
 			self = this;
 			now = $.now();
 			
+			
+			
 			if (now - this.previousRequestTimestamp < this.REQUEST_BUFFER_TIME) {
 				clearTimeout(this.queuedUpdate);
 				
 				this.queuedUpdate = setTimeout(function () {
-					self.sendBufferDataToServer();
+					self.sendDataToServer();
 				}, this.REQUEST_BUFFER_TIME);
 				
 				return;
 			}
 			
 			this.previousRequestTimestamp = now;
-			this.sendBufferDataToServer();
+			this.sendDataToServer();
 		}
 		
-		,'sendBufferDataToServer': function sendBufferDataToServer (data) {
+		,'sendDataToServer': function sendDataToServer () {
+			var updateMethod;
+			
+			if (this.get('lines') === this.previouslySentLines) {
+				updateMethod = this.sendCursorDataToServer;
+			} else {
+				updateMethod = this.sendBufferDataToServer;
+			}
+			
+			updateMethod.call(this);
+		}
+		
+		,'sendBufferDataToServer': function sendBufferDataToServer () {
+			this.previouslySentLines = this.get('lines');
+			
 			pusherInst.channel(this.channelName).trigger('editor-updated', {
 				'lines': this.get('lines')
 				,'cursorPosition': this.get('cursorPosition')
+			});
+		}
+		
+		,'sendCursorDataToServer': function sendCursorDataToServer () {
+			pusherInst.channel(this.channelName).trigger('editor-updated', {
+				'cursorPosition': this.get('cursorPosition')
 			});
 		}
 	}));

@@ -22,9 +22,9 @@
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
 			
-			/*this.bindToAceEvent('change', function () {
+			this.bindToAceEvent('change', function () {
 				self.aceChange();
-			});*/
+			});
 			
 			get(this.aceEditor).selection.on('changeCursor', function () {
 				self.cursorChange();
@@ -75,15 +75,8 @@
 		}
 		
 		,'cursorChange': function cursorChange () {
-			var session
-				,lines;
-			
-			session = get(this.aceEditor);
-			lines = session.getLines(0, session.getLength());
-			
 			this.model.set({
-				'lines': lines
-				,'cursorPosition': this.aceEditor.getCursorPosition()
+				'cursorPosition': this.aceEditor.getCursorPosition()
 			});
 		}
 		
@@ -101,6 +94,11 @@
 			contents = get(aceInst).getValue();
 		}
 		
+		,'updateCursorPosition': function updateCursorPosition (cursorPosition) {
+			this.aceEditor.selection.moveCursorTo(cursorPosition.row, cursorPosition.column);
+			this.aceEditor.centerSelection();
+		}
+		
 		,'overwriteContents': function overwriteContents (aceInst, contents, cursorPosition) {
 			var session
 				,oldPosition
@@ -114,8 +112,9 @@
 				|| currentCursorPosition.row !== cursorPosition.row) {
 					
 				session.setValue(contents);
-				this.aceEditor.selection.moveCursorTo(cursorPosition.row, cursorPosition.column);
-				this.aceEditor.centerSelection();
+				//this.aceEditor.selection.moveCursorTo(cursorPosition.row, cursorPosition.column);
+				//this.aceEditor.centerSelection();
+				this.updateCursorPosition(cursorPosition);
 			}
 		}
 	}));
