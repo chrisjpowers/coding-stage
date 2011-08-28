@@ -18,16 +18,32 @@ pipe.sockets.on "close", (socket_id) ->
   if info = socketInfo[socket_id]
     pipe.channel(info.channel).trigger "watcher-left", id: info.id
     Stage.findOne channel: info.channel, (err, stage) ->
-      stage.removeWatcher info.id
-      stage.save (err) ->
-        console.log "FAILED TO SAVE STAGE", err if err
+      if err || !stage
+        console.log "Could not find stage", info.channel
+      else
+        stage.removeWatcher info.id
+        stage.save (err) ->
+          console.log "FAILED TO SAVE STAGE", err if err
 
 pipe.channels.on "event:watcher-joining", (channelName, socket_id, data) ->
   socketInfo[socket_id] = channel: channelName, id: data.id
   pipe.channel(channelName).trigger "watcher-joined", name: data.name, id: data.id
   Stage.findOne channel: channelName, (err, stage) ->
-    if stage.addWatcher data
+    if err
+      console.log "Failed to find Stage for watcher", channelName, data
+    else if stage && stage.addWatcher data
       stage.save (err) ->
+
+pipe.channels.on "event:adding-comment", (channelName, socket_id, data) ->
+  pipe.channel(channelName).trigger "added-comment", author: data.author, message: data.message
+  Stage.findOne channel: channelName, (err, stage) ->
+    if err
+      console.log "Failed to find Stage for watcher", channelName, data
+    else if stage
+      console.log "Adding comment to stage", stage
+      stage.addComment data
+      stage.save (err) ->
+        console.log "Failed to save stage after comment", data, err if err
 
 # Simply relay all channel events back to browser
 # pipe.channels.on 'event', (eventName, channelName, socket_id, data) ->
