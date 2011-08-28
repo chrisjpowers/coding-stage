@@ -22,10 +22,10 @@ var Site = window.Site || {};
 		
 		// Modal Boxes
     
-    $('.jqModal').jqm({
+    $('#create-room').jqm({
       trigger: 'a[href="/stages/new"]',
-      ajax: '@href', 
-      target: 'article'
+      overlay: 75,
+      closeClass: 'close'
     });
     
 	});
