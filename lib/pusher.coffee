@@ -42,14 +42,11 @@ pipe.channels.on "event:adding-comment", (channelName, socket_id, data) ->
     if err
       console.log "Failed to find Stage for watcher", channelName, data
     else if stage
-      console.log "Adding comment to stage", stage
       stage.addComment data
       stage.save (err) ->
         console.log "Failed to save stage after comment", data, err if err
 
-# Simply relay all channel events back to browser
- pipe.channels.on 'event', (eventName, channelName, socket_id, data) ->
-   data.fromServer = true
-   pipe.channel(channelName).trigger(eventName, data)
+pipe.channels.on 'event:editor-updating', (channelName, socket_id, data) ->
+  pipe.channel(channelName).trigger("editor-updating", data)
   
 module.exports = pipe
