@@ -69,10 +69,10 @@
   <script type="text/javascript">
     Pusher.host = "ws.darling.pusher.com"
     Pusher.log = function(message) {
-      if (window.console && window.console.log) window.console.log(message);
+    //  if (window.console && window.console.log) window.console.log(message);
     };
 
-	window.console.log = $.noop
+	//window.console.log = $.noop;
 
 	extend('codingstage.pusher.inst', new Pusher('<%= pusher.key %>'));
   </script>

@@ -12,7 +12,9 @@
 	
 	extend('codingstage.models.sharedBuffer', Backbone.Model.extend({
 
-		'events': {
+		'REQUEST_BUFFER_TIME': 500
+
+		,'events': {
 			'change': 'change'
 		}
 		
@@ -37,7 +39,7 @@
 			
 			self = this;
 			_.defaults(this, options);
-			this.sendDataToServer = _.throttle(this.sendDataToServer, 500);
+			this.previousRequestTimestamp = $.now();
 			
 			if (pusherInst.connection.state === 'connected') {
 				this.pusherInit();
@@ -60,9 +62,9 @@
 		}
 		
 		,'change': function change () {
-			this.sendDataToServer({
-				'lines': this.get('lines')
-			});
+			if (DEBUG.userHoldsBaton === true) {
+				this.createThrottledUpdate();
+			}
 		}
 		
 		,'connectToServer': function connectToServer () {
@@ -79,15 +81,36 @@
 		}
 		
 		,'getDataFromServer': function getDataFromServer (data) {
-			// Will need this commented out for the moment.
-			
 			if (DEBUG.userHoldsBaton !== true) {
-				this.view.overwriteContents(this.aceEditor, data['lines'].join(''));
+				this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'));
 			}
 		}
 		
-		,'sendDataToServer': function sendDataToServer (data) {
-			pusherInst.channel(this.channelName).trigger('editor-updated', data);
+		,'createThrottledUpdate': function createThrottledUpdate (data) {
+			var self
+				,now;
+			
+			self = this;
+			now = $.now();
+			
+			if (now - this.previousRequestTimestamp < this.REQUEST_BUFFER_TIME) {
+				clearTimeout(this.queuedUpdate);
+				
+				this.queuedUpdate = setTimeout(function () {
+					self.sendBufferDataToServer();
+				}, this.REQUEST_BUFFER_TIME);
+				
+				return;
+			}
+			
+			this.previousRequestTimestamp = now;
+			this.sendBufferDataToServer();
+		}
+		
+		,'sendBufferDataToServer': function sendBufferDataToServer (data) {
+			pusherInst.channel(this.channelName).trigger('editor-updated', {
+				'lines': this.get('lines')
+			});
 		}
 	}));
 
