@@ -1,5 +1,6 @@
 <script>
   document.documentElement.setAttribute('data-pusherchannel', '<%= stage.channel %>' );
+  document.documentElement.setAttribute('data-editorlanguage', '<%= stage.language %>');
   document.documentElement.setAttribute('data-iscontributor', <%= isContributor(contributors, everyauth) ? "true" : "false" %>);
 </script>
 

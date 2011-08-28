@@ -1,10 +1,11 @@
 (function backboneViews (global) {
 	
-	var CHANNEL_NAME = $(document.documentElement).data('pusherchannel')
-		,$win = $(window)
+	var $win = $(window)
+		,$docEl = $(document.documentElement)
+		,CHANNEL_NAME = $docEl.data('pusherchannel')
 		
 		// Probably doesn't belong here?
-		,isContributor = $(document.documentElement).data("iscontributor");
+		,isContributor = $docEl.data('iscontributor');
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -25,6 +26,8 @@
 			
 			this.buffer = $('.buffer', this.el);
 			this.aceEditor = this.initAce(this.EDITOR_ID);
+			this.codingLanguage = $docEl.data('editorlanguage');
+			this.hasBaton = $docEl.data('hasbaton');
 			
 			this.bindToAceEvent('change', function () {
 				self.aceChange();
