@@ -17,7 +17,7 @@
   </form>
   <% } %>
 
-  <div class="myStages">
+  <section class="mine">
     <% myStages.forEach(function(stage) { %>
     <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
       <h1><%= stage.name %></h1>
@@ -40,8 +40,8 @@
       <p>Login to create your own&nbsp;stage</p>
     </a>
     <% } %>
-  </div>
-  <div class="allStages">
+  </section>
+  <section class="all">
     <% stages.forEach(function(stage) { %>
     <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
       <h1><%= stage.name %></h1>
@@ -64,6 +64,6 @@
       <p>Login to create your own&nbsp;stage</p>
     </a>
     <% } %>
-  </div>
+  </section>
 
 </section>
