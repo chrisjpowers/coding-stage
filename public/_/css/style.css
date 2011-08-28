@@ -420,7 +420,7 @@ aside {
     position: relative;
     text-shadow: none;
     background-image: url(../img/icons/sprite.png);
-    background-position: -228px -29px;
+    background-position: -258px -29px;
     background-repeat: no-repeat;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -434,7 +434,7 @@ aside {
     -moz-transition: background-color ease-in-out 0.1s;
     transition: background-color ease-in-out 0.1s; }
     #attendees h1 > a:hover {
-      background-position: -28px -29px; }
+      background-position: -58px -29px; }
   #attendees ol {
     font-size: 1.3em;
     margin-top: 0.4em;
@@ -471,7 +471,16 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -33px -33px no-repeat;
+    background: url(../img/icons/sprite.png) -63px -33px no-repeat;
+    position: absolute;
+    left: -13px;
+    top: 7px; }
+  #attendees li.request:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(../img/icons/sprite.png) -3px -94px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px; }
@@ -984,7 +993,7 @@ form[action="/stages"] {
       #attendees li.attendee section h1 {
         width: 16px;
         height: 16px;
-        background: url(../img/icons/sprite.png) -204px -64px no-repeat;
+        background: url(../img/icons/sprite.png) -234px -64px no-repeat;
         text-indent: -9999px;
         -webkit-transition: none ease-in-out 0s;
         -moz-transition: none ease-in-out 0s;

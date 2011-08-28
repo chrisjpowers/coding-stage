@@ -524,7 +524,7 @@ aside {
     text-shadow: none;
     background: {
       image: url(../img/icons/sprite.png);
-      position: -228px -29px;
+      position: -258px -29px;
       repeat: no-repeat;
     }
     @include rounded(4px);
@@ -532,7 +532,7 @@ aside {
     @include float(left);
     @include animate(0.1s, background-color);
     &:hover {
-      background-position: -28px -29px;
+      background-position: -58px -29px;
     }
   }
   ol {
@@ -582,7 +582,17 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -33px -33px no-repeat;
+    background: url(../img/icons/sprite.png) -63px -33px no-repeat;
+    position: absolute;
+    left: -13px;
+    top: 7px;
+  }
+  li.request:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(../img/icons/sprite.png) -3px -94px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px;
@@ -1162,7 +1172,7 @@ form[action="/stages"] {
         h1 {
           width: 16px;
           height: 16px;
-          background: url(../img/icons/sprite.png) -204px -64px no-repeat;
+          background: url(../img/icons/sprite.png) -234px -64px no-repeat;
           text-indent: -9999px;
           @include animate(0s, none);
         }
