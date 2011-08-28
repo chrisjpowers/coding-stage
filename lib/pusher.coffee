@@ -1,7 +1,9 @@
 Pusher = require "pusher-pipe"
-AppConfig = require "../config/app-config"
-Stage = require "./models/stage"
+AppConfig = require "config/app-config"
+Stage = require "models/stage"
 socketInfo = {}
+
+console.log ">>> #{Stage}"
 
 pipe = Pusher.createClient
   key: AppConfig.pusher.key,

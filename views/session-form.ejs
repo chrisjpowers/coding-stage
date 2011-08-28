@@ -1,0 +1,28 @@
+<h2>
+<% if (formType == 'login') { %>
+  Login
+<% } else { %>
+  Register
+<% } %>
+</h2>
+
+<% if ('undefined' !== typeof errors && errors.length) { %>
+  <ul id="errors">
+  <% for (i in errors) { %>
+    <li><%= errors[i] %></li>
+  </ul>
+  <% } %>
+<% } %>
+
+<form action="/<%= formType %>" method="POST">
+  <div id="<%= formType %>">
+    <label for="<%= everyauth.password.loginFormFieldName %>"><%= everyauth.password.loginFormFieldName %></label>
+    <input name="<%= everyauth.password.loginFormFieldName %>" type="text">
+  </div>
+  <div id="password">
+    <label for="password">Password</label>
+    <input name="password" type="password">
+  </div>
+
+  <input type="submit" value="Submit">
+</form>

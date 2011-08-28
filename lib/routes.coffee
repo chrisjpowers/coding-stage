@@ -1,7 +1,6 @@
-User = require "./models/user"
-Stage = require "./models/stage"
-pusher = require "./pusher"
-
+User = require "models/user"
+Stage = require "models/stage"
+pusher = require "pusher"
 
 opentok = require 'opentok'
 OPENTOK_API_KEY = '3703831'
