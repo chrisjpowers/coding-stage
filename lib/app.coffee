@@ -6,7 +6,19 @@ everyauth = require 'everyauth'
 mongooseAuth = require 'mongoose-auth'
 everyauth.debug = true
 
+useDomain = (req, res, next) ->
+  if process.env.NODE_ENV == "production"
+    console.log req.headers.host
+    next()
+  else
+    next()
+  #res.statusCode = 301
+  #res.header('Location', "http://www.codingstage.com")
+  #res.end()
+  #next()
+
 app = express.createServer(
+  useDomain,
   express.bodyParser(),
   express.static(__dirname + "/public"),
   express.cookieParser(),
