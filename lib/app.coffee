@@ -17,7 +17,6 @@ useDomain = (req, res, next) ->
       next()
   else
     next()
-  next()
 
 app = express.createServer(
   useDomain,
