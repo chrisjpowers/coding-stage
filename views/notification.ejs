@@ -1,11 +1,14 @@
 <div id="notification">
-  [Username] would like the baton. <a id="close">Dismiss</a>
+  <section id="approve-collaborators">
+    People want to collaborate with you: 
+      <article>
+        [Username] <a href="#" class="approve">Approve</a> <a href="#" class="dismiss">Dismiss</a>
+      </article>
+  </section>
+  <section id="approve-handoff">
+    <article>
+      [Username] <a href="#" class="approve">Approve</a> <a href="#" class="dismiss">Dismiss</a>
+    </article>
+    : would like control of the room
+  </section>
 </div>
-
-<script>
- close = document.getElementById("close");
- close.addEventListener('click', function() {
-   note = document.getElementById("notification");
-   note.style.display = 'none';
- }, false);
-</script>

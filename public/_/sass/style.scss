@@ -757,18 +757,18 @@ footer {
 }
 
 @-webkit-keyframes slideDown {
-    0%, 100% { -webkit-transform: translateY(-50px); }
-    10%, 90% { -webkit-transform: translateY(0px); }
+    0% { -webkit-transform: translateY(-400px); }
+    10%, 100% { -webkit-transform: translateY(0px); }
 }
 @-moz-keyframes slideDown {
-    0%, 100% { -moz-transform: translateY(-50px); }
-    10%, 90% { -moz-transform: translateY(0px); }
+    0% { -moz-transform: translateY(-400px); }
+    10%, 100% { -moz-transform: translateY(0px); }
 }
 
 .cssanimations.csstransforms #notification {
-    -webkit-transform: translateY(-50px);
+    -webkit-transform: translateY(-400px);
     -webkit-animation: slideDown 2.5s 1.0s 1 ease forwards;
-    -moz-transform:    translateY(-50px);
+    -moz-transform:    translateY(-400px);
     -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards;
 }
 
