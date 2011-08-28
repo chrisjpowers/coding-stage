@@ -34,6 +34,7 @@ exports.run = (express, app) ->
           'connection_data': "userid_#{new Date().getTime()}",
           'role': "publisher"
         stage.allContributors (contributors) ->
+          console.log "Contributors", contributors
           res.render "homepage", stage: stage, otToken: otToken, otKey: TokBox.key, contributors: contributors
       else
         res.render status: 404
