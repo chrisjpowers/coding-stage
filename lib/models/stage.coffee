@@ -67,7 +67,7 @@ Stage.pre "save", (next) ->
 
 Stage.methods.addWatcher = (data) ->
   this.watchers ?= []
-  if _.detect(this.watchers, (watcher) -> "" + watcher.watcherId == "" + data.id)
+  if _.detect(this.watchers, (watcher) -> "" + watcher.watcherId == "" + data.id || "" + watcher.name == "" + data.name )
     return false
   else
     this.watchers.push name: data.name, watcherId: data.id
