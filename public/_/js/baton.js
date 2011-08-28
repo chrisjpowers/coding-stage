@@ -13,7 +13,7 @@
 
   pusher.channel(channel).bind("baton-requested", function(data) {
     if($(document.documentElement).data("hasbaton")) {
-      var html = $("<div id='approve-handoff'>" + data.name + " would like to take the stage. </div>");
+      var html = $("<section id='approve-handoff'>" + data.name + " would like to take the stage. </section>");
       var approve = $("<a href='#' class='approve'>Yes</a>"); 
       approve.click(function() {
         codingstage.baton.give(data.userId, data.name);
@@ -26,6 +26,7 @@
 
   pusher.channel(channel).bind("baton-given", function(data) {
     var message;
+
     if(data.userId + "" == codingstage.user.id + "") {
       codingstage.instance.ace.userBuffer.giveUserBaton()
       $(document.documentElement).data("hasbaton", true); 
@@ -35,7 +36,7 @@
       $(document.documentElement).data("hasbaton", false);
       message = data.name + " has taken the stage!";
     }
-    var html = "<div>" + message + " <a href='#' class='dismiss'>Close</a></div>";
+    var html = "<section>" + message + " <a href='#' class='dismiss'>Close</a></section>";
     codingstage.instance.notification.stage.createNotification(html);
   });
 })(window);
