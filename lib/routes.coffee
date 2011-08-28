@@ -37,8 +37,21 @@ exports.run = (express, app) ->
         }
 
   app.get "/stages", (req, res) ->
-    Stage.find {}, (err, stages) ->
-      res.render "stages/index", stages: stages
+    stages = []
+    myStages = []
+
+    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
+      if req.loggedIn
+        Stage.find creatorId: req.user.id, (err, myStages) ->
+          res.render "front", {
+            stages: stages
+            myStages: myStages
+          }
+      else
+        res.render "front", {
+          stages: stages
+          myStages: myStages
+        }
 
   app.get "/stages/new", (req, res) ->
     res.render "stages/new"
