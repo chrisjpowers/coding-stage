@@ -64,4 +64,8 @@ Stage.methods.removeWatcher = (id) ->
   id = id + ""
   this.watchers = _.reject this.watchers, (watcher) -> "" + watcher.watcherId == id
 
+Stage.methods.addComment = (data) ->
+  this.comments ?= []
+  this.comments = [author: data.author, message: data.message].concat this.comments
+
 module.exports = mongoose.model 'Stage', Stage
