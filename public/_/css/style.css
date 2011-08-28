@@ -275,6 +275,55 @@ a {
 .ace_content {
   width: 100% !important; }
 
+/* STAGE LIST */
+#stage-list {
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: hidden; }
+  #stage-list #search {
+    width: 100%; }
+    #stage-list #search input {
+      width: 100%; }
+  #stage-list > a {
+    background: #fff;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+    -moz-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+    -o-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+    box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5); }
+    #stage-list > a h1 {
+      font-size: 2em;
+      color: #4a525a;
+      text-shadow: none; }
+    #stage-list > a h2 {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.2em; }
+    #stage-list > a p {
+      color: #b7bcc2;
+      font-size: 1.1em;
+      -webkit-transition: all ease-in-out 0.1s;
+      -moz-transition: all ease-in-out 0.1s;
+      transition: all ease-in-out 0.1s; }
+    #stage-list > a small {
+      color: #b7bcc2;
+      font-style: italic;
+      font-size: 1em;
+      display: block;
+      -webkit-transition: all ease-in-out 0.1s;
+      -moz-transition: all ease-in-out 0.1s;
+      transition: all ease-in-out 0.1s; }
+    #stage-list > a:hover {
+      background: #f2f8ff; }
+      #stage-list > a:hover p, #stage-list > a:hover small {
+        color: #4a525a; }
+  #stage-list > a#create p {
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: 700; }
+
 /* CHAT */
 #chat {
   background: #eef2f2;
@@ -590,7 +639,26 @@ form[action="/stages"] {
 
   #leader:before {
     content: '{';
-    left: 0; } }
+    left: 0; }
+
+  /* STAGE LIST */
+  #stage-list {
+    padding: 4.1666666666667% 0 4.1666666666667% 4.1666666666667%;
+    /* 20 / 480 */ }
+    #stage-list #search {
+      width: 95.6521739130435%; }
+    #stage-list > a {
+      width: 41.6666666666667%;
+      /* 200 / 480 */
+      margin: 2.0833333333333% 4.1666666666667% 0 0;
+      /* 20 / 480 */
+      padding: 2.0833333333333%;
+      /* 10 / 480 */
+      float: left;
+      display: inline;
+      overflow: hidden; }
+    #stage-list > a:nth-of-type(2n+1) {
+      clear: left; } }
 /*/mediaquery*/
 @media screen and (min-width: 600px) {
   header nav li a {
@@ -600,7 +668,26 @@ form[action="/stages"] {
   #leader h1 {
     font-size: 4.5em; }
   #leader p {
-    font-size: 1.6em; } }
+    font-size: 1.6em; }
+
+  /* STAGE LIST */
+  #stage-list {
+    padding: 3.3333333333333% 0 3.3333333333333% 3.3333333333333%;
+    /* 20 / 600 */ }
+    #stage-list #search {
+      width: 96.551724137931%;
+      /* 560 / 580 */ }
+    #stage-list > a {
+      width: 26.45%;
+      /* 150 / 580 */
+      margin: 1.7241379310345% 3.448275862069% 0 0;
+      /* 20 / 580 */
+      padding: 1.7241379310345%;
+      /* 10 / 580 */ }
+    #stage-list > a:nth-of-type(2n+1) {
+      clear: none; }
+    #stage-list > a:nth-of-type(3n+1) {
+      clear: left; } }
 /*/mediaquery*/
 @media screen and (min-width: 768px) {
   /* HEADER */
@@ -719,6 +806,33 @@ form[action="/stages"] {
       display: none; }
     #stage-settings label {
       line-height: 2.4; }
+
+  /* STAGE LIST */
+  #stage-list {
+    padding: 2.6041666666667% 0 2.6041666666667% 2.6041666666667%;
+    /* 20 / 768 */ }
+    #stage-list > h1 {
+      float: left;
+      display: inline;
+      overflow: hidden; }
+    #stage-list #search {
+      width: 32.5520833333333%;
+      /* 250 / 768 */
+      margin-right: 2.6041666666667%;
+      float: right;
+      display: inline;
+      overflow: hidden; }
+    #stage-list > a {
+      width: 19.6524064171123%;
+      /* 147 / 748 */
+      margin: 1.3368983957219% 2.6737967914439% 0 0;
+      /* 20 / 748 */
+      padding: 1.3368983957219%;
+      /* 10 / 748 */ }
+    #stage-list > a:nth-of-type(3n+1) {
+      clear: none; }
+    #stage-list > a:nth-of-type(4n+1) {
+      clear: left; }
 
   /* TEXT CHAT */
   #conversation {
@@ -895,6 +1009,25 @@ form[action="/stages"] {
     float: left;
     display: inline;
     overflow: hidden; }
+
+  /* STAGE LIST */
+  #stage-list {
+    padding: 2.2727272727273% 0 2.2727272727273% 2.2727272727273%;
+    /* 20 / 768 */ }
+    #stage-list #search {
+      width: 40%;
+      margin-right: 2.272727272727273%; }
+    #stage-list > a {
+      width: 15.8139534883721%;
+      /* 170 / 1075 */
+      margin: 1.8604651162791% 2.3255813953488% 0 0;
+      /* 25 / 1075 */
+      padding: 0.9302325581395%;
+      /* 10 / 1075 */ }
+    #stage-list > a:nth-of-type(4n+1) {
+      clear: none; }
+    #stage-list > a:nth-of-type(5n+1) {
+      clear: left; }
 
   /* TEXT CHAT */
   #conversation {
