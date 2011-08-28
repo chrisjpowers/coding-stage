@@ -90,8 +90,10 @@ Stage.methods.allContributors = (callback) ->
   this.contributorIds ?= []
   ids = this.contributorIds.concat [this.creatorId]
   User = mongoose.model "User"
-  User.find id: {"$in": ids}, (err, users) ->
+  console.log "Fetching user ids", ids
+  User.find "_id": {"$in": ids}, (err, users) ->
     console.log "Error fetching contributors", err if err
+    users ?= []
     callback users
 
 module.exports = mongoose.model 'Stage', Stage
