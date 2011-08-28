@@ -129,7 +129,7 @@ header nav li a {
   position: relative;
   padding: 15px 10% 30px;
   width: 80%;
-  margin: 0 auto 30px;
+  margin: 0 auto;
   text-align: center;
   border-bottom: 1px dashed #fff; }
   #leader h1 {
