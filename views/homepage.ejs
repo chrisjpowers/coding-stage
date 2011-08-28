@@ -1,3 +1,20 @@
+<script>
+  document.documentElement.setAttribute('data-pusherchannel', '<%= stage.channel %>' );
+</script>
+
+<style type="text/css">
+	/* Goodness gracious, I don't belong here! */
+        /* Mike is going to hunt down the author of this code, beware */
+	.ace-editor-wrapper,
+	#ace-editor {
+		height: 400px;
+	}
+	
+	#ace-editor {
+		position: relative;
+	}
+</style>
+
 <header>
 
 	<h1><a href="/" title="Coding Stage's Front Door">Coding Stage</a></h1>
@@ -115,20 +132,36 @@
 	
 	<section id="attendees">
 		
-		<h1>Who's Watching<br /><a href="#">Request The Baton</a></h1>
+		<h1>Who's Watching<br /> (<span id="watchers-count"><%= stage.watchers.length %></span>)<a href="#">Request The Baton</a></h1>
 		
 		<ol>
-	
+	            <% stage.watchers.forEach(function(watcher) { %>
+                      <li class="attendee">
+                      <%= watcher.name %>
+				<section class="interact" title="Interact with this Attendee">
+				  <h1>Interact with this Attendee</h1>
+  				<ul>
+  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
+  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
+  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
+  				</ul>
+  		  </section>
+                      </li>
+                    <% }) %>
+                </ol>
+                <!--
 			<li class="attendee coder owner">
 				Owner
 				<section class="interact" title="Interact with this Attendee">
 				  <h1>Interact with this Attendee</h1>
   				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
+  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
+  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
+  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
   				</ul>
   		  </section>
 			</li>
@@ -138,39 +171,41 @@
 				<section class="interact" title="Interact with this Attendee">
 				  <h1>Interact with this Attendee</h1>
   				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
+  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
+  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
+  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
   				</ul>
   		  </section>
 			</li>
 	
 			<li class="attendee coder">
 				Coder
+
 				<section class="interact" title="Interact with this Attendee">
 				  <h1>Interact with this Attendee</h1>
   				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
+  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
+  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
+  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
   				</ul>
   		  </section>
 			</li>
 	
 			<li class="attendee coder baton">
 				Baton Holder
+
 				<section class="interact" title="Interact with this Attendee">
 				  <h1>Interact with this Attendee</h1>
   				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
+  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
+  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
+  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
   				</ul>
   		  </section>
 			</li>
@@ -180,45 +215,16 @@
 				<section class="interact" title="Interact with this Attendee">
 				  <h1>Interact with this Attendee</h1>
   				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
+  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
+  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
+  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
   				</ul>
   		  </section>
 			</li>
-	
-			<li class="attendee">
-				Attendee
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
-  				</ul>
-  		  </section>
-			</li>
-	
-			<li class="attendee">
-				Attendee
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
-  				</ul>
-  		  </section>
-			</li>
-	
 		</ol>
-		
+                -->	
 	</section>
 
 </aside>

@@ -1,6 +1,5 @@
 User = require "./models/user"
 Stage = require "./models/stage"
-Comment = require "./models/comment"
 pusher = require "./pusher"
 
 
