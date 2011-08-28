@@ -8,4 +8,6 @@ $(function () {
 			'el': $('#editor')
 		}));
 	}
+	
+	extend('codingstage.instance.notification.stage', new codingstage.views.notification());
 });
