@@ -256,9 +256,9 @@ a{
   @include button;
 }
 
-/* ROOM */
+/* STAGE */
 
-#room, #chat {
+#stage, #chat {
   margin-bottom: 20px;
   padding: 20px;
   overflow: hidden;
@@ -275,7 +275,7 @@ a{
   border: 1px solid $beige;
 }
 
-#room {
+#stage {
   background: rgba(255,255,255,.7);
   margin-top: -20px;
 }
@@ -284,7 +284,7 @@ a{
   margin-top: 10px;
 }
 
-#room-settings, #editor {
+#stage-settings, #editor {
 
   label { 
     font-size: 1.2em;
@@ -308,7 +308,7 @@ a{
 
 }
 
-#room-settings {
+#stage-settings {
   margin: 0;
   legend {
     display: none;
@@ -578,7 +578,7 @@ footer {
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
 	
-.jqModal {
+.jqModal, .git-modal {
   display: none;
   position: fixed;
   top: 17%;
@@ -606,7 +606,7 @@ footer {
 /* Fixed posistioning emulation for IE6
      Star selector used to hide definition from browsers other than IE6
      For valid CSS, use a conditional include instead */
-* html .jqModal {
+* html .jqModal, .git-modal {
      position: absolute;
      top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
 }
@@ -642,6 +642,10 @@ form[action="/stages"] {
   
   input[type="submit"] {
     @include button;
+  }
+  
+  p.loggedin, a.login {
+    margin: .5em 0 1em;
   }
   
 }
@@ -772,7 +776,7 @@ form[action="/stages"] {
   
   /* PAGE COMPONENTS */
   
-  #room, #chat {
+  #stage, #chat {
     padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
   }
   
@@ -780,7 +784,7 @@ form[action="/stages"] {
     height: 300px !important;
   }
   
-  #room {
+  #stage {
     margin-top: 0;
     @include rounded(6px);
     @include insetshadow;
@@ -798,7 +802,7 @@ form[action="/stages"] {
     @include rounded(10px);
   }
   
-    /* ROOM */
+    /* STAGE */
     
     .invite {
       position: absolute;
@@ -807,7 +811,7 @@ form[action="/stages"] {
       margin-top: 0;
     }
     
-    #room-settings, #editor {
+    #stage-settings, #editor {
 
       select {
         width: 50%;
@@ -820,7 +824,7 @@ form[action="/stages"] {
 
     }
     
-    #room-settings {
+    #stage-settings {
       margin: 0.5em 0 0;
       legend {
         display: inline-block;
@@ -1025,7 +1029,7 @@ form[action="/stages"] {
   
   /* PAGE COMPONENTS */
   
-  #room {
+  #stage {
     width: 62.5%; /* 500 / 800 */
     padding: 3.125%; /* 25 / 800 */
     @include float(left);
@@ -1044,7 +1048,7 @@ form[action="/stages"] {
     padding: 10% 0 0;
   }
 
-    /* ROOM */
+    /* STAGE */
     
     #editor {
 

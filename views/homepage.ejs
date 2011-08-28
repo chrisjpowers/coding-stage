@@ -13,24 +13,24 @@
 
 <div id="main">
 
-	<section id="room">
+	<section id="stage">
 	
             <h1><%= stage.name %></h1>
 		<a href="/invite" title="Invite coders to join you" class="button invite">Invite Coders</a>
 	
-		<form id="room-settings">
+		<form id="stage-settings">
 	
 			<fieldset>
-				<legend>Update Your Room Settings</legend>
+				<legend>Update Your Stage Settings</legend>
 	
-				<label for="private">Private Room?</label>
+				<label for="private">Private Stage?</label>
 				<input type="checkbox" name="private" id="private" value="" />
 	
-				<label for="limit">Room Limit</label>
+				<label for="limit">Stage Limit</label>
 				<input type="text" placeholder="15" name="limit" id="limit" /> 
 				<!-- The placeholder should be a default and then update depending on the user changed setting -->
 				
-				<input type="submit" value="Update Room Settings" />
+				<input type="submit" value="Update Stage Settings" />
 				
 			</fieldset>
 		</form>
@@ -40,7 +40,7 @@
 			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
                         <section id="ace-editor"><%= stage.content %></section>
 
-			<label for="files">Room Files</label>
+			<label for="files">Stage Files</label>
 			<select id="files" name="files">
 				<option data-file="file-info-here">File Name Goes Here</option>
 				<option data-file="file-info-here">File Name Goes Here</option>
@@ -87,7 +87,7 @@
 			</article>
 	
 			<article class="attendee coder owner">
-				<p><strong>Username:</strong> This is the text of a room owner</p>
+				<p><strong>Username:</strong> This is the text of a stage owner</p>
 			</article>
 	
 			<article class="attendee coder baton">
@@ -136,8 +136,8 @@
 				  <h1>Interact with this Attendee</h1>
   				<ul>
   				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to room owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to room owners, only on coders -->
+  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to stage owners, only no attendees -->
+  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to stage owners, only on coders -->
   				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
   				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
   				</ul>
@@ -225,15 +225,10 @@
 
 <footer>
 	
-	<nav>
-		<ol>
-			<li class="profile"><a href="/profile" title="Your Account Details">Profile</a></li>
-			<li class="support"><a href="/support" title="Having Problems?">Support</a></li>
-			<li class="create-room"><a href="/create-room" title="Create a Room and Start Coding">Create a Room</a></li>
-			<li class="login"><a href="/login" title="Create Your Account">Signup <span>or</span> Login</a></li>
-		</ol>
-	</nav>
+        <%- partial("nav") %>
 
 	<small><a href="/" title="Coding Stage's Front Door">Coding Stage</a> was built for 2011's <a href="http://nodeknockout.com/">Node Knockout</a> by <a href="http://chrisjpowers.com" title="Chris' website" rel="me">Chris J. Powers</a> (<a href="http://twitter.com/chrisjpowers" title="@chrisjpowers on Twitter" rel="me">@chrisjpowers</a>), <a href="http://benmillsdesigns.com" title="Ben's website" rel="me">Ben Mills</a> (<a href="http://twitter.com/benemills" title="@benemills on Twitter" rel="me">@benemills</a>), <a href="http://jeremyckahn.com" title="Jeremy's website" rel="me">Jeremy C. Kahn</a> (<a href="http://twitter.com/jeremyckahn" title="@jeremyckahn on Twitter" rel="me">@jeremyckahn</a>) & <a href="http://lovehasnologic.com" title="Mike's website" rel="me">Michael Gibson</a> (<a href="http://twitter.com/lovehasnologic" title="@lovehasnologic on Twitter" rel="me">@lovehasnologic</a>). Fugue iconset from <a href="http://www.pinvoke.com/">Yusuke Kamiyamane</a>.</small>
 	
 </footer>
+
+        <%- partial("login-modal") %>

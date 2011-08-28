@@ -1,6 +1,13 @@
 <form action="/stages" method="POST">
   
   <h1>Create A New Room</h1>
+
+  <% if(!everyauth.loggedIn) { %>
+      <a href="/auth/github" title="Login through GitHub" class="login">Login through GitHub</a>
+  <% } %>
+  <% if(everyauth.loggedIn) { %>
+      <p class="loggedin">You're logged in as <strong>[username]</strong>. <a href="/logout" title="Logout of Coding Stage">Logout</a></li>
+  <% } %>
   
   <fieldset>
     <label for="room-name">Room Name</label>

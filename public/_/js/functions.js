@@ -12,7 +12,7 @@ var Site = window.Site || {};
 		$('input, textarea').placeholder();
 		
 		// Hide/show Room Settings
-		$('#room-settings legend').click(function() {
+		$('#stage-settings legend').click(function() {
 		  var mq = $(window).width();
 		  if(mq >= 768) {
   		  $(this).parent().children().not(this).slideToggle(100);

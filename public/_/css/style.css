@@ -199,8 +199,8 @@ a {
     background-color: #92d05c;
     border-color: #92d05c; }
 
-/* ROOM */
-#room, #chat {
+/* STAGE */
+#stage, #chat {
   margin-bottom: 20px;
   padding: 20px;
   overflow: hidden;
@@ -215,39 +215,39 @@ a {
   background: #fff;
   border: 1px solid #d7d7b8; }
 
-#room {
+#stage {
   background: rgba(255, 255, 255, 0.7);
   margin-top: -20px; }
 
 .invite {
   margin-top: 10px; }
 
-#room-settings label, #editor label {
+#stage-settings label, #editor label {
   font-size: 1.2em;
   display: inline-block;
   margin-right: .5em; }
-#room-settings select, #editor select {
+#stage-settings select, #editor select {
   margin-right: 1.5em;
   width: 70%; }
-  #room-settings select option[data-file="file-new"], #editor select option[data-file="file-new"] {
+  #stage-settings select option[data-file="file-new"], #editor select option[data-file="file-new"] {
     font-style: italic; }
-#room-settings .import, #editor .import {
+#stage-settings .import, #editor .import {
   margin-top: 10px; }
 
-#room-settings {
+#stage-settings {
   margin: 0; }
-  #room-settings legend {
+  #stage-settings legend {
     display: none; }
-  #room-settings input, #room-settings label {
+  #stage-settings input, #stage-settings label {
     margin-top: 1em; }
-  #room-settings input[type="text"] {
+  #stage-settings input[type="text"] {
     width: 40px;
     position: relative;
     top: -7px;
     margin-right: 1em; }
-  #room-settings input {
+  #stage-settings input {
     margin-right: 1.5em; }
-  #room-settings input[type="submit"] {
+  #stage-settings input[type="submit"] {
     background: transparent;
     border: 0;
     padding: 0;
@@ -258,9 +258,9 @@ a {
     -webkit-transition: all ease-in-out 0.2s;
     -moz-transition: all ease-in-out 0.2s;
     transition: all ease-in-out 0.2s; }
-    #room-settings input[type="submit"]:hover {
+    #stage-settings input[type="submit"]:hover {
       color: #4a525a; }
-  #room-settings label {
+  #stage-settings label {
     margin-right: 0.5em; }
 
 /* ACE HAMMERS */
@@ -468,7 +468,7 @@ footer {
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
-.jqModal {
+.jqModal, .git-modal {
   display: none;
   position: fixed;
   top: 17%;
@@ -480,7 +480,7 @@ footer {
   -moz-border-radius: 10px;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 20px rgba(29, 41, 41, 0.5); }
-  .jqModal .jqmClose {
+  .jqModal .jqmClose, .git-modal .jqmClose {
     position: relative;
     left: 20px;
     top: -15px; }
@@ -500,7 +500,7 @@ footer {
 /* Fixed posistioning emulation for IE6
      Star selector used to hide definition from browsers other than IE6
      For valid CSS, use a conditional include instead */
-* html .jqModal {
+* html .jqModal, .git-modal {
   position: absolute;
   top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px'); }
 
@@ -551,6 +551,8 @@ form[action="/stages"] {
       color: #fff;
       background-color: #92d05c;
       border-color: #92d05c; }
+  form[action="/stages"] p.loggedin, form[action="/stages"] a.login {
+    margin: .5em 0 1em; }
 
 /* MEDIA QUERIES
 -------------------------------------------------------------------------------*/
@@ -652,14 +654,14 @@ form[action="/stages"] {
     overflow: visible; }
 
   /* PAGE COMPONENTS */
-  #room, #chat {
+  #stage, #chat {
     padding: 2.6785714285714% 3.5714286%;
     /* 20 / 560 */ }
 
   #ace-editor {
     height: 300px !important; }
 
-  #room {
+  #stage {
     margin-top: 0;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -680,24 +682,24 @@ form[action="/stages"] {
     -moz-border-radius: 10px;
     border-radius: 10px; }
 
-  /* ROOM */
+  /* STAGE */
   .invite {
     position: absolute;
     top: 4.1%;
     right: 3.5714286%;
     margin-top: 0; }
 
-  #room-settings select, #editor select {
+  #stage-settings select, #editor select {
     width: 50%; }
-  #room-settings .import, #editor .import {
+  #stage-settings .import, #editor .import {
     float: right;
     display: inline;
     overflow: hidden;
     margin-top: 0; }
 
-  #room-settings {
+  #stage-settings {
     margin: 0.5em 0 0; }
-    #room-settings legend {
+    #stage-settings legend {
       display: inline-block;
       color: #b7bcc2;
       font-size: 1.2em;
@@ -708,14 +710,14 @@ form[action="/stages"] {
       -webkit-transition: color ease-in-out 0.1s;
       -moz-transition: color ease-in-out 0.1s;
       transition: color ease-in-out 0.1s; }
-      #room-settings legend:hover {
+      #stage-settings legend:hover {
         cursor: pointer;
         color: #656c74; }
-    #room-settings legend.open {
+    #stage-settings legend.open {
       background-position: 100% -25px; }
-    #room-settings input, #room-settings label {
+    #stage-settings input, #stage-settings label {
       display: none; }
-    #room-settings label {
+    #stage-settings label {
       line-height: 2.4; }
 
   /* TEXT CHAT */
@@ -861,7 +863,7 @@ form[action="/stages"] {
       font-size: 2em; }
 
   /* PAGE COMPONENTS */
-  #room {
+  #stage {
     width: 62.5%;
     /* 500 / 800 */
     padding: 3.125%;
@@ -885,7 +887,7 @@ form[action="/stages"] {
   #attendees {
     padding: 10% 0 0; }
 
-  /* ROOM */
+  /* STAGE */
   #editor select {
     margin-right: 0;
     width: 55%; }

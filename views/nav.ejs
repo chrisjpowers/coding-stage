@@ -8,7 +8,10 @@
                 <li class="create-room"><a href="/stages/new" title="Create a Room and Start Coding">Create a Room</a></li>
             <% } %>
             <% if(!everyauth.loggedIn) { %>
-                <li class="login"><a href="/login" title="Create Your Account">Signup <span>or</span> Login</a></li>
+                <li class="login"><a href="/auth/github" title="Login through GitHub">Login through GitHub</a></li>
+            <% } %>
+            <% if(everyauth.loggedIn) { %>
+                <li class="logout"><a href="/logout" title="Logout of Coding Stage">Logout</a></li>
             <% } %>
         </ol>
 </nav>
