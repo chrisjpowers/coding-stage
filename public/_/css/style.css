@@ -625,24 +625,21 @@ footer {
   padding: 0 25px; }
   #notification section:nth-of-type(2) {
     border-top: 1px solid rgba(238, 242, 242, 0.25); }
-  #notification article {
-    display: inline;
-    margin-right: 10px; }
-    #notification article .approve, #notification article .dismiss {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      text-indent: -9999px;
-      background: url(../img/icons/sprite.png) no-repeat;
-      vertical-align: baseline;
-      position: relative;
-      margin: 0 -3px 0 0;
-      padding: 0;
-      top: 2px; }
-    #notification article .dismiss {
-      background-position: -33px -123px; }
-    #notification article .approve {
-      background-position: -3px -153px; }
+  #notification .approve, #notification .dismiss {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px;
+    background: url(../img/icons/sprite.png) no-repeat;
+    vertical-align: baseline;
+    position: relative;
+    margin: 0 -3px 0 0;
+    padding: 0;
+    top: 2px; }
+  #notification .dismiss {
+    background-position: -33px -123px; }
+  #notification .approve {
+    background-position: -3px -153px; }
 
 @-webkit-keyframes slideDown {
   0% {
