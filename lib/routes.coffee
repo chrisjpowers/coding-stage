@@ -1,4 +1,5 @@
 User = require "models/user"
+Event = require "models/event"
 Stage = require "models/stage"
 TokBox = require "tokbox"
 pusher = require "pusher"
@@ -19,57 +20,51 @@ exports.run = (express, app) ->
       error: ->
         res.end "Error"
 
-  app.get "/", (req, res) ->
+  getStagesAndEvents = (tpl, req, res) ->
     stages = []
     myStages = []
+    events = []
 
-    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
-      if req.loggedIn
-        Stage.find creatorId: req.user.id, (err, myStages) ->
-          res.render "front", {
-            stages: stages
-            myStages: myStages
+    Event.find({}).desc("createdAt").limit(9).exec (err, events) ->
+
+      Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
+        if req.loggedIn
+          Stage.find creatorId: req.user.id, (err, myStages) ->
+            res.render tpl, {
+              stages: stages,
+              myStages: myStages,
+              events: events
+            }
+        else
+          res.render tpl, {
+            stages: stages,
+            myStages: myStages,
+            events: events
           }
-      else
-        res.render "front", {
-          stages: stages
-          myStages: myStages
-        }
+
+  app.get "/", (req, res) ->
+    getStagesAndEvents 'front', req, res
 
   app.get "/stages", (req, res) ->
-    stages = []
-    myStages = []
-
-    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
-      if req.loggedIn
-        Stage.find creatorId: req.user.id, (err, myStages) ->
-          res.render "front", {
-            stages: stages
-            myStages: myStages
-          }
-      else
-        res.render "front", {
-          stages: stages
-          myStages: myStages
-        }
+    getStagesAndEvents 'stages/index', req, res
 
   app.get "/stages/new", (req, res) ->
     res.render "stages/new"
 
-  app.get "/all-stages", (req, res) ->
-    Stage.find creatorId: "4e59afa8f01d694939000003", (err, stages) ->
-      res.end("<pre>"+stages+"</pre>")
-
   app.post "/stages", (req, res) ->
-    atts = req.param("stage")
-    atts.creatorId = req.user.id
-    atts.batonHolderId = req.user.id
-    atts.creatorName = req.user.github.name
-    atts.createdAt = new Date()
-    stage = new Stage atts
-    stage.save (err) ->
-      console.log "ERROR CREATING STAGE", err if err
-      res.redirect "/stages/#{stage.stub}"
+    Stage.find name: req.body.stage.name, (err, stages) ->
+      if stages.length > 0
+        res.render "stages/new-error", err: "That name is taken"
+      else
+        atts = req.param("stage")
+        atts.creatorId = req.user.id
+        atts.batonHolderId = req.user.id
+        atts.creatorName = req.user.github.name
+        atts.createdAt = new Date()
+        stage = new Stage atts
+        stage.save (err) ->
+          console.log "ERROR CREATING STAGE", err if err
+          res.redirect "/stages/#{stage.stub}"
 
   app.get "/stages/:stub", (req, res) ->
     Stage.findOne stub: req.param("stub"), (err, stage) ->

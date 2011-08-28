@@ -1,61 +1,27 @@
+<% if (events.length > 0) { %>
 <section id="featured">
   
   <h1>We've lined up some top notch coders to showoff their&nbsp;chops.</h1>
-  
-  <a href="#">
-    <figure>
-      <img src="https://secure.gravatar.com/avatar/0f20c6aad23ede4c47a6016734c30dc8?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" />
-    </figure>
-    <hgroup>
-      <h1>Coder's Name</h1>
-      <h2>Language</h2>
-      <time datetime="2011-08-29T14:00" class="now">Coding Right Now!</time>
-    </hgroup>
-    <article>
-      <p>This is a description about the event. Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit.</p>
-    </article>    
-  </a>
 
-  <a href="#">
-    <figure>
-      <img src="https://secure.gravatar.com/avatar/0f20c6aad23ede4c47a6016734c30dc8?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" />
-    </figure>
-    <hgroup>
-      <h1>Coder's Name</h1>
-      <h2>Language</h2>
-      <time datetime="2011-08-29T14:00">Mon., Aug. 29th @ 2pm</time>
-    </hgroup>
-    <article>
-      <p>This is a description about the event. Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit.</p>
-    </article>    
-  </a>
-
-  <a href="#">
-    <figure>
-      <img src="https://secure.gravatar.com/avatar/0f20c6aad23ede4c47a6016734c30dc8?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" />
-    </figure>
-    <hgroup>
-      <h1>Coder's Name</h1>
-      <h2>Language</h2>
-      <time datetime="2011-08-29T14:00">Mon., Aug. 29th @ 2pm</time>
-    </hgroup>
-    <article>
-      <p>This is a description about the event. Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit.</p>
-    </article>    
-  </a>
-
-  <a href="#">
-    <figure>
-      <img src="https://secure.gravatar.com/avatar/0f20c6aad23ede4c47a6016734c30dc8?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" />
-    </figure>
-    <hgroup>
-      <h1>Coder's Name</h1>
-      <h2>Language</h2>
-      <time datetime="2011-08-29T14:00">Mon., Aug. 29th @ 2pm</time>
-    </hgroup>
-    <article>
-      <p>This is a description about the event. Nulla facilisi. In vel sem. Morbi id urna in diam dignissim feugiat. Proin molestie tortor eu velit. Aliquam erat volutpat. Nullam ultrices, diam tempus vulputate egestas, eros pede varius leo, sed imperdiet lectus est ornare odio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin consectetuer velit in dui. Phasellus wisi purus, interdum vitae, rutrum accumsan, viverra in, velit.</p>
-    </article>    
-  </a>
+  <% events.forEach(function(event) { %>
+    <a href="<%= event.stageUrl || "#" %>">
+      <figure>
+        <img src="<%= event.imageUrl %>" />
+      </figure>
+      <hgroup>
+        <h1><%= event.title %></h1>
+        <h2><%= event.language %></h2>
+        <% if (event.startDate) { %>
+          <time datetime="<%= event.startDate %>">
+          <%= event.startDate.getMonth() %>/<%= event.startDate.getDay() %>/<%= event.startDate.getYear() %> <%= event.startDate.getHours() %>:<%= event.startDate.getMinutes() %>
+          </time>
+        <% } %>
+      </hgroup>
+      <article>
+        <p><%= event.desc %></p>
+      </article>    
+    </a>
+  <% }); %>
   
 </section>
+<% } %>
