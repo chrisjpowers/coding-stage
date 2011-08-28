@@ -20,25 +20,6 @@ exports.run = (express, app) ->
       error: ->
         res.end "Error"
 
-  #app.get "/events", (req, res) ->
-    #Event.find({}).desc("createdAt").limit(9).exec (err, events) ->
-      #res.end("Events: #{events}")
-
-  #app.get "/addtest", (req, res) ->
-    #eventArgs =
-      #title: "Ben Mills"
-      #language: "CS"
-      #desc: "Afkdjsal flksajdg sakjdg sakg"
-      #createdAt: new Date()
-      #startDate: new Date()
-      #imgUrl: null
-
-    #event = new Event eventArgs
-    #event.save (err) ->
-      #console.log "ERROR CREATING STAGE", err if err
-      #res.end("Saved!")
-
-
   getStagesAndEvents = (tpl, req, res) ->
     stages = []
     myStages = []
@@ -70,20 +51,20 @@ exports.run = (express, app) ->
   app.get "/stages/new", (req, res) ->
     res.render "stages/new"
 
-  app.get "/all-stages", (req, res) ->
-    Stage.find creatorId: "4e59afa8f01d694939000003", (err, stages) ->
-      res.end("<pre>"+stages+"</pre>")
-
   app.post "/stages", (req, res) ->
-    atts = req.param("stage")
-    atts.creatorId = req.user.id
-    atts.batonHolderId = req.user.id
-    atts.creatorName = req.user.github.name
-    atts.createdAt = new Date()
-    stage = new Stage atts
-    stage.save (err) ->
-      console.log "ERROR CREATING STAGE", err if err
-      res.redirect "/stages/#{stage.stub}"
+    Stage.find name: req.body.stage.name, (err, stages) ->
+      if stages.length > 0
+        res.render "stages/new-error", err: "That name is taken"
+      else
+        atts = req.param("stage")
+        atts.creatorId = req.user.id
+        atts.batonHolderId = req.user.id
+        atts.creatorName = req.user.github.name
+        atts.createdAt = new Date()
+        stage = new Stage atts
+        stage.save (err) ->
+          console.log "ERROR CREATING STAGE", err if err
+          res.redirect "/stages/#{stage.stub}"
 
   app.get "/stages/:stub", (req, res) ->
     Stage.findOne stub: req.param("stub"), (err, stage) ->
