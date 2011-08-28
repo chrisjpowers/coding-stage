@@ -339,12 +339,192 @@ width: 100% !important;
   background: rgba(255,255,255,.7);
   padding: 20px; /* 20 / 560 */
   margin-top: -20px;
-  border-top: 2px solid $mdgray;
-  border-bottom: 2px solid $mdgray;
+  border-top: 2px solid $ltgray;
+  border-bottom: 2px solid $ltgray;
+}
+
+#conversation {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+
+  article {
+    font-size: 1.1em;
+    margin: 0 0 .4em;
+
+    p {
+      color: $mdgray;
+    }
+
+    strong {
+      color: $ltturq;
+    }
+
+  }
+
+  .empty {
+    font-style: italic;
+  }
+  
+  .coder strong {
+    color: $turq;
+  } 
+
+  .owner strong {
+    color: $black;
+  }
+
+  .baton strong {
+    color: $green;
+  }
+  
+}
+
+#chat {
+
+  input[type="text"] {
+    width: 100%;
+    margin-right: 0%;
+  }
+  
+  input[type="submit"] {
+    width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    @include button;
+    margin-top: 10px;
+  }
+
 }
   
+#video-chat {
+  display: none;
+}
+  
+/* ATTENDEES */
 
+aside {
+  padding: 0 20px;
+}
 
+#attendees {
+  overflow: visible;
+  margin-bottom: 20px;
+  h1 > a {
+    left: -17px;
+    margin-bottom: 5px;
+    font-size: .5em; /* 12 / 20 */
+    padding: 4px 5px 5px 20px;
+    position: relative;
+    text-shadow: none;
+    background: {
+      image: url(../img/icons/sprite.png);
+      position: -228px -29px;
+      repeat: no-repeat;
+    }
+    @include rounded(4px);
+    @include sans(500);
+    @include float(left);
+    @include animate(0.1s, background-color);
+    &:hover {
+      background-position: -28px -29px;
+    }
+  }
+  ol {
+    font-size: 1.3em;
+    margin-top: 0.4em;
+    clear: both;
+  }
+  li {
+    padding: 4px 5px;
+    position: relative;
+    list-style-type: none;
+    color: $ltturq;
+    &:hover {
+      background-color: $white;
+      cursor: pointer;
+    }
+  }
+  li.attendee {
+    border-top: 1px solid $white;
+    font-weight: 700;
+    ul {
+      overflow: hidden;
+      li {
+        font-size: .9em;
+        text-align: right;
+        padding: 2px 10px 2px 0;
+        float: left;
+        display: inline;
+        a {
+          font-weight: normal;
+          text-shadow: none;
+          &:hover {
+            background: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    section {
+      h1 {
+        display: none;
+      }
+    }
+  }
+  li.baton:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(../img/icons/sprite.png) -33px -33px no-repeat;
+    position: absolute;
+    left: -13px;
+    top: 7px;
+  }
+  .coder {
+    color: $turq;
+  } 
+
+  .owner {
+    color: $black;
+  }
+
+  .baton {
+    color: $green;
+  }
+  
+}
+
+/* FOOTER */
+
+footer {
+  clear: both;
+  padding: 20px;
+  border-top: 2px solid $ltgray;
+  nav {
+    li {
+      font-size: 1.2em;
+      @include float(left);
+      margin-right: 1em;
+      a {
+        padding: 3px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: block;
+        @include rounded(4px);
+      }
+    }
+  }
+  small {
+    clear: both;
+    display: block;
+    color: $mdgray;
+    font-size: 1em;
+    width: 100%;
+  }
+}
+  
 
 
 
@@ -408,6 +588,7 @@ width: 100% !important;
   }
 
   aside {
+    padding: 0;
     width: 31.25%; /* 300 / 960 */
     margin-right: 2.08033333%; /* 20 / 960 */
     @include float(right);
@@ -490,46 +671,19 @@ width: 100% !important;
         line-height: 2.4;
       }
     }
+
   /* TEXT CHAT */
   
   #conversation {
     height: 150px;
-    overflow-y: auto;
-    margin-bottom: 5px;
-
     article {
       font-size: 1.3em;
-      margin: 0 0 .4em;
-
-      p {
-        color: $mdgray;
-      }
-
-      strong {
-        color: $ltturq;
-      }
-
     }
-
-    .empty {
-      font-style: italic;
-    }
-    
-    .coder strong {
-      color: $turq;
-    } 
-
-    .owner strong {
-      color: $black;
-    }
-
-    .baton strong {
-      color: $green;
-    }
-    
   }
   
   #chat {
+  
+    border-bottom: 0;
 
     input[type="text"] {
       width: 80%;
@@ -538,10 +692,8 @@ width: 100% !important;
     
     input[type="submit"] {
       width: 16%;
-      padding-left: 0;
-      padding-right: 0;
+      margin-top: 0;
       @include float(right);
-      @include button;
     }
 
   }
@@ -550,6 +702,7 @@ width: 100% !important;
   
   #video-chat {
     text-align: center;
+    display: block;
         
     article {
       background: $ltgray url(../img/bg/empty-video.png) 50% 50% no-repeat;
@@ -605,45 +758,12 @@ width: 100% !important;
   /* ATTENDEES */
   
   #attendees {
-    overflow: visible;
-    h1 > a {
-      left: -17px;
-      margin-bottom: 5px;
-      font-size: .5em; /* 12 / 20 */
-      padding: 4px 5px 5px 20px;
-      position: relative;
-      text-shadow: none;
-      background: {
-        image: url(../img/icons/sprite.png);
-        position: -228px -29px;
-        repeat: no-repeat;
-      }
-      @include rounded(4px);
-      @include sans(500);
-      @include float(left);
-      @include animate(0.1s, background-color);
-      &:hover {
-        background-position: -28px -29px;
-      }
-    }
     ol {
       font-size: 1.5em;
-      margin-top: 0.4em;
-      clear: both;
-    }
-    li {
-      padding: 4px 5px;
-      position: relative;
-      list-style-type: none;
-      color: $ltturq;
-      &:hover {
-        background-color: $white;
-        cursor: pointer;
-      }
     }
     li.attendee {
-      border-top: 1px solid $white;
       text-shadow: 0 1px 0 #fff, 0 -1px 0 $black50;
+      font-weight: 500;
       ul {
         position: absolute;
         right: 0;
@@ -655,16 +775,9 @@ width: 100% !important;
         @include rounded(0 0 4px 4px);
         li {
           font-size: .7em;
-          text-align: right;
+          float: none;
+	  display: block;
           padding: 2px 5px;
-          a {
-            font-weight: normal;
-            text-shadow: none;
-            &:hover {
-              background: none;
-              cursor: pointer;
-            }
-          }
         }
       }
       section {
@@ -693,54 +806,14 @@ width: 100% !important;
         display: block;
       }
     }
-    li.baton:before {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      background: url(../img/icons/sprite.png) -33px -33px no-repeat;
-      position: absolute;
-      left: -13px;
-      top: 7px;
-    }
-    .coder {
-      color: $turq;
-    } 
-
-    .owner {
-      color: $black;
-    }
-
-    .baton {
-      color: $green;
-    }
-    
   }
-  
+    
   /* FOOTER */
   
   footer {
-    clear: both;
     padding: 10px 2.08033333%; /* 10 & 20 / 960 */
-    nav {
-      li {
-        font-size: 1.2em;
-        @include float(left);
-        margin-right: 1em;
-        a {
-          padding: 3px;
-          font-weight: 700;
-          text-transform: uppercase;
-          display: block;
-          @include rounded(4px);
-        }
-      }
-    }
+    border: 0;
     small {
-      clear: both;
-      display: block;
-      color: $mdgray;
-      font-size: 1em;
       width: 62.5%; /* 560 / 960 */ 
     }
   }
