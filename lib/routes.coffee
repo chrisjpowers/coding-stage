@@ -5,7 +5,7 @@ pusher = require "pusher"
 
 exports.run = (express, app) ->
   app.use (req, res, next) ->
-    res.local 'pusher', pusher
+    res.locals pusher: pusher, otKey: null, otToken: null, stage: null
     next()
 
   app.get "/", (req, res) ->
