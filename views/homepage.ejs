@@ -12,48 +12,12 @@
 	<section id="stage">
 	
             <h1><%= stage.name %></h1>
-            <!-- <a href="/invite" title="Invite coders to join you" class="button invite">Invite Coders</a> -->
 		<a href="#" id="run-code" class="button">Run</a>
-                <!--	
-                <% contributors.forEach(function(user) { %>
-                <p>Contributor <%= user.github.name %></p>
-                <% }) %>
-                <% if(everyauth.loggedIn) { %>
-                <p>Current User <%= everyauth.github.user.name %></p>
-                <% } %>
-                -->
-                <!--
-		<form id="stage-settings">
-	
-			<fieldset>
-				<legend>Update Your Stage Settings</legend>
-	
-				<label for="private">Private Stage?</label>
-				<input type="checkbox" name="private" id="private" value="" />
-	
-				<label for="limit">Stage Limit</label>
-				<input type="text" placeholder="15" name="limit" id="limit" /> 
-				
-				<input type="submit" value="Update Stage Settings" />
-				
-			</fieldset>
-		</form>
-                -->
-		
+
 		<section id="editor">
 	
 			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
                         <section id="ace-editor"><%= stage.content %></section>
-                        <!--
-			<label for="files">Stage Files</label>
-			<select id="files" name="files">
-				<option data-file="file-info-here">File Name Goes Here</option>
-				<option data-file="file-info-here">File Name Goes Here</option>
-				<option data-file="file-new">Create a New File</option>
-			</select>
-		
-			<a href="#" title="Import a Gist" class="button import">Import a Gist File</a>
-                        -->
 		</section>
 		
 	</section>
@@ -82,23 +46,6 @@
                             <%= comment.author %>:</strong> <%= comment.message %></p>
                           </article>
                         <% }) %>
-                        <!--
-			<article class="attendee">
-				<p><strong>Username:</strong> This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee.</p>
-			</article>
-	
-			<article class="attendee coder">
-				<p><strong>Username:</strong> This is the text of a coder</p>
-			</article>
-	
-			<article class="attendee coder owner">
-				<p><strong>Username:</strong> This is the text of a stage owner</p>
-			</article>
-	
-			<article class="attendee coder baton">
-				<p><strong>Username:</strong> This is the text of a coder that has the baton</p>
-			</article>
-                        -->	
 		</section>
 
 	</section>
@@ -108,26 +55,6 @@
 <aside>
 
 	<section id="video-chat">
-        <!--
-
-		<article id="tokbox-team-1" class="baton">
-		  <div id="tokbox-team-1-placeholder"></div>
-		</article>
-
-		<article id="tokbox-team-2">
-		  <div id="tokbox-team-2-placeholder"></div>
-		</article>
-
-		<article id="tokbox-team-3">
-		  <div id="tokbox-team-3-placeholder"></div>
-		</article>
-
-		<article id="tokbox-team-4">
-		  <div id="tokbox-team-4-placeholder"></div>
-		</article>
-
-                <a href="#" class="button">Join the video chat</a> 
-                -->
 
 	</section>
 	
@@ -159,80 +86,6 @@
                       </li>
                     <% }) %>
                 </ol>
-                <!--
-			<li class="attendee coder owner">
-				Owner
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
-  				</ul>
-  		  </section>
-			</li>
-	
-			<li class="attendee coder">
-				Coder
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
-  				</ul>
-  		  </section>
-			</li>
-	
-			<li class="attendee coder">
-				Coder
-
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
-  				</ul>
-  		  </section>
-			</li>
-	
-			<li class="attendee coder baton">
-				Baton Holder
-
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
-  				</ul>
-  		  </section>
-			</li>
-	
-			<li class="attendee">
-				Attendee
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> 
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> 
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> 
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> 
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> 
-  				</ul>
-  		  </section>
-			</li>
-		</ol>
-                -->	
 	</section>
 
 </aside>
