@@ -216,10 +216,10 @@ header nav li a {
     @include display(400);
   }
   p {
-    font-size: 1.7em;
+    font-size: 1.5em;
     text-shadow: 0 1px 0 #fff;
     color: $black;
-    @include serif(500);
+    @include sans(500);
   }
 }
 
@@ -940,7 +940,7 @@ form[action="/stages"] {
       font-size: 3.8em;
     }
     p {
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
   }
   
@@ -1020,7 +1020,7 @@ form[action="/stages"] {
       font-size: 4.5em;
     }
     p {
-      font-size: 1.6em;
+      font-size: 1.5em;
     }
   }
   
@@ -1382,7 +1382,7 @@ form[action="/stages"] {
       font-size: 6.8em;
     }
     p {
-      font-size: 2em;
+      font-size: 1.8em;
     }
   }
   
