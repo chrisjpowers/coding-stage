@@ -19,6 +19,23 @@ jQuery(function () {
       });
     });
   }
+
+  var stagePicker = jQuery("#filter.stagePicker select");
+  var allStages = jQuery(".allStages");
+  var myStages = jQuery(".myStages");
+
+  allStages.show();
+  myStages.hide();
+
+  stagePicker.change(function (e) {
+    if (this.value === "all") {
+      allStages.show();
+      myStages.hide();
+    } else {
+      allStages.hide();
+      myStages.show();
+    }
+  });
 });
 
 (function backboneModels (global) {

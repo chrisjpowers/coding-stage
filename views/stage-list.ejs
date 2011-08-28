@@ -8,98 +8,62 @@
   </form>
   -->
 
-  <form id="filter">
+  <% if (user) { %>
+  <form class="stagePicker" id="filter">
     <select>
-      <option>Show me all the stages</option>
-      <option>Show me all of my stages</option>
+      <option value="all">Show me all the stages</option>
+      <option value="mine">Show me all of my stages</option>
     </select>
   </form>
+  <% } %>
 
-  <% stages.forEach(function(stage) { %>
-  <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
-    <h1><%= stage.name %></h1>
-    <h2><%= stage.language %></h2>
-    <% watcherCount = stage.watchers.length %>
-    <p>There's <%= watcherCount %> <%= watcherCount == 1 ? "person" : "people" %> in here</p>
-    <% if(stage.creatorName) { %>
-      <small>Stage created by <%= stage.creatorName %></small>
-      <% } %>
+  <div class="myStages">
+    <% myStages.forEach(function(stage) { %>
+    <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
+      <h1><%= stage.name %></h1>
+      <h2><%= stage.language %></h2>
+      <% watcherCount = stage.watchers.length %>
+      <p>There's <%= watcherCount %> <%= watcherCount == 1 ? "person" : "people" %> in here</p>
+      <% if(stage.creatorName) { %>
+        <small>Stage created by <%= stage.creatorName %></small>
+        <% } %>
+      </a>
+    <% }) %> 
+    <% if(everyauth.loggedIn) { %>
+    <a href="/stages/new" id="create">
+      <p>Create your own stage&nbsp;now</p>
     </a>
-  <% }) %> 
-  <!--
-  <a href="#" id="stage1">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
+    <% } %>
 
-  <a href="#" id="stage2">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
+    <% if(!everyauth.loggedIn) { %>
+    <a href="/auth/github" id="create">
+      <p>Login to create your own&nbsp;stage</p>
+    </a>
+    <% } %>
+  </div>
+  <div class="allStages">
+    <% stages.forEach(function(stage) { %>
+    <a href="/stages/<%= stage.stub %>" id="stage<%= stage.id %>">
+      <h1><%= stage.name %></h1>
+      <h2><%= stage.language %></h2>
+      <% watcherCount = stage.watchers.length %>
+      <p>There's <%= watcherCount %> <%= watcherCount == 1 ? "person" : "people" %> in here</p>
+      <% if(stage.creatorName) { %>
+        <small>Stage created by <%= stage.creatorName %></small>
+        <% } %>
+      </a>
+    <% }) %> 
+    <% if(everyauth.loggedIn) { %>
+    <a href="/stages/new" id="create">
+      <p>Create your own stage&nbsp;now</p>
+    </a>
+    <% } %>
 
-  <a href="#" id="stage3">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-
-  <a href="#" id="stage4">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-
-  <a href="#" id="stage5">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-
-  <a href="#" id="stage6">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-
-  <a href="#" id="stage7">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-
-  <a href="#" id="stage8">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-
-  <a href="#" id="stage9">
-    <h1>Stage Name</h1>
-    <h2>Language</h2>
-    <p>There's 4 people in here</p>
-    <small>Stage created by Chris Powers</small>
-  </a>
-  -->
-  <% if(everyauth.loggedIn) { %>
-  <a href="/stages/new" id="create">
-    <p>Create your own stage&nbsp;now</p>
-  </a>
-  <% } %>
-
-  <% if(!everyauth.loggedIn) { %>
-  <a href="/auth/github" id="create">
-    <p>Login to create your own&nbsp;stage</p>
-  </a>
-  <% } %>
+    <% if(!everyauth.loggedIn) { %>
+    <a href="/auth/github" id="create">
+      <p>Login to create your own&nbsp;stage</p>
+    </a>
+    <% } %>
+  </div>
 
 </section>
