@@ -201,38 +201,64 @@
 	////////////////////////////// ACE EDITOR VIEWS  //
 	
 	
-	
-	// TOKBOX VIEWS ///////////////////////////////////
-	extend('codingstage.views.videoChatSection', new Backbone.View.extend({
+	extend('codingstage.views.notification', Backbone.View.extend({
+		'el': $('body')
 		
-	}));
-	
-	extend('codingstage.views.video', new Backbone.View.extend({
-		'events': {
-		
+		,'events': {
+			'click .approve': 'clickApprove'
+			,'click .dismiss': 'clickDismiss'
 		}
 		
-		/*
-		var apiKey = '1127';
-		    var sessionId = '14685d1ac5907f4a2814fed28294d3f797f34955';
-		    var token = 'devtoken';
-		*/
-		
-		/**
-		 * Expects, in `options`:
-		 * 
-		 * @param {String} id The id that the TokBox instance should live in.
-		 * @param {String} apiKey
-		 * @param {String} sessionId
-		 * @param {String} token
-		 */
-		,'initialize': function initialize (options) {
-			if (!options.id || !options.apiKey || !options.sessionId || !options.token) {
-				throw 'Missing necessary Tokbox info.';
-			}
+		,'initialize': function initialize (option) {
 			
-			this._options = _.extend({}, options);
+		}
+		
+		,'createNotification': function createNotification (contents) {
+			this.currentNotification = $(document.createElement('div'));
+			
+			this.currentNotification.attr({
+				'id': 'notification'
+			});
+			
+			this.currentNotification.html(options.contents)
+			
+			$('body').append(this.currentNotification);
+		}
+		
+		,'destroyNotification': function destroyNotification () {
+			this.currentNotification.remove();
+			delete this.currentNotification;
+		}
+		
+		,'clickApprove': function clickApprove (ev) {
+			var target;
+			
+			target = $(ev.target);
+			ev.preventDefault();
+			
+			if (target.closest('#approve-collaborators').length > 0) {
+				this.addCollaborator();
+			} else if (target.closest('#approve-handoff').length > 0) {
+				this.passBaton();
+			}
+		}
+		
+		,'clickDismiss': function clickDismiss (ev) {
+			ev.preventDefault();
+			sendDeclineResponse();
+		}
+		
+		,'sendDeclineResponse': function sendDeclineResponse () {
+			
+		}
+		
+		,'passBaton': function passBaton () {
+			
+		}
+		
+		,'addCollaborator': function addCollaborator () {
+			
 		}
 	}));
-	/////////////////////////////////// TOKBOX VIEWS //
+
 } (this));
