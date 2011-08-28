@@ -766,27 +766,23 @@ footer {
   section:nth-of-type(2) {
     border-top: 1px solid $white25;
   }
-  article {
-    display: inline;
-    margin-right: 10px;
-    .approve, .dismiss {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      text-indent: -9999px;
-      background: url(../img/icons/sprite.png) no-repeat;
-      vertical-align: baseline;
-      position: relative;
-      margin: 0 -3px 0 0;
-      padding: 0;
-      top: 2px;
-    }
-    .dismiss {
-      background-position: -33px -123px;
-    }
-    .approve {
-      background-position: -3px -153px;
-    }
+  .approve, .dismiss {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px;
+    background: url(../img/icons/sprite.png) no-repeat;
+    vertical-align: baseline;
+    position: relative;
+    margin: 0 -3px 0 0;
+    padding: 0;
+    top: 2px;
+  }
+  .dismiss {
+    background-position: -33px -123px;
+  }
+  .approve {
+    background-position: -3px -153px;
   }
 }
 
