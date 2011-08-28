@@ -1,4 +1,5 @@
 User = require "models/user"
+Event = require "models/event"
 Stage = require "models/stage"
 TokBox = require "tokbox"
 pusher = require "pusher"
@@ -19,39 +20,52 @@ exports.run = (express, app) ->
       error: ->
         res.end "Error"
 
-  app.get "/", (req, res) ->
+  #app.get "/events", (req, res) ->
+    #Event.find({}).desc("createdAt").limit(9).exec (err, events) ->
+      #res.end("Events: #{events}")
+
+  #app.get "/addtest", (req, res) ->
+    #eventArgs =
+      #title: "Ben Mills"
+      #language: "CS"
+      #desc: "Afkdjsal flksajdg sakjdg sakg"
+      #createdAt: new Date()
+      #startDate: new Date()
+      #imgUrl: null
+
+    #event = new Event eventArgs
+    #event.save (err) ->
+      #console.log "ERROR CREATING STAGE", err if err
+      #res.end("Saved!")
+
+
+  getStagesAndEvents = (tpl, req, res) ->
     stages = []
     myStages = []
+    events = []
 
-    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
-      if req.loggedIn
-        Stage.find creatorId: req.user.id, (err, myStages) ->
-          res.render "front", {
-            stages: stages
-            myStages: myStages
+    Event.find({}).desc("createdAt").limit(9).exec (err, events) ->
+
+      Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
+        if req.loggedIn
+          Stage.find creatorId: req.user.id, (err, myStages) ->
+            res.render tpl, {
+              stages: stages,
+              myStages: myStages,
+              events: events
+            }
+        else
+          res.render tpl, {
+            stages: stages,
+            myStages: myStages,
+            events: events
           }
-      else
-        res.render "front", {
-          stages: stages
-          myStages: myStages
-        }
+
+  app.get "/", (req, res) ->
+    getStagesAndEvents 'front', req, res
 
   app.get "/stages", (req, res) ->
-    stages = []
-    myStages = []
-
-    Stage.find({}).desc("createdAt").limit(9).exec (err, stages) ->
-      if req.loggedIn
-        Stage.find creatorId: req.user.id, (err, myStages) ->
-          res.render "front", {
-            stages: stages
-            myStages: myStages
-          }
-      else
-        res.render "front", {
-          stages: stages
-          myStages: myStages
-        }
+    getStagesAndEvents 'stages/index', req, res
 
   app.get "/stages/new", (req, res) ->
     res.render "stages/new"
