@@ -41,11 +41,19 @@
 		}
 		
 		,'giveEditingPrivileges': function giveEditingPrivileges () {
-			
+			this.hasEditingPrivileges = true;
+			this.aceEditor.setScrollSpeed(1);
+			this.el.find('textarea').removeAttr('disabled');
 		}
 		
 		,'removeEditingPrivileges': function removeEditingPrivileges () {
+			this.hasEditingPrivileges = false;
+			this.aceEditor.setScrollSpeed(0);	
 			
+			this.el.find('textarea')
+				.attr({
+					'disabled': 'disabled'
+				});
 		}
 		
 		,'aceChange': function aceChange (ev) {
@@ -88,7 +96,6 @@
 			} else {
 				console.log('fail')
 			}
-			//this.aceEditor.setScrollSpeed(0)
 		}
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
