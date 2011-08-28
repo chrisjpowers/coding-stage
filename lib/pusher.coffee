@@ -37,11 +37,12 @@ pipe.channels.on "event:watcher-joining", (channelName, socket_id, data) ->
       stage.save (err) ->
 
 pipe.channels.on "event:adding-comment", (channelName, socket_id, data) ->
+  data.createdAt = new Date()
   Stage.findOne channel: channelName, (err, stage) ->
     if err
       console.log "Failed to find Stage for watcher", channelName, data
     else if stage
-      pipe.channel(channelName).trigger "added-comment", author: data.author, message: data.message
+      pipe.channel(channelName).trigger "added-comment", author: data.author, message: data.message, createdAt: data.createdAt
       stage.addComment data
       stage.save (err) ->
         console.log "Failed to save stage after comment", data, err if err

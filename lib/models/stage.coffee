@@ -13,6 +13,8 @@ Comments = new Schema
     type: String
   author:
     type: String
+  createdAt:
+    type: Date
 
 Watchers = new Schema
   name:
@@ -72,6 +74,6 @@ Stage.methods.removeWatcher = (id) ->
 
 Stage.methods.addComment = (data) ->
   this.comments ?= []
-  this.comments = [author: data.author, message: data.message].concat this.comments
+  this.comments = [author: data.author, message: data.message, createdAt: data.createdAt].concat this.comments
 
 module.exports = mongoose.model 'Stage', Stage

@@ -70,7 +70,11 @@
 
                         <% stage.comments.forEach(function(comment) { %>
                           <article class="attendee">
-                            <p><strong><time datetime="2011-08-27T21:51:35-05:00">(9:51:35)</time> <%= comment.author %>:</strong> <%= comment.message %></p>
+                          <p><strong>
+                            <% if(comment.createdAt) { %>
+                            <time datetime="<%= comment.createdAt.toISOString() %>">(<%= commentTime(comment.createdAt) %>)</time> 
+                            <% } %>
+                            <%= comment.author %>:</strong> <%= comment.message %></p>
                           </article>
                         <% }) %>
                         <!--
