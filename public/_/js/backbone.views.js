@@ -55,6 +55,10 @@
 			this.hasEditingPrivileges = true;
 			this.aceEditor.setScrollSpeed(1);
 			this.el.find('textarea').removeAttr('disabled');
+			
+			if (this.inputBlockerLayer) {
+				this.inputBlockerLayer.remove();
+			}
 		}
 		
 		,'removeEditingPrivileges': function removeEditingPrivileges () {
@@ -65,6 +69,26 @@
 				.attr({
 					'disabled': 'disabled'
 				});
+				
+			this.inputBlockerLayer = $(document.createElement('div'), {
+				'class': "blocker-layer"
+			}).css({
+				'position': 'absolute'
+				,'top': 0
+				,'left': 0
+				,'height': this.el.height()
+				,'width': this.el.width()
+				,'z-index': 1000
+			});
+			
+			this.el.append(this.inputBlockerLayer);
+			
+			this.inputBlockerLayer.position({
+				'my': 'left top'
+				,'at': 'left top'
+				,'of': this.el.find('#' + this.EDITOR_ID)
+				,'collision': 'none'
+			});
 		}
 		
 		,'aceChange': function aceChange (ev) {
