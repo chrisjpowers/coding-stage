@@ -29,3 +29,6 @@ exports.run = (express, app) ->
         'connection_data': "userid_#{new Date().getTime()}",
         'role': "publisher"
       res.render "homepage", stage: stage, otToken: otToken, otKey: TokBox.key
+
+  app.get "/support", (req, res) ->
+    res.render "support"
