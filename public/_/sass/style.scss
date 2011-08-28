@@ -358,10 +358,6 @@ a{
   margin-top: 10px;
 }
 
-#run-code {
-  margin-left: 10px;
-}
-
 #stage-settings, #editor {
 
   label { 
@@ -443,7 +439,7 @@ width: 100% !important;
   margin-bottom: 20px;
   overflow: hidden;
   
-  #search {
+  #search, #filter {
     width: 100%;
     input {
       width: 100%;
@@ -993,7 +989,7 @@ form[action="/stages"] {
   
     padding: 4.1666666666667% 0 4.1666666666667% 4.1666666666667%; /* 20 / 480 */
     
-    #search {
+    #search, #filter {
       width: 95.6521739130435%;
     }
     
@@ -1034,10 +1030,19 @@ form[action="/stages"] {
   
     padding: 3.3333333333333% 0 3.3333333333333% 3.3333333333333%; /* 20 / 600 */
     
+    > h1 {
+      @include float(left);
+    }
+    
     #search {
       width: 96.551724137931%; /* 560 / 580 */
     }
-    
+    #filter {
+      padding-left: 10px;
+      display: inline-block;
+      width: auto;
+    }
+        
     > a {
       width: 26.45%; /* 150 / 580 */
       margin: 1.7241379310345% 3.448275862069% 0 0; /* 20 / 580 */
@@ -1144,9 +1149,6 @@ form[action="/stages"] {
       right: 3.5714286%;
       margin-top: 0;
     }
-    #run-code {
-      right: 28%;
-    }
     
     #stage-settings, #editor {
 
@@ -1193,10 +1195,6 @@ form[action="/stages"] {
   #stage-list {
   
     padding: 2.6041666666667% 0 2.6041666666667% 2.6041666666667%; /* 20 / 768 */
-    
-    > h1 {
-      @include float(left);
-    }
     
     #search {
       width: 32.5520833333333%; /* 250 / 768 */
@@ -1254,12 +1252,12 @@ form[action="/stages"] {
     article {
       background: $ltgray url(../img/bg/empty-video.png) 50% 50% no-repeat;
       position: relative;
-      padding-bottom: 18.75%; /* 16:9 */
+      padding-bottom: 56.25%; /* 16:9 */
       height: 0;
-      width: 30%;
+      width: 100%;
       height: auto !important;
-      margin: 0 5% 5% 0;
-      @include float(left);
+      display: block;
+      margin: 0 0 5% 0;
       @include insetshadow;
       object, embed  {
         position: absolute;
@@ -1272,13 +1270,6 @@ form[action="/stages"] {
     
     article:last-of-type {
       margin-right: 0;
-    }
-    
-    .baton {
-      padding-bottom: 56.25%; /* 16:9 */
-      width: 100%;
-      height: auto;
-      display: block;
     }
     
     .button {
@@ -1454,10 +1445,6 @@ form[action="/stages"] {
         @include float(left);
       }
 
-    }
-
-    #run-code {
-      right: 25%;
     }
 
   /* STAGE LIST */

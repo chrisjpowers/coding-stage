@@ -47,7 +47,7 @@
 
       function getContainerId() {
         var id = "tokbox-" + counter;
-        var article = $("<article>", {"class": "baton"});
+        var article = $("<article>");
         var div = $("<div>", {"class": "tokbox", "id": id});
         article.append(div);
         $("#video-chat").append(article);
