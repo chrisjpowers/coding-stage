@@ -11,18 +11,16 @@ authOptions =
   password:
     loginWith: 'email'
     everyauth:
-      getLoginPath: '/login'
+      getLoginPath: '/new-session'
       postLoginPath: '/login'
       loginView: 'session-form.ejs'
       loginLocals:
         pusher: pusher
-        formType: 'login'
-      getRegisterPath: '/register'
+      getRegisterPath: '/new-session'
       postRegisterPath: '/register'
       registerView: 'session-form.ejs'
       registerLocals:
         pusher: pusher
-        formType: 'register'
       loginSuccessRedirect: '/'
       registerSuccessRedirect: '/'
   github:
