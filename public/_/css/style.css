@@ -597,6 +597,7 @@ footer {
 
 /* NOTIFICATIONS */
 #notification {
+  display: none;
   position: absolute;
   z-index: 101;
   top: 0;
