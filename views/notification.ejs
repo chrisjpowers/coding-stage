@@ -1,0 +1,11 @@
+<div id="notification">
+  [Username] would like the baton. <a id="close">Dismiss</a>
+</div>
+
+<script>
+ close = document.getElementById("close");
+ close.addEventListener('click', function() {
+   note = document.getElementById("notification");
+   note.style.display = 'none';
+ }, false);
+</script>
