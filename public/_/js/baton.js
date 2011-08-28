@@ -39,12 +39,14 @@
     var message;
 
     if(data.userId + "" == codingstage.user.id + "") {
-      codingstage.instance.ace.userBuffer.giveUserBaton()
+      codingstage.instance.ace.userBuffer.giveUserBaton();
+      codingstage.instance.ace.userBuffer.giveEditingPrivileges();
       $(document.documentElement).data("hasbaton", true); 
       message = "You have taken the stage!"
       $("#control").hide();
     } else {
-      codingstage.instance.ace.userBuffer.giveEditingPrivileges();
+      codingstage.instance.ace.userBuffer.removeUserBaton();
+      codingstage.instance.ace.userBuffer.removeEditingPrivileges();
       $(document.documentElement).data("hasbaton", false);
       message = data.name + " has taken the stage!";
       $("#control").show();
