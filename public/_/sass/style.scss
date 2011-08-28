@@ -410,6 +410,12 @@ aside {
 #attendees {
   overflow: visible;
   margin-bottom: 20px;
+  mark {
+    font-size: .9em;
+    color: $turq;
+    font-style: normal;
+    background: transparent;
+  }
   h1 > a {
     left: -17px;
     margin-bottom: 5px;
