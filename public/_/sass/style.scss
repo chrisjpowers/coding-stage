@@ -24,7 +24,7 @@ $mdgreen: #b6ec86;
 }
 
 @mixin serif($weight) {
-  font-family: Palatino, Cambria, 'Book Antiqua', Caslon, 'Times New Roman', Times, serif;
+  font-family: Cambria, 'Book Antiqua', Caslon, 'Times New Roman', Times, serif;
   font-weight: $weight;
 }
 
@@ -195,6 +195,31 @@ header nav li a {
     background: $white25;
     border-top: 1px solid $black75;
     color: $white;
+  }
+}
+
+/* LEADER */
+
+#leader {
+  position: relative;
+  padding: 15px 10% 30px;
+  width: 80%;
+  margin: 0 auto 30px;
+  text-align: center;
+  border-bottom: 1px dashed #fff;
+  h1 {
+    font-size: 4.5em;
+    color: $ltgray;
+    text-transform: uppercase;
+    text-shadow: 0 -1px 1px $black50, 0 1px 0 #fff;
+    line-height: 1;
+    @include display(400);
+  }
+  p {
+    font-size: 1.7em;
+    text-shadow: 0 1px 0 #fff;
+    color: $black;
+    @include serif(500);
   }
 }
 
@@ -520,12 +545,15 @@ footer {
   padding: 20px;
   border-top: 2px solid $ltgray;
   nav {
+    margin-bottom: 5px;
+    overflow: hidden;
+    margin-left: -3px;
     li {
       font-size: 1.2em;
       @include float(left);
       margin-right: 1em;
       a {
-        padding: 3px;
+        padding: 3px 3px 0;
         font-weight: 700;
         text-transform: uppercase;
         display: block;
@@ -639,12 +667,52 @@ form[action="/stages"] {
     margin: 0;
   }
     
+  /* LEADER */
+  
+  #leader {
+    padding: 50px 10% 50px;
+    width: 70%;
+    h1 {
+      font-size: 3.8em;
+    }
+    p {
+      font-size: 1.5em;
+    }
+  }
+  
+  #leader:before, #leader:after {
+    color: #fff;
+    font-size: 175px;
+    font-weight: 700;
+    position: absolute;
+    top: -35px;
+  }
+  #leader:after {
+    content: '}';
+    right: 0;
+  }
+  #leader:before {
+    content: '{';
+    left: 0;
+  }
+
 }/*/mediaquery*/
 
 @media screen and (min-width: 600px) {
 
   header nav li a {
     font-size: 1.3em;
+  }
+  
+  /* LEADER */
+  
+  #leader {
+    h1 {
+      font-size: 4.5em;
+    }
+    p {
+      font-size: 1.6em;
+    }
   }
   
 }/*/mediaquery*/
@@ -670,6 +738,20 @@ form[action="/stages"] {
   
   .vote {
     top: 11px;
+  }
+  
+  /* LEADER */
+  
+  
+  #leader {
+    padding: 40px 10%;
+    width: 65%;
+    h1 {
+      font-size: 5.5em;
+    }
+    p {
+      font-size: 1.6em;
+    }
   }
   
   /* COLUMNS */
@@ -925,6 +1007,20 @@ form[action="/stages"] {
   aside {
     width: 20.4545454545455%; /* 225 / 1100 */
     margin-right: 2.2727272727273%; /* 25 / 1100 */
+  }
+  
+  /* LAYERS */
+  
+  
+  #leader {
+    padding-top: 25px;
+    width: 55%;
+    h1 {
+      font-size: 6em;
+    }
+    p {
+      font-size: 2em;
+    }
   }
   
   /* PAGE COMPONENTS */
