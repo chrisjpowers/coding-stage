@@ -264,7 +264,8 @@ a {
 
 #text-chat {
   overflow: hidden;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  padding-bottom: 5px; }
 
 #conversation {
   height: 200px;
@@ -440,17 +441,23 @@ footer {
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
-.modal {
+.jqModal {
   display: none;
   position: fixed;
   top: 17%;
   left: 50%;
   margin-left: -300px;
   width: 600px;
-  background-color: #EEE;
-  color: #333;
-  border: 1px solid black;
-  padding: 12px; }
+  background: url(../img/bg/noise.png) center top repeat, url(../img/logo/stamp.png) 98% 150% no-repeat #eef2f2;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 20px rgba(29, 41, 41, 0.5); }
+  .jqModal .jqmClose {
+    position: relative;
+    left: 20px;
+    top: -15px;
+    z-index: 500; }
 
 .jqmOverlay {
   background-color: #000; }
@@ -467,9 +474,57 @@ footer {
 /* Fixed posistioning emulation for IE6
      Star selector used to hide definition from browsers other than IE6
      For valid CSS, use a conditional include instead */
-* html .modal {
+* html .jqModal {
   position: absolute;
   top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px'); }
+
+/* FORMS */
+form[action="/stages"] {
+  max-width: 400px;
+  padding: 20px; }
+  form[action="/stages"] h1 {
+    font-size: 2.8em;
+    color: #4da4a4;
+    text-transform: uppercase;
+    line-height: 1;
+    font-family: ostrich-sans, Univers, 'Helvetica Neue', Helmet, sans-serif;
+    font-weight: 900; }
+  form[action="/stages"] label {
+    font-size: 1.4em;
+    color: #4a525a;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 0 5px;
+    font-family: Helmet, FreeSans, sans-serif;
+    font-weight: 700; }
+  form[action="/stages"] input[type="text"], form[action="/stages"] select {
+    width: 100%;
+    margin-bottom: 10px; }
+  form[action="/stages"] input[type="submit"] {
+    background: #4da4a4 url(../img/bg/grad-button.png) left top repeat-x;
+    padding: 5px 10px 4px;
+    display: inline-block;
+    border: 1px solid #4da4a4;
+    color: #fff;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    -webkit-box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    -moz-box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    -o-box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    box-shadow: 0 0 3px rgba(29, 41, 41, 0.5);
+    text-shadow: 0 -1px 0 rgba(77, 164, 164, 0.5);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-family: Helmet, FreeSans, sans-serif;
+    font-weight: 700;
+    -webkit-transition: all ease-in-out 0.1s;
+    -moz-transition: all ease-in-out 0.1s;
+    transition: all ease-in-out 0.1s; }
+    form[action="/stages"] input[type="submit"]:hover {
+      color: #fff;
+      background-color: #92d05c;
+      border-color: #92d05c; }
 
 /* MEDIA QUERIES
 -------------------------------------------------------------------------------*/
