@@ -35,6 +35,8 @@ Stage = new Schema
     type: String
   stub:
     type: String
+  content:
+    type: String
     
 Stage.pre "save", (next) ->
   if this.get("channel")

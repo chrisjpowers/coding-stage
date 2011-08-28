@@ -48,6 +48,12 @@ pipe.channels.on "event:adding-comment", (channelName, socket_id, data) ->
 
 pipe.channels.on 'event:editor-updated', (channelName, socket_id, data) ->
   Stage.findOne channel: channelName, (err, stage) ->
-    pipe.channel(channelName).trigger("editor-updated", data) if stage
+    if err
+      console.log "Failed to find Stage", channelName
+    else if stage
+      pipe.channel(channelName).trigger("editor-updated", data)
+      stage.content = data.lines.join("\n")
+      stage.save (err) ->
+        console.log "Unable to save stage content update", err if err
   
 module.exports = pipe
