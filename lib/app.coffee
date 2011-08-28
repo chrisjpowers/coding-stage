@@ -9,13 +9,15 @@ everyauth.debug = true
 useDomain = (req, res, next) ->
   if process.env.NODE_ENV == "production"
     console.log req.headers.host
-    next()
+    if req.headers.host != "www.codingstage.com"
+      res.statusCode = 301
+      res.header('Location', "http://www.codingstage.com")
+      res.end()
+    else
+      next()
   else
     next()
-  #res.statusCode = 301
-  #res.header('Location', "http://www.codingstage.com")
-  #res.end()
-  #next()
+  next()
 
 app = express.createServer(
   useDomain,
