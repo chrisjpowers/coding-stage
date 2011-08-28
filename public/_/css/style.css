@@ -475,7 +475,7 @@ aside {
   margin-bottom: 20px; }
   #attendees .button {
     font-size: 1.4em;
-    margin: 0 0 10px;
+    margin: 0 0 20px;
     display: block;
     background-color: #b7bcc2;
     border-color: #b7bcc2;
@@ -497,7 +497,7 @@ aside {
     position: relative;
     text-shadow: none;
     background-image: url(../img/icons/sprite.png);
-    background-position: -258px -29px;
+    background-position: -318px -29px;
     background-repeat: no-repeat;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -511,7 +511,7 @@ aside {
     -moz-transition: background-color ease-in-out 0.1s;
     transition: background-color ease-in-out 0.1s; }
     #attendees h1 > a:hover {
-      background-position: -58px -29px; }
+      background-position: -118px -29px; }
   #attendees ol {
     font-size: 1.3em;
     margin-top: 0.4em;
@@ -548,7 +548,7 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -63px -33px no-repeat;
+    background: url(../img/icons/sprite.png) -123px -33px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px; }
@@ -557,7 +557,7 @@ aside {
     display: block;
     width: 10px;
     height: 10px;
-    background: url(../img/icons/sprite.png) -3px -94px no-repeat;
+    background: url(../img/icons/sprite.png) -63px -94px no-repeat;
     position: absolute;
     left: -13px;
     top: 7px; }
@@ -610,14 +610,35 @@ footer {
   color: #eef2f2;
   text-shadow: 0 -1px 0 rgba(29, 41, 41, 0.5);
   text-align: center;
-  line-height: 2.5;
+  line-height: 2.25;
   overflow: hidden;
   -webkit-box-shadow: 0 0 5px black;
   -moz-box-shadow: 0 0 5px black;
   box-shadow: 0 0 5px black;
-  font-size: 2em;
+  font-size: 1.8em;
   font-family: Helmet, FreeSans, sans-serif;
-  font-weight: 700; }
+  font-weight: 700;
+  padding: 0 25px; }
+  #notification section:nth-of-type(2) {
+    border-top: 1px solid rgba(238, 242, 242, 0.25); }
+  #notification article {
+    display: inline;
+    margin-right: 10px; }
+    #notification article .approve, #notification article .dismiss {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      text-indent: -9999px;
+      background: url(../img/icons/sprite.png) no-repeat;
+      vertical-align: baseline;
+      position: relative;
+      margin: 0 -3px 0 0;
+      padding: 0;
+      top: 2px; }
+    #notification article .dismiss {
+      background-position: -33px -123px; }
+    #notification article .approve {
+      background-position: -3px -153px; }
 
 @-webkit-keyframes slideDown {
   0% {
@@ -1114,13 +1135,13 @@ form[action="/stages"] {
       #attendees li.attendee section h1 {
         width: 16px;
         height: 16px;
-        background: url(../img/icons/sprite.png) -234px -64px no-repeat;
+        background: url(../img/icons/sprite.png) -294px -64px no-repeat;
         text-indent: -9999px;
         -webkit-transition: none ease-in-out 0s;
         -moz-transition: none ease-in-out 0s;
         transition: none ease-in-out 0s; }
       #attendees li.attendee section:hover h1 {
-        background-position: -4px -64px;
+        background-position: -64px -64px;
         cursor: pointer; }
   #attendees li.attendee:hover {
     cursor: pointer; }
