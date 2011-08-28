@@ -2,6 +2,7 @@
   document.documentElement.setAttribute('data-pusherchannel', '<%= stage.channel %>' );
   document.documentElement.setAttribute('data-editorlanguage', '<%= stage.language %>');
   document.documentElement.setAttribute('data-iscontributor', <%= isContributor(contributors, everyauth) ? "true" : "false" %>);
+  document.documentElement.setAttribute('data-hasbaton', <%= hasBaton(stage, everyauth) ? "true" : "false" %>);
 </script>
 
         <%- partial("header") %>
@@ -20,6 +21,7 @@
                 <p>Current User <%= everyauth.github.user.name %></p>
                 <% } %>
                 -->
+                <!--
 		<form id="stage-settings">
 	
 			<fieldset>
@@ -30,18 +32,18 @@
 	
 				<label for="limit">Stage Limit</label>
 				<input type="text" placeholder="15" name="limit" id="limit" /> 
-				<!-- The placeholder should be a default and then update depending on the user changed setting -->
 				
 				<input type="submit" value="Update Stage Settings" />
 				
 			</fieldset>
 		</form>
+                -->
 		
 		<section id="editor">
 	
 			<!-- This section must not have whitespace in it, otherwise that gets inserted into the buffer when ACE inits. -->
                         <section id="ace-editor"><%= stage.content %></section>
-
+                        <!--
 			<label for="files">Stage Files</label>
 			<select id="files" name="files">
 				<option data-file="file-info-here">File Name Goes Here</option>
@@ -50,7 +52,7 @@
 			</select>
 		
 			<a href="#" title="Import a Gist" class="button import">Import a Gist File</a>
-			
+                        -->
 		</section>
 		
 	</section>

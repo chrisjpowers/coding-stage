@@ -21,6 +21,7 @@ exports.run = (express, app) ->
   app.post "/stages", (req, res) ->
     atts = req.param("stage")
     atts.creatorId = req.user.id
+    atts.batonHolderId = req.user.id
     stage = new Stage atts
     stage.save (err) ->
       console.log "ERROR CREATING STAGE", err if err
