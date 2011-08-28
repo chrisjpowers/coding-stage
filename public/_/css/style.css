@@ -623,8 +623,8 @@ form[action="/stages"] {
 
   /* LEADER */
   #leader {
-    padding: 40px 10%;
-    width: 65%; }
+    padding: 40px 8%;
+    width: 64%; }
     #leader h1 {
       font-size: 5.5em; }
     #leader p {
@@ -853,10 +853,10 @@ form[action="/stages"] {
 
   /* LAYERS */
   #leader {
-    padding-top: 25px;
-    width: 55%; }
+    padding: 15px 6.25% 50px;
+    width: 58%; }
     #leader h1 {
-      font-size: 6em; }
+      font-size: 6.8em; }
     #leader p {
       font-size: 2em; }
 
@@ -915,6 +915,13 @@ form[action="/stages"] {
   footer small {
     width: 52%;
     font-size: 1.1em; } }
+/*/mediaquery*/
+@media screen and (min-width: 1500px) {
+  /* LEADER */
+  #leader {
+    padding: 50px 5% 35px; }
+    #leader h1 {
+      font-size: 6em; } }
 /*/mediaquery*/
 /*- BROWSER PATCHES
 ----------------------------------------------------------------------*/

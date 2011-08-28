@@ -744,8 +744,8 @@ form[action="/stages"] {
   
   
   #leader {
-    padding: 40px 10%;
-    width: 65%;
+    padding: 40px 8%;
+    width: 64%;
     h1 {
       font-size: 5.5em;
     }
@@ -1013,10 +1013,10 @@ form[action="/stages"] {
   
   
   #leader {
-    padding-top: 25px;
-    width: 55%;
+    padding: 15px 6.25% 50px;
+    width: 58%;
     h1 {
-      font-size: 6em;
+      font-size: 6.8em;
     }
     p {
       font-size: 2em;
@@ -1097,6 +1097,19 @@ form[action="/stages"] {
     }
   }
   
+}/*/mediaquery*/
+
+@media screen and (min-width: 1500px) {
+
+  /* LEADER */
+  
+  #leader {
+    padding: 50px 5% 35px;
+    h1 {
+      font-size: 6em;
+    }
+  }
+
 }/*/mediaquery*/
 
 
