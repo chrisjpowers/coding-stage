@@ -635,7 +635,7 @@ footer {
     #notification a:hover {
       color: #000;
       cursor: pointer;
-      background: transparent; }
+      background-color: transparent; }
   #notification .approve, #notification .dismiss {
     display: inline-block;
     width: 16px;
