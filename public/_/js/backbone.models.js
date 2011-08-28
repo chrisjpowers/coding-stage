@@ -2,7 +2,12 @@ jQuery(function () {
   jQuery("#run-code").click(function (e) {
     e.preventDefault();
     code = codingstage.instance.ace.userBuffer.aceEditor.getSession().getValue()
-    $.post("/run", {lang:"ruby", code: code}, function (output) {
+    lang = $(document.documentElement).data('editorlanguage');
+    if (lang === "JavaScript") lang = "js"
+    if (lang === "Ruby") lang = "ruby"
+    if (lang === "CoffeeScript") lang = "coffee"
+  
+    $.post("/run", {lang: lang, code: code}, function (output) {
       alert(output);
     });
   });
