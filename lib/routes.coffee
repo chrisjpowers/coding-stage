@@ -19,16 +19,23 @@ exports.run = (express, app) ->
     res.render "stages/new"
 
   app.post "/stages", (req, res) ->
-    stage = new Stage req.param("stage")
+    atts = req.param("stage")
+    atts.creatorId = req.user.id
+    stage = new Stage atts
     stage.save (err) ->
+      console.log "ERROR CREATING STAGE", err if err
       res.redirect "/stages/#{stage.stub}"
 
   app.get "/stages/:stub", (req, res) ->
     Stage.findOne stub: req.param("stub"), (err, stage) ->
-      otToken = TokBox.generateToken
-        'connection_data': "userid_#{new Date().getTime()}",
-        'role': "publisher"
-      res.render "homepage", stage: stage, otToken: otToken, otKey: TokBox.key
+      if stage
+        otToken = TokBox.generateToken
+          'connection_data': "userid_#{new Date().getTime()}",
+          'role': "publisher"
+        stage.allContributors (contributors) ->
+          res.render "homepage", stage: stage, otToken: otToken, otKey: TokBox.key, contributors: contributors
+      else
+        res.render status: 404
 
   app.get "/support", (req, res) ->
     res.render "support"

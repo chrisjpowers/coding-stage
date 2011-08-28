@@ -1,3 +1,5 @@
+_ = require "underscore"
+
 module.exports =
   commentTime: (date) ->
     hour = date.getHours()
@@ -7,3 +9,10 @@ module.exports =
     sec = date.getSeconds()
     sec = "0" + sec if sec < 10
     hour + ":" + min + ":" + sec
+
+  isContributor: (contributors, everyauth) ->
+    return false unless everyauth.loggedIn
+    !!(_.detect contributors, (user) -> 
+      console.log "Comparing", user.github.email, everyauth.user.github.email
+      user.github.email == everyauth.user.github.email
+    )

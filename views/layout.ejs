@@ -94,7 +94,11 @@
     <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
     <script src="/_/js/tokbox.js"></script>
     <script>
-      codingstage.tokbox.init({key: <%= otKey %>, token: "<%= otToken %>", sessionId: "<%= stage.channel %>"});
+      codingstage.tokbox.init({
+        key: <%= otKey %>, 
+        token: "<%= otToken %>", 
+        sessionId: "<%= stage.channel %>"
+      });
     </script>
   <% } %>
 
