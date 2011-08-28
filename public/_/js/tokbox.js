@@ -1,5 +1,5 @@
 (function(global) {
-  var session, enableVideo;
+  var counter = 0, containerMap = {}, session, enableVideo;
 
   extend("codingstage.tokbox", {
     init: init
@@ -11,13 +11,14 @@
     
     session.addEventListener("sessionConnected", sessionConnectedHandler);
     session.addEventListener("streamCreated", streamCreatedHandler);
+    session.addEventListener("streamDestroyed", streamDestroyedHandler);
     session.connect(options.key, options.token);
   }
 
   function sessionConnectedHandler(event) {
                subscribeToStreams(event.streams);
                if(enableVideo) {
-                 session.publish("tokbox-team-1-placeholder");
+                 session.publish(getContainerId());
                }
       }
       
@@ -30,8 +31,27 @@
                       var stream = streams[i];
                       if (stream.connection.connectionId != session.connection.connectionId) {
                         console.log("stream", stream);
-                              session.subscribe(stream, "tokbox-team-" + (i + 2) + "-placeholder");
+                              session.subscribe(stream, getContainerId());
                       }
               }
+      }
+
+      function streamDestroyedHandler(event) {
+        setTimeout(function() {
+          $("#video-chat article").each(function() {
+            var article = $(this);
+            if(!article.children()[0]) { article.remove(); }
+          });
+        }, 1000);
+      }
+
+      function getContainerId() {
+        var id = "tokbox-" + counter;
+        var article = $("<article>", {"class": "baton"});
+        var div = $("<div>", {"class": "tokbox", "id": id});
+        article.append(div);
+        $("#video-chat").append(article);
+        counter += 1;
+        return id;
       }
 })(window);
