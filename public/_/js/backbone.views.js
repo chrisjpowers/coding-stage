@@ -67,7 +67,16 @@
 		}
 		
 		,'overwriteContents': function overwriteContents (aceInst, contents) {
+			var oldPosition;
+			
+			oldPosition = this.aceEditor.getCursorPosition().row;
 			get(aceInst).setValue(contents);
+			
+			// Yes yes, I know.  This is wrong.
+			this.aceEditor.gotoLine(oldPosition + 1);
+			this.aceEditor.gotoLine(oldPosition + 1);
+
+			//codingstage.instance.ace.userBuffer.aceEditor.setScrollSpeed(0)
 		}
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //

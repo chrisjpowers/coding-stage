@@ -30,8 +30,8 @@ pipe.channels.on "event:watcher-joining", (channelName, socket_id, data) ->
       stage.save (err) ->
 
 # Simply relay all channel events back to browser
-# pipe.channels.on 'event', (eventName, channelName, socket_id, data) ->
-#   data.fromServer = true
-#   pipe.channel(channelName).trigger(eventName, data)
+ pipe.channels.on 'event', (eventName, channelName, socket_id, data) ->
+   data.fromServer = true
+   pipe.channel(channelName).trigger(eventName, data)
   
 module.exports = pipe
