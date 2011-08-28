@@ -150,7 +150,7 @@ header nav li a {
 /* FEATURED ROOMS */
 #featured {
   padding: 30px 20px 20px;
-  border-bottom: 1px dotted #fff; }
+  border-bottom: 1px dashed #fff; }
   #featured > h1 {
     font-weight: 400;
     font-size: 3.75em;
@@ -347,7 +347,9 @@ a {
     width: 100%; }
     #stage-list #search input, #stage-list #filter input {
       width: 100%; }
-  #stage-list > a {
+  #stage-list section {
+    clear: left; }
+  #stage-list section > a {
     background: #fff;
     display: block;
     margin: 10px 0;
@@ -356,21 +358,21 @@ a {
     -moz-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
     -o-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
     box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5); }
-    #stage-list > a h1 {
+    #stage-list section > a h1 {
       font-size: 2em;
       color: #4a525a;
       text-shadow: none; }
-    #stage-list > a h2 {
+    #stage-list section > a h2 {
       text-transform: uppercase;
       font-weight: 700;
       font-size: 1.2em; }
-    #stage-list > a p {
+    #stage-list section > a p {
       color: #b7bcc2;
       font-size: 1.1em;
       -webkit-transition: all ease-in-out 0.1s;
       -moz-transition: all ease-in-out 0.1s;
       transition: all ease-in-out 0.1s; }
-    #stage-list > a small {
+    #stage-list section > a small {
       color: #b7bcc2;
       font-style: italic;
       font-size: 1em;
@@ -378,11 +380,11 @@ a {
       -webkit-transition: all ease-in-out 0.1s;
       -moz-transition: all ease-in-out 0.1s;
       transition: all ease-in-out 0.1s; }
-    #stage-list > a:hover {
+    #stage-list section > a:hover {
       background: #f2f8ff; }
-      #stage-list > a:hover p, #stage-list > a:hover small {
+      #stage-list section > a:hover p, #stage-list section > a:hover small {
         color: #4a525a; }
-  #stage-list > a#create p {
+  #stage-list section > a#create p {
     font-size: 1.4em;
     text-align: center;
     font-weight: 700; }
@@ -846,7 +848,7 @@ form[action="/stages"] {
     /* 20 / 480 */ }
     #stage-list #search, #stage-list #filter {
       width: 95.6521739130435%; }
-    #stage-list > a {
+    #stage-list section > a {
       width: 41.6666666666667%;
       /* 200 / 480 */
       margin: 2.0833333333333% 4.1666666666667% 0 0;
@@ -856,7 +858,7 @@ form[action="/stages"] {
       float: left;
       display: inline;
       overflow: hidden; }
-    #stage-list > a:nth-of-type(2n+1) {
+    #stage-list section > a:nth-of-type(2n+1) {
       clear: left; } }
 /*/mediaquery*/
 @media screen and (min-width: 600px) {
@@ -884,14 +886,14 @@ form[action="/stages"] {
       padding-left: 10px;
       display: inline-block;
       width: auto; }
-    #stage-list > a {
+    #stage-list section > a {
       width: 26.45%;
       /* 150 / 580 */
       margin: 1.7241379310345% 3.448275862069% 0 0;
       /* 20 / 580 */
       padding: 1.7241379310345%;
       /* 10 / 580 */ }
-    #stage-list > a:nth-of-type(2n+1) {
+    #stage-list section > a:nth-of-type(2n+1) {
       clear: none; }
     #stage-list > a:nth-of-type(3n+1) {
       clear: left; } }
@@ -1025,16 +1027,16 @@ form[action="/stages"] {
       float: right;
       display: inline;
       overflow: hidden; }
-    #stage-list > a {
+    #stage-list section > a {
       width: 19.6524064171123%;
       /* 147 / 748 */
       margin: 1.3368983957219% 2.6737967914439% 0 0;
       /* 20 / 748 */
       padding: 1.3368983957219%;
       /* 10 / 748 */ }
-    #stage-list > a:nth-of-type(3n+1) {
+    #stage-list section > a:nth-of-type(3n+1) {
       clear: none; }
-    #stage-list > a:nth-of-type(4n+1) {
+    #stage-list section > a:nth-of-type(4n+1) {
       clear: left; }
 
   /* TEXT CHAT */
@@ -1231,16 +1233,16 @@ form[action="/stages"] {
     #stage-list #search {
       width: 40%;
       margin-right: 2.272727272727273%; }
-    #stage-list > a {
+    #stage-list section > a {
       width: 15.8139534883721%;
       /* 170 / 1075 */
       margin: 1.8604651162791% 2.3255813953488% 0 0;
       /* 25 / 1075 */
       padding: 0.9302325581395%;
       /* 10 / 1075 */ }
-    #stage-list > a:nth-of-type(4n+1) {
+    #stage-list section > a:nth-of-type(4n+1) {
       clear: none; }
-    #stage-list > a:nth-of-type(5n+1) {
+    #stage-list section > a:nth-of-type(5n+1) {
       clear: left; }
 
   /* TEXT CHAT */
