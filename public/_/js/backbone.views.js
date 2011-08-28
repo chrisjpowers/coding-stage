@@ -1,7 +1,10 @@
 (function backboneViews (global) {
 	
 	var CHANNEL_NAME = $(document.documentElement).data('pusherchannel')
-		$win = $(window);
+		,$win = $(window)
+		
+		// Probably doesn't belong here?
+		,isContributor = $(document.documentElement).data("iscontributor");
 	
 	// ACE EDITOR VIEWS //////////////////////////////
 	function get (aceInst) {
@@ -169,8 +172,11 @@
 			if (contents !== session.getValue()
 				|| currentCursorPosition.column !== cursorPosition.column
 				|| currentCursorPosition.row !== cursorPosition.row) {
-					
-				session.setValue(contents);
+				
+				if (this.model.hasReceivedBufferData === true) {
+					session.setValue(contents);
+				}	
+				
 				this.updateCursorPosition(cursorPosition);
 			}
 		}

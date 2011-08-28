@@ -41,6 +41,7 @@
 			self = this;
 			_.defaults(this, options);
 			this.previousRequestTimestamp = $.now();
+			this.hasReceivedBufferData = false;
 			
 			if (pusherInst.connection.state === 'connected') {
 				this.pusherInit();
@@ -84,6 +85,7 @@
 		,'getDataFromServer': function getDataFromServer (data) {
 			if (DEBUG.userHoldsBaton !== true) {
 				if (typeof data['lines'] !== 'undefined') {
+					this.hasReceivedBufferData = true;
 					this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'), data['cursorPosition']);
 				} else {
 					this.view.updateCursorPosition(data['cursorPosition']);
