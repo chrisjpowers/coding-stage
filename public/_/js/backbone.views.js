@@ -40,6 +40,14 @@
 			return editorInst;
 		}
 		
+		,'giveEditingPrivileges': function giveEditingPrivileges () {
+			
+		}
+		
+		,'removeEditingPrivileges': function removeEditingPrivileges () {
+			
+		}
+		
 		,'aceChange': function aceChange (ev) {
 			var session
 				,lines;
@@ -67,16 +75,20 @@
 		}
 		
 		,'overwriteContents': function overwriteContents (aceInst, contents) {
-			var oldPosition;
+			var session
+				,oldPosition;
 			
-			oldPosition = this.aceEditor.getCursorPosition().row;
-			get(aceInst).setValue(contents);
+			session = get(aceInst);
 			
-			// Yes yes, I know.  This is wrong.
-			this.aceEditor.gotoLine(oldPosition + 1);
-			this.aceEditor.gotoLine(oldPosition + 1);
-
-			//codingstage.instance.ace.userBuffer.aceEditor.setScrollSpeed(0)
+			if (contents !== session.getValue()) {
+				oldPosition = this.aceEditor.getCursorPosition().row;
+				session.setValue(contents);
+				this.aceEditor.gotoLine(oldPosition + 1);
+				this.aceEditor.centerSelection();
+			} else {
+				console.log('fail')
+			}
+			//this.aceEditor.setScrollSpeed(0)
 		}
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
