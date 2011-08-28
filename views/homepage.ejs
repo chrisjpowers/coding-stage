@@ -131,7 +131,7 @@
 	
 	<section id="attendees">
 		
-        <h1>Who's Watching  <!--<mark>(<span id="watchers-count"><%= stage.watchers.length %></span>)</mark>--><br /><a href="#">Request The Baton</a></h1>
+        <h1>Who's Watching  <!--<mark>(<span id="watchers-count"><%= stage.watchers.length %></span>)</mark>--><br /><a href="#">Request control of the stage</a></h1>
 		
 		<ol>
 	            <% stage.watchers.forEach(function(watcher) { %>
@@ -230,6 +230,4 @@
 
         <%- partial("footer") %>
 
-        <%- partial("login-modal") %>
-        
         <%- partial("notification") %>

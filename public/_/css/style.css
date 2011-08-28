@@ -217,6 +217,9 @@ aside h1 {
   color: #4a525a;
   text-shadow: 0 1px 0 #eef2f2; }
 
+.support p {
+  font-size: 1.3em; }
+
 /* LINKS */
 a {
   padding: 0 1px;
@@ -253,6 +256,11 @@ a {
     color: #fff;
     background-color: #92d05c;
     border-color: #92d05c; }
+
+/* SUPPORT */
+.support article {
+  margin-bottom: 40px;
+  margin-top: 20px; }
 
 /* STAGE */
 #stage, #chat {
@@ -639,7 +647,7 @@ footer {
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
-.jqModal, .git-modal {
+.jqModal {
   display: none;
   position: fixed;
   top: 17%;
@@ -651,19 +659,19 @@ footer {
   -moz-border-radius: 10px;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 20px rgba(29, 41, 41, 0.5); }
-  .jqModal .jqmClose, .git-modal .jqmClose {
+  .jqModal .close {
     position: relative;
     left: 20px;
     top: -15px; }
 
-.git-modal {
+#git-modal {
   padding: 20px;
   overflow: hidden; }
-  .git-modal img {
+  #git-modal img {
     float: left;
     display: inline;
     overflow: hidden; }
-  .git-modal a.login {
+  #git-modal a.login {
     display: block;
     text-align: center;
     font-size: 2.2em;
@@ -672,7 +680,7 @@ footer {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px; }
-  .git-modal p {
+  #git-modal p {
     font-size: 1.6em; }
 
 .jqmOverlay {

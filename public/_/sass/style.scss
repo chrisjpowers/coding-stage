@@ -303,6 +303,9 @@ aside h1 {
   color: $dkgray;
   text-shadow: 0 1px 0 $white;
 }
+.support p {
+  font-size: 1.3em;
+}
   
 /* LINKS */
 
@@ -318,6 +321,13 @@ a{
 
 .button {
   @include button;
+}
+
+/* SUPPORT */
+
+.support article {
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 /* STAGE */
@@ -774,7 +784,7 @@ footer {
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
 	
-.jqModal, .git-modal {
+.jqModal {
   display: none;
   position: fixed;
   top: 17%;
@@ -784,14 +794,14 @@ footer {
   background: url(../img/bg/noise.png) center top repeat, url(../img/logos/stamp.png) 98% 150% no-repeat $white;
   @include rounded(10px);
   -webkit-box-shadow: 0 0 20px $black50;
-  .jqmClose {
+  .close {
     position: relative;
     left: 20px;
     top: -15px;
   }
 }
 
-.git-modal {
+#git-modal {
   padding: 20px;
   overflow: hidden;
   img {
