@@ -1,6 +1,7 @@
 <script>
   document.documentElement.setAttribute('data-pusherchannel', '<%= stage.channel %>' );
 </script>
+
 <header>
 
 	<h1><a href="/" title="Coding Stage's Front Door">Coding Stage</a></h1>
@@ -64,9 +65,15 @@
 		<section id="conversation">
 	
 			<article class="empty">
-				<p>Welcome to the [name of the room] stage. Start chatting away&hellip;</p>
+                          <p>Welcome to the <%= stage.name %> stage. Start chatting away&hellip;</p>
 			</article>
 
+                        <% stage.comments.forEach(function(comment) { %>
+                          <article class="attendee">
+                            <p><strong><%= comment.author %>:</strong> <%= comment.message %></p>
+                          </article>
+                        <% }) %>
+                        <!--
 			<article class="attendee">
 				<p><strong>Username:</strong> This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee. This is the text of an attendee.</p>
 			</article>
@@ -82,12 +89,12 @@
 			<article class="attendee coder baton">
 				<p><strong>Username:</strong> This is the text of a coder that has the baton</p>
 			</article>
-	
+                        -->	
 		</section>
 		
 		<form id="text-chat">
 			
-			<input type="text" placeholder="Speak Up" />
+			<input id="chat-field" type="text" placeholder="Speak Up" />
 			<input type="submit" value="Be Heard" class="button" />
 			
 		</form>
