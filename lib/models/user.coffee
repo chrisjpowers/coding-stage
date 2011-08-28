@@ -36,5 +36,6 @@ ObjectId = mongoose.SchemaTypes.ObjectId
 UserSchema = new Schema({})
 UserSchema.plugin mongooseAuth, authOptions
 
-mongoose.model('User', UserSchema)
-User = mongoose.model('User')
+User = mongoose.model('User', UserSchema)
+
+module.exports = User

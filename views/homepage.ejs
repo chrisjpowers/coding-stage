@@ -1,5 +1,6 @@
 <script>
   document.documentElement.setAttribute('data-pusherchannel', '<%= stage.channel %>' );
+  document.documentElement.setAttribute('data-iscontributor', <%= isContributor(contributors, everyauth) ? "true" : "false" %>);
 </script>
 
         <%- partial("header") %>
@@ -10,7 +11,14 @@
 	
             <h1><%= stage.name %></h1>
 		<a href="/invite" title="Invite coders to join you" class="button invite">Invite Coders</a>
-	
+                <!--	
+                <% contributors.forEach(function(user) { %>
+                <p>Contributor <%= user.github.name %></p>
+                <% }) %>
+                <% if(everyauth.loggedIn) { %>
+                <p>Current User <%= everyauth.github.user.name %></p>
+                <% } %>
+                -->
 		<form id="stage-settings">
 	
 			<fieldset>
