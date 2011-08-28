@@ -1,5 +1,5 @@
 jQuery(function () {
-  jQuery("#runCode").click(function (e) {
+  jQuery("#run-code").click(function (e) {
     e.preventDefault();
     code = codingstage.instance.ace.userBuffer.aceEditor.getSession().getValue()
     $.post("/run", {lang:"ruby", code: code}, function (output) {

@@ -274,8 +274,11 @@ a {
   background: rgba(255, 255, 255, 0.7);
   margin-top: -20px; }
 
-.invite {
+.invite, #run-code {
   margin-top: 10px; }
+
+#run-code {
+  margin-left: 10px; }
 
 #stage-settings label, #editor label {
   font-size: 1.2em;
@@ -910,11 +913,14 @@ form[action="/stages"] {
     border-radius: 10px; }
 
   /* STAGE */
-  .invite {
+  .invite, #run-code {
     position: absolute;
     top: 4.1%;
     right: 3.5714286%;
     margin-top: 0; }
+
+  #run-code {
+    right: 28%; }
 
   #stage-settings select, #editor select {
     width: 50%; }
@@ -1168,6 +1174,9 @@ form[action="/stages"] {
     float: left;
     display: inline;
     overflow: hidden; }
+
+  #run-code {
+    right: 25%; }
 
   /* STAGE LIST */
   #stage-list {
