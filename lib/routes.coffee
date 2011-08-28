@@ -14,7 +14,7 @@ exports.run = (express, app) ->
     next()
 
   app.get "/", (req, res) ->
-    res.redirect "/stages"
+    res.render "front"
 
   app.get "/stages", (req, res) ->
     Stage.find {}, (err, stages) ->
