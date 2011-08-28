@@ -3,6 +3,7 @@
       pusher = codingstage.pusher.inst,
       cookies = codingstage.cookies;
 
+  pusher.subscribe(channel);
   pusher.connection.bind('connected', function() {
     setupListeners();
   });
