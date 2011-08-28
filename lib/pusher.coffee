@@ -61,7 +61,7 @@ pipe.channels.on 'event:editor-updated', (channelName, socket_id, data) ->
 pipe.channels.on "event:baton-requesting", (channelName, socket_id, data) ->
   Stage.findOne channel: channelName, (err, stage) ->
     if stage
-      pipe.channel(channelName).trigger "baton-requested", userId: data.userId
+      pipe.channel(channelName).trigger "baton-requested", userId: data.userId, name: data.name
 
 pipe.channels.on "event:baton-giving", (channelName, socket_id, data) ->
   Stage.findOne channel: channelName, (err, stage) ->
@@ -71,7 +71,7 @@ pipe.channels.on "event:baton-giving", (channelName, socket_id, data) ->
         if err
           console.log "Error handing baton", err
         else
-          pipe.channel(channelName).trigger "baton-given", userId: data.newUserId
+          pipe.channel(channelName).trigger "baton-given", userId: data.newUserId, name: data.name
 
 
 module.exports = pipe
