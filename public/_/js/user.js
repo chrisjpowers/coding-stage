@@ -1,12 +1,12 @@
 (function(global) {
   var data;
   function init(data) {
-    data = data;
+    data = data || {};
   }
 
-  function getData() {
+  function get(key) {
     return data;
   }
 
-  codingstage.user = {init: init, data: getData};
+  codingstage.user = {init: init, get: get};
 })(window);
