@@ -82,7 +82,7 @@
 		
 		,'getDataFromServer': function getDataFromServer (data) {
 			if (DEBUG.userHoldsBaton !== true) {
-				this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'));
+				this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'), data['cursorPosition']);
 			}
 		}
 		
@@ -110,6 +110,7 @@
 		,'sendBufferDataToServer': function sendBufferDataToServer (data) {
 			pusherInst.channel(this.channelName).trigger('editor-updated', {
 				'lines': this.get('lines')
+				,'cursorPosition': this.get('cursorPosition')
 			});
 		}
 	}));
