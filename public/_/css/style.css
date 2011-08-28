@@ -625,6 +625,17 @@ footer {
   padding: 0 25px; }
   #notification section:nth-of-type(2) {
     border-top: 1px solid rgba(238, 242, 242, 0.25); }
+  #notification a {
+    display: inline;
+    color: #4a525a;
+    text-shadow: none;
+    font-size: .75em;
+    font-weight: 500;
+    padding: 0; }
+    #notification a:hover {
+      color: #000;
+      cursor: pointer;
+      background: transparent; }
   #notification .approve, #notification .dismiss {
     display: inline-block;
     width: 16px;
@@ -663,18 +674,6 @@ footer {
 
 .cssanimations.csstransforms #close {
   display: none; }
-
-#close {
-  display: inline;
-  color: #4a525a;
-  text-shadow: none;
-  font-size: .75em;
-  font-weight: 500;
-  padding: 0; }
-  #close:hover {
-    color: #000;
-    cursor: pointer;
-    background: transparent; }
 
 /* MODALS */
 /* jqModal base Styling courtesy of;
