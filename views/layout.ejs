@@ -89,8 +89,18 @@
   <script src="/_/js/backbone.models.js"></script>
   <script src="/_/js/backbone.views.js"></script>
   <script src="/_/js/coderoom.js"></script>
+  <script>
+    <% if(everyauth.loggedIn) { %>
+      extend("codingstage", {user: <%- JSON.stringify(everyauth.user.github) %>});
+      codingstage.user.loggedIn = true;
+      codingstage.user.id = "<%= everyauth.user.id %>";
+    <% } else { %>
+      extend("codingstage", {user: {loggedIn: false}});
+    <% } %>
+  </script>
   <% if(stage) { %>
     <script src="/_/js/watchers.js"></script>
+    <script src="/_/js/baton.js"></script>
     <script src="/_/js/comments.js"></script>
     <script src="/_/js/ace/mode-<%= stage.language.toLowerCase() %>.js" type="text/javascript" charset="utf-8"></script>
   <% } %>
@@ -105,14 +115,6 @@
       });
     </script>
   <% } %>
-  <script>
-    <% if(everyauth.loggedIn) { %>
-      codingstage.user = <%- JSON.stringify(everyauth.user.github) %>;
-      codingstage.user.loggedIn = true;
-    <% } else { %>
-      codingstage.user = {loggedIn: false};
-    <% } %>
-  </script>
 
 <!-- this is a variation of the official analytics snippet: http://mathiasbynens.be/notes/async-analytics-snippet 
    replace XXXXXX-XX with your site's ID and uncomment to put this into effect
