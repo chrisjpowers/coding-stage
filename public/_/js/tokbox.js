@@ -16,7 +16,7 @@
 
   function sessionConnectedHandler(event) {
                subscribeToStreams(event.streams);
-               video = session.publish("tokbox-team-1");
+               video = session.publish("tokbox-team-1-placeholder");
                console.log("video", video);
       }
       
@@ -29,7 +29,7 @@
                       var stream = streams[i];
                       if (stream.connection.connectionId != session.connection.connectionId) {
                         console.log("stream", stream);
-                              session.subscribe(stream, "tokbox-team-" + (i + 2));
+                              session.subscribe(stream, "tokbox-team-" + (i + 2) + "-placeholder");
                       }
               }
       }
