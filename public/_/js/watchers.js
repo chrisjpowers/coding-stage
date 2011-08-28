@@ -29,8 +29,16 @@
   }
 
   function onWatcherJoined(data) {
-    var li = $("<li>", {"class": "attendee", "text": data.name, "id": "watcher-" + data.id});
-    $("#attendees ol").append(li);
+    var addWatcher = true;
+    $("#attendees li").each(function() {
+      var li = $(this);
+      if(li.text() == data.name + "") { addWatcher = false; }
+    });
+
+    if(addWatcher) {
+      var li = $("<li>", {"class": "attendee", "text": data.name, "id": "watcher-" + data.id});
+      $("#attendees ol").append(li);
+    }
     //incrementCount();
   }
 

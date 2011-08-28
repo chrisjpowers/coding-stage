@@ -71,19 +71,7 @@
 		
 		<ol>
 	            <% stage.watchers.forEach(function(watcher) { %>
-                      <li class="attendee">
-                      <%= watcher.name %>
-				<section class="interact" title="Interact with this Attendee">
-				  <h1>Interact with this Attendee</h1>
-  				<ul>
-  				  <li><a href="#" title="Pass [username] the baton">Pass the baton</a></li> <!-- Shown only when holding the baton, only on coders -->
-  				  <li><a href="#" title="Promote [username] to coder">Promote [username]</a></li> <!-- Shown to stage owners, only no attendees -->
-  				  <li><a href="#" title="Demote [username] to attendee">Demote [username</a></li> <!-- Shown only to stage owners, only on coders -->
-  				  <li><a href="#" title="Mute [username]">Mute [username]</a></li> <!-- Shown to all coders, only on attendees -->
-  				  <li><a href="#" title="Update Your Name">Update Your Username</a></li> <!-- Shown to anyone that is still using the "Guest" name -->
-  				</ul>
-  		  </section>
-                      </li>
+                      <li class="attendee"><%= watcher.name %></li>
                     <% }) %>
                 </ol>
 	</section>
