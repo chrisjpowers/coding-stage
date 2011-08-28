@@ -12,7 +12,11 @@ module.exports =
 
   isContributor: (contributors, everyauth) ->
     return false unless everyauth.loggedIn
-    !!(_.detect contributors, (user) -> 
-      console.log "Comparing", user.github.email, everyauth.user.github.email
+    !!(_.detect contributors, (user) ->
       user.github.email == everyauth.user.github.email
     )
+
+  hasBaton: (stage, everyauth) ->
+    return false unless everyauth.loggedIn
+    console.log "Everyauth id", everyauth.user.id, "Baton id", stage.batonHolderId
+    "" + stage.batonHolderId == "" + everyauth.user.id
