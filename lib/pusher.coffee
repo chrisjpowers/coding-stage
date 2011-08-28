@@ -46,7 +46,7 @@ pipe.channels.on "event:adding-comment", (channelName, socket_id, data) ->
       stage.save (err) ->
         console.log "Failed to save stage after comment", data, err if err
 
-pipe.channels.on 'event:editor-updating', (channelName, socket_id, data) ->
-  pipe.channel(channelName).trigger("editor-updating", data)
+pipe.channels.on 'event:editor-updated', (channelName, socket_id, data) ->
+  pipe.channel(channelName).trigger("editor-updated", data)
   
 module.exports = pipe

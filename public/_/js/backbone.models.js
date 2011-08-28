@@ -20,6 +20,7 @@
 		
 		,'defaults': {
 			'lines': []
+			,'cursorPosition': {}
 		}
 		
 		/**
