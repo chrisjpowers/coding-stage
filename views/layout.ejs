@@ -104,6 +104,14 @@
       });
     </script>
   <% } %>
+  <script>
+    <% if(everyauth.loggedIn) { %>
+      codingstage.user = <%- JSON.stringify(everyauth.user.github) %>;
+      codingstage.user.loggedIn = true;
+    <% } else { %>
+      codingstage.user = {loggedIn: false};
+    <% } %>
+  </script>
 
 <!-- this is a variation of the official analytics snippet: http://mathiasbynens.be/notes/async-analytics-snippet 
    replace XXXXXX-XX with your site's ID and uncomment to put this into effect
