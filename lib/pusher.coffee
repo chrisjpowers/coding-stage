@@ -73,5 +73,19 @@ pipe.channels.on "event:baton-giving", (channelName, socket_id, data) ->
         else
           pipe.channel(channelName).trigger "baton-given", userId: data.newUserId, name: data.name
 
+pipe.channels.on "event:contributor-requesting", (channelName, socket_id, data) ->
+  Stage.findOne channel: channelName, (err, stage) ->
+    if stage
+      pipe.channel(channelName).trigger "contributor-requested", userId: data.userId, name: data.name
+
+pipe.channels.on "event:contributor-giving", (channelName, socket_id, data) ->
+  Stage.findOne channel: channelName, (err, stage) ->
+    if stage && (stage.batonHolderId + "" == data.oldUserId + "") #auth
+      stage.contributorIds.push data.newUserId
+      stage.save (err) ->
+        if err
+          console.log "Error handing contributor add", err
+        else
+          pipe.channel(channelName).trigger "contributor-given", userId: data.newUserId, name: data.name
 
 module.exports = pipe
