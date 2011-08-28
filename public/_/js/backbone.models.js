@@ -1,3 +1,13 @@
+jQuery(function () {
+  jQuery("#runCode").click(function (e) {
+    e.preventDefault();
+    code = codingstage.instance.ace.userBuffer.aceEditor.getSession().getValue()
+    $.post("/run", {lang:"ruby", code: code}, function (output) {
+      alert(output);
+    });
+  });
+});
+
 (function backboneModels (global) {
 	
 	var pusherInst;
