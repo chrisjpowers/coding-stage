@@ -25,8 +25,9 @@
 			var self = this;
 			
 			this.buffer = $('.buffer', this.el);
-			this.aceEditor = this.initAce(this.EDITOR_ID);
 			this.codingLanguage = $docEl.data('editorlanguage');
+			this.aceEditor = this.initAce(this.EDITOR_ID);
+			this.setLanguage(this.codingLanguage);
 			this.userHasBaton = $docEl.data('hasbaton');
 			
 			this.bindToAceEvent('change', function () {
@@ -59,6 +60,18 @@
 			editorInst = ace.edit(elId);
 			
 			return editorInst;
+		}
+		
+		,'setLanguage': function setLanguage (language) {
+			var mode
+				,requiredFile;
+			
+			requiredFile = require('ace/mode/' + language.toLowerCase());
+			
+			if (requiredFile) {
+				mode = requiredFile.Mode;
+				get(this.aceEditor).setMode(new mode());
+			}
 		}
 		
 		,'bindCursorChange': function bindCursorChange () {
