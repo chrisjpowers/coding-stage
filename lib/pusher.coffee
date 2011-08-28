@@ -58,4 +58,20 @@ pipe.channels.on 'event:editor-updated', (channelName, socket_id, data) ->
       stage.save (err) ->
         console.log "Unable to save stage content update", err if err
   
+pipe.channels.on "event:baton-requesting", (channelName, socket_id, data) ->
+  Stage.findOne channel: channelName, (err, stage) ->
+    if stage
+      pipe.channel(channelName).trigger "baton-requested", userId: data.userId, name: data.name
+
+pipe.channels.on "event:baton-giving", (channelName, socket_id, data) ->
+  Stage.findOne channel: channelName, (err, stage) ->
+    if stage && (stage.batonHolderId + "" == data.oldUserId + "") #auth
+      stage.batonHolderId = data.newUserId
+      stage.save (err) ->
+        if err
+          console.log "Error handing baton", err
+        else
+          pipe.channel(channelName).trigger "baton-given", userId: data.newUserId, name: data.name
+
+
 module.exports = pipe
