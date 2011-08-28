@@ -49,7 +49,6 @@
   var b = document.documentElement;
   b.setAttribute('data-useragent',  navigator.userAgent);
   b.setAttribute('data-platform', navigator.platform );
-  b.setAttribute('data-pusherchannel', 'temporary' );
 </script>
 
   <%- body %>
@@ -76,9 +75,11 @@
 
 	extend('codingstage.pusher.inst', new Pusher('<%= pusher.key %>'));
   </script>
+  <script src="/_/js/cookies.js"></script>
   <script src="/_/js/backbone.models.js"></script>
   <script src="/_/js/backbone.views.js"></script>
   <script src="/_/js/coderoom.js"></script>
+  <script src="/_/js/watchers.js"></script>
   <script src="http://staging.tokbox.com/v0.91/js/TB.min.js"></script>
 
 <!-- this is a variation of the official analytics snippet: http://mathiasbynens.be/notes/async-analytics-snippet 

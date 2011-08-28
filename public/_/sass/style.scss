@@ -19,7 +19,7 @@ $green50: rgba(146,208,92,0.5);
 $mdgreen: #b6ec86;
 
 @mixin sans($weight) {
-  font-family: Univers, 'Helvetica Neue', Helmet, FreeSans, sans-serif;
+  font-family: Helmet, FreeSans, sans-serif;
   font-weight: $weight;
 }
 
@@ -113,6 +113,8 @@ body {
 body, select, input, textarea { color: $black; }
 a { text-decoration: none; color: $turq; }
 
+/* HEADER */
+
 header {
   overflow: hidden;
   background-color: $dkgray;
@@ -122,13 +124,24 @@ header {
   background-image:     url(../img/bg/noise.png), -ms-linear-gradient(top, $mdgray, $dkgray); /* IE10 */
   background-image:      url(../img/bg/noise.png), -o-linear-gradient(top, $mdgray, $dkgray); /* Opera 11.10+ */
   background-image:         url(../img/bg/noise.png), linear-gradient(top, $mdgray, $dkgray);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $mdgray;
+  -webkit-box-shadow: 0 1px 0 $black;
+  -moz-box-shadow: 0 1px 0 $black;
+  -o-box-shadow: 0 1px 0 $black;
+  box-shadow: 0 1px 0 $black;
   @include sans(900);
+}
+
+.no-boxshadow header {
+  border-bottom: 2px solid $black;
 }
 
 header h1 {
   width: 213px;
   height: 60px;
-  float: left;
+  margin: 0 0 0 10px;
   a {
     text-indent: -9999px;
     display: block;
@@ -146,6 +159,62 @@ header h1 {
   }
 }
 
+header nav {
+  margin-top: 5px;
+  clear: both;
+  text-align: center;
+}
+
+header nav li {
+  display: inline-block;
+  padding: 1px;
+  margin: 0 5px;
+}
+
+.vote {
+  position: absolute;
+  top: 28px;
+  right: 10px;
+}
+
+header nav li a {
+  padding: 4px 5px 5px;
+  font-size: 1.2em;
+  color: $white;
+  opacity: 0.6;
+  text-transform: uppercase;
+  text-shadow: 0 -1px $black;
+  display: block;
+  position: relative;
+  line-height: 1;
+  border-top: 1px solid transparent;
+  @include animate(0.2s, all);
+  @include rounded(4px);
+  &:hover {
+    opacity: 1;
+    background: $white25;
+    border-top: 1px solid $black75;
+    color: $white;
+  }
+}
+
+/* TYPOGRAPHY */
+
+section h1 {
+  font-size: 2.8em;
+  color: $turq;
+  text-transform: uppercase;
+  text-shadow: 0 -1px 1px $black50, 0 1px 0 #fff;
+  line-height: 1;
+  @include display(900);
+}
+
+aside h1 {
+  font-size: 2.6em;
+  color: $dkgray;
+  text-shadow: 0 1px 0 $white;
+}
+  
 /* LINKS */
 
 a{
@@ -162,7 +231,306 @@ a{
   @include button;
 }
 
+/* ROOM */
 
+#room, #chat {
+  margin-bottom: 20px;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#ace-editor {
+  width: 100% !important;
+  display: block;
+  position: relative;
+  height: 200px !important;
+  margin: 15px 0;
+  background: #fff;
+  border: 1px solid $beige;
+}
+
+#room {
+  background: rgba(255,255,255,.7);
+  margin-top: -20px;
+}
+
+.invite {
+  margin-top: 10px;
+}
+
+#room-settings, #editor {
+
+  label { 
+    font-size: 1.2em;
+    display: inline-block;
+    margin-right: .5em;
+  }
+
+  select {
+    margin-right: 1.5em;
+    width: 70%;
+    
+    option[data-file="file-new"] {
+      font-style: italic;
+    }
+    
+  }
+
+  .import {
+    margin-top: 10px;
+  }
+
+}
+
+#room-settings {
+  margin: 0;
+  legend {
+    display: none;
+  }
+  input, label {
+    margin-top: 1em;
+  }
+  input[type="text"] {
+    width: 40px;
+    position: relative;
+    top: -7px;
+    margin-right: 1em;
+  }
+  input { 
+    margin-right: 1.5em;
+  }
+  input[type="submit"] {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    text-shadow: none;
+    color: $turq;
+    font-weight: 500;
+    margin-top: -5px;
+    @include animate(0.2s, all);
+    &:hover {
+      color: $dkgray;
+    }
+  }
+  label {
+    margin-right: 0.5em;
+  }
+}
+
+/* ACE HAMMERS */
+
+.ace_gutter {
+width: 7.1428571428571% !important; /* 50 / 560 */
+}
+
+.ace_scroller {
+width: 89.2857142857143% !important; /* 500 / 560 */
+}
+
+.ace_content {
+width: 100% !important;
+}
+
+/* CHAT */
+
+#chat {
+  background: $white;
+  background: rgba(255,255,255,.7);
+  padding: 20px; /* 20 / 560 */
+  margin-top: -20px;
+  border-top: 2px solid $ltgray;
+  border-bottom: 2px solid $ltgray;
+}
+
+#conversation {
+  height: 200px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+
+  article {
+    font-size: 1.1em;
+    margin: 0 0 .4em;
+
+    p {
+      color: $mdgray;
+    }
+
+    strong {
+      color: $ltturq;
+    }
+
+  }
+
+  .empty {
+    font-style: italic;
+  }
+  
+  .coder strong {
+    color: $turq;
+  } 
+
+  .owner strong {
+    color: $black;
+  }
+
+  .baton strong {
+    color: $green;
+  }
+  
+}
+
+#chat {
+
+  input[type="text"] {
+    width: 100%;
+    margin-right: 0%;
+  }
+  
+  input[type="submit"] {
+    width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    @include button;
+    margin-top: 10px;
+  }
+
+}
+  
+#video-chat {
+  display: none;
+}
+  
+/* ATTENDEES */
+
+aside {
+  padding: 0 20px;
+}
+
+#attendees {
+  overflow: visible;
+  margin-bottom: 20px;
+  mark {
+    font-size: .9em;
+    color: $turq;
+    font-style: normal;
+    background: transparent;
+  }
+  h1 > a {
+    left: -17px;
+    margin-bottom: 5px;
+    font-size: .5em; /* 12 / 20 */
+    padding: 4px 5px 5px 20px;
+    position: relative;
+    text-shadow: none;
+    background: {
+      image: url(../img/icons/sprite.png);
+      position: -228px -29px;
+      repeat: no-repeat;
+    }
+    @include rounded(4px);
+    @include sans(500);
+    @include float(left);
+    @include animate(0.1s, background-color);
+    &:hover {
+      background-position: -28px -29px;
+    }
+  }
+  ol {
+    font-size: 1.3em;
+    margin-top: 0.4em;
+    clear: both;
+  }
+  li {
+    padding: 4px 5px;
+    position: relative;
+    list-style-type: none;
+    color: $ltturq;
+    &:hover {
+      background-color: $white;
+      cursor: pointer;
+    }
+  }
+  li.attendee {
+    border-top: 1px solid $white;
+    font-weight: 700;
+    ul {
+      overflow: hidden;
+      li {
+        font-size: .9em;
+        text-align: right;
+        padding: 2px 10px 2px 0;
+        float: left;
+        display: inline;
+        a {
+          font-weight: normal;
+          text-shadow: none;
+          &:hover {
+            background: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    section {
+      h1 {
+        display: none;
+      }
+    }
+  }
+  li.baton:before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(../img/icons/sprite.png) -33px -33px no-repeat;
+    position: absolute;
+    left: -13px;
+    top: 7px;
+  }
+  .coder {
+    color: $turq;
+  } 
+
+  .owner {
+    color: $black;
+  }
+
+  .baton {
+    color: $green;
+  }
+  
+}
+
+/* FOOTER */
+
+footer {
+  clear: both;
+  padding: 20px;
+  border-top: 2px solid $ltgray;
+  nav {
+    li {
+      font-size: 1.2em;
+      @include float(left);
+      margin-right: 1em;
+      a {
+        padding: 3px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: block;
+        @include rounded(4px);
+      }
+    }
+  }
+  small {
+    clear: both;
+    display: block;
+    color: $mdgray;
+    font-size: 1em;
+    width: 100%;
+  }
+}
+  
 
 
 
@@ -172,63 +540,51 @@ a{
 
 @media screen and (min-width: 480px) {
 
+  /* HEADER */
+  
+  header {
+    padding: 10px 2.08033333%; /* 10 & 20 / 960 */
+    width: 95.833333%; /* 920 / 960 */
+  }
+  
+  header h1 {
+    float: left;
+    margin: 0;
+  }
+    
 }/*/mediaquery*/
 
 @media screen and (min-width: 600px) {
+
+  header nav li a {
+    font-size: 1.3em;
+  }
   
 }/*/mediaquery*/
 
 @media screen and (min-width: 768px) {
   
   /* HEADER */
-  
-  header {
-    padding: 10px 2.08033333%; /* 10 & 20 / 960 */
-    margin-bottom: 20px;
-    width: 95.833333%; /* 920 / 960 */
-    border-bottom: 1px solid $mdgray;
-    -webkit-box-shadow: 0 1px 0 $black;
-    -moz-box-shadow: 0 1px 0 $black;
-    -o-box-shadow: 0 1px 0 $black;
-    box-shadow: 0 1px 0 $black;
-  }
-  
-  .no-boxshadow header {
-    border-bottom: 2px solid $black;
-  }
-  
+
   header nav {
     @include float(right);
-    margin-top: 15px;
+    text-align: left;
+    clear: none;
+    margin-top: 30px;
   }
   
   header nav li {
     @include float(left);
-    padding: 1px;
-    margin: 0 5px;
+  }
+
+  header nav li a {
+    font-size: 1.4em;
   }
   
-  header nav li a {
-    padding: 6px 5px 8px;
-    font-size: 1.4em;
-    color: $white;
-    opacity: 0.6;
-    text-transform: uppercase;
-    text-shadow: 0 -1px $black;
-    display: block;
-    position: relative;
-    line-height: 1;
-    border-top: 1px solid transparent;
-    @include animate(0.2s, all);
-    @include rounded(4px);
-    &:hover {
-      opacity: 1;
-      background: $white25;
-      border-top: 1px solid $black75;
-      color: $white;
-    }
+  .vote {
+    top: 11px;
   }
-    
+  
   /* COLUMNS */
   
   #main {
@@ -238,6 +594,7 @@ a{
   }
 
   aside {
+    padding: 0;
     width: 31.25%; /* 300 / 960 */
     margin-right: 2.08033333%; /* 20 / 960 */
     @include float(right);
@@ -247,24 +604,15 @@ a{
   /* PAGE COMPONENTS */
   
   #room, #chat {
-    margin-bottom: 20px;
     padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
-    overflow: hidden;
-    position: relative;
   }
   
   #ace-editor {
-    width: 100% !important;
-    display: block;
-    position: relative;
     height: 300px !important;
-    margin: 15px 0;
-    background: #fff;
-    border: 1px solid $beige;
   }
   
   #room {
-    background: rgba(255,255,255,.7);
+    margin-top: 0;
     @include rounded(6px);
     @include insetshadow;
   }
@@ -275,9 +623,9 @@ a{
   }
 
   #chat {
-    background: $white;
-    background: rgba(255,255,255,.7);
     padding: 2.6785714285714% 3.5714286%; /* 20 / 560 */
+    margin-top: 0;
+    border-top: 0;
     @include rounded(10px);
   }
   
@@ -287,35 +635,26 @@ a{
       position: absolute;
       top: 4.1%;
       right: 3.5714286%;
+      margin-top: 0;
     }
     
     #room-settings, #editor {
 
-      label { 
-        font-size: 1.2em;
-        display: inline-block;
-        margin-right: .5em;
-      }
-
       select {
-        margin-right: 1.5em;
         width: 50%;
-        
-        option[data-file="file-new"] {
-          font-style: italic;
-        }
-        
       }
 
       .import {
         @include float(right);
+        margin-top: 0;
       }
 
     }
     
     #room-settings {
-      margin: .5em 0 0;
+      margin: 0.5em 0 0;
       legend {
+        display: inline-block;
         color: $ltgray;
         font-size: 1.2em;
         font-weight: 700;
@@ -333,89 +672,24 @@ a{
       }
       input, label {
         display: none;
-        margin-top: 1em;
-      }
-      input[type="text"] {
-        width: 40px;
-        position: relative;
-        top: -7px;
-        margin-right: 1em;
-      }
-      input { 
-        margin-right: 1.5em;
-      }
-      input[type="submit"] {
-        background: transparent;
-        border: 0;
-        padding: 0;
-        text-shadow: none;
-        color: $turq;
-        font-weight: 500;
-        margin-top: 0;
-        @include animate(0.2s, all);
-        &:hover {
-          color: $dkgray;
-        }
       }
       label {
-        margin-right: 0.5em;
+        line-height: 2.4;
       }
     }
-  
-  /* ACE HAMMERS */
-  
-  .ace_gutter {
-    width: 7.1428571428571% !important; /* 50 / 560 */
-  }
-  
-  .ace_scroller {
-    width: 89.2857142857143% !important; /* 500 / 560 */
-  }
-  
-  .ace_content {
-    width: 100% !important;
-  }
 
   /* TEXT CHAT */
   
   #conversation {
     height: 150px;
-    overflow-y: auto;
-    margin-bottom: 5px;
-
     article {
       font-size: 1.3em;
-      margin: 0 0 .4em;
-
-      p {
-        color: $mdgray;
-      }
-
-      strong {
-        color: $ltturq;
-      }
-
     }
-
-    .empty {
-      font-style: italic;
-    }
-    
-    .coder strong {
-      color: $turq;
-    } 
-
-    .owner strong {
-      color: $black;
-    }
-
-    .baton strong {
-      color: $green;
-    }
-    
   }
   
   #chat {
+  
+    border-bottom: 0;
 
     input[type="text"] {
       width: 80%;
@@ -424,10 +698,8 @@ a{
     
     input[type="submit"] {
       width: 16%;
-      padding-left: 0;
-      padding-right: 0;
+      margin-top: 0;
       @include float(right);
-      @include button;
     }
 
   }
@@ -436,6 +708,7 @@ a{
   
   #video-chat {
     text-align: center;
+    display: block;
         
     article {
       background: $ltgray url(../img/bg/empty-video.png) 50% 50% no-repeat;
@@ -491,45 +764,12 @@ a{
   /* ATTENDEES */
   
   #attendees {
-    overflow: visible;
-    h1 > a {
-      left: -17px;
-      margin-bottom: 5px;
-      font-size: .5em; /* 12 / 20 */
-      padding: 4px 5px 5px 20px;
-      position: relative;
-      text-shadow: none;
-      background: {
-        image: url(../img/icons/sprite.png);
-        position: -228px -29px;
-        repeat: no-repeat;
-      }
-      @include rounded(4px);
-      @include sans(500);
-      @include float(left);
-      @include animate(0.1s, background-color);
-      &:hover {
-        background-position: -28px -29px;
-      }
-    }
     ol {
       font-size: 1.5em;
-      margin-top: 0.4em;
-      clear: both;
-    }
-    li {
-      padding: 4px 5px;
-      position: relative;
-      list-style-type: none;
-      color: $ltturq;
-      &:hover {
-        background-color: $white;
-        cursor: pointer;
-      }
     }
     li.attendee {
-      border-top: 1px solid $white;
       text-shadow: 0 1px 0 #fff, 0 -1px 0 $black50;
+      font-weight: 500;
       ul {
         position: absolute;
         right: 0;
@@ -541,16 +781,9 @@ a{
         @include rounded(0 0 4px 4px);
         li {
           font-size: .7em;
-          text-align: right;
+          float: none;
+	  display: block;
           padding: 2px 5px;
-          a {
-            font-weight: normal;
-            text-shadow: none;
-            &:hover {
-              background: none;
-              cursor: pointer;
-            }
-          }
         }
       }
       section {
@@ -579,75 +812,16 @@ a{
         display: block;
       }
     }
-    li.baton:before {
-      content: '';
-      display: block;
-      width: 10px;
-      height: 10px;
-      background: url(../img/icons/sprite.png) -33px -33px no-repeat;
-      position: absolute;
-      left: -13px;
-      top: 7px;
-    }
-    .coder {
-      color: $turq;
-    } 
-
-    .owner {
-      color: $black;
-    }
-
-    .baton {
-      color: $green;
-    }
-    
   }
-  
+    
   /* FOOTER */
   
   footer {
-    clear: both;
     padding: 10px 2.08033333%; /* 10 & 20 / 960 */
-    nav {
-      li {
-        font-size: 1.2em;
-        @include float(left);
-        margin-right: 1em;
-        a {
-          padding: 3px;
-          font-weight: 700;
-          text-transform: uppercase;
-          display: block;
-          @include rounded(4px);
-        }
-      }
-    }
+    border: 0;
     small {
-      clear: both;
-      display: block;
-      color: $mdgray;
-      font-size: 1em;
       width: 62.5%; /* 560 / 960 */ 
     }
-  }
-  
-  
-  
-  /* TYPOGRAPHY */
-  
-  section h1 {
-    font-size: 2.8em;
-    color: $turq;
-    text-transform: uppercase;
-    text-shadow: 0 -1px 1px $black50, 0 1px 0 #fff;
-    line-height: 1;
-    @include display(900);
-  }
-  
-  aside h1 {
-    font-size: 2.6em;
-    color: $dkgray;
-    text-shadow: 0 1px 0 $white;
   }
   
 }/*/mediaquery*/
@@ -727,6 +901,16 @@ a{
       margin-top: 10px;
     }
 
+  }
+  
+  footer {
+    nav {
+      font-size: 1.2em;
+    }
+    small {
+      width: 52%;
+      font-size: 1.1em;
+    }
   }
   
 }/*/mediaquery*/

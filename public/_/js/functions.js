@@ -13,8 +13,11 @@ var Site = window.Site || {};
 		
 		// Hide/show Room Settings
 		$('#room-settings legend').click(function() {
-		  $(this).parent().children().not(this).slideToggle(100);
-		  $(this).toggleClass('open')
+		  var mq = $(window).width();
+		  if(mq >= 768) {
+  		  $(this).parent().children().not(this).slideToggle(100);
+  		  $(this).toggleClass('open')
+		  }
 		});
 
 	});
