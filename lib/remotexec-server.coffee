@@ -1,3 +1,6 @@
+# This file is run as another processes by a jailed user
+# to stop any bad things from being run
+
 net = require('net')
 {exec} = require 'child_process'
 TIMEOUT = 60000
