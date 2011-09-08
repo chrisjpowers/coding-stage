@@ -29,7 +29,7 @@
       approve.click(function() {
         codingstage.baton.give(data.userId, data.name);
       });
-      var dismiss = $("<a href='#' id='close' class='dismiss'>No</a>");
+      var dismiss = $("<a href='#' class='dismiss'>No</a>");
       html.append(approve).append(dismiss);
       codingstage.instance.notification.stage.createNotification(html);
     }
