@@ -34,7 +34,7 @@ var Site = window.Site || {};
 	 * Computes a numerical signature of a string.  It just sums up the charCodes of all the characters of the input string.
 	 * @param{String} ofString  The string to calculate.
 	 */
-	extend('codingstage.util.getSpeedySignature', getSpeedySignature (ofString) {
+	extend('codingstage.util.getSpeedySignature', function getSpeedySignature (ofString) {
 		var sum
 			,len
 			,i;
