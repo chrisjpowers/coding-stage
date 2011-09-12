@@ -20,3 +20,11 @@ module.exports =
     return false unless everyauth.loggedIn
     console.log "Everyauth id", everyauth.user.id, "Baton id", stage.batonHolderId
     "" + stage.batonHolderId == "" + everyauth.user.id
+
+  getSpeedySignature: (ofString) ->
+    sum = 0
+    len = ofString.length
+
+    return ofString.split('').reduce (prev, curr, i) -> 
+      +prev + curr.charCodeAt(0)
+    ,0
