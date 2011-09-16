@@ -23,8 +23,6 @@ module.exports =
 
   getSpeedySignature: (ofString) ->
     sum = 0
-    len = ofString.length
-
-    return ofString.split('').reduce (prev, curr, i) -> 
-      +prev + curr.charCodeAt(0)
-    ,0
+    ofString += ''
+    addCharCode = (prev, curr, i) -> +prev + curr.charCodeAt(0)
+    ofString.split('').reduce addCharCode, 0

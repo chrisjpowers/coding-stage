@@ -33,26 +33,26 @@ var Site = window.Site || {};
 	/**
 	 * Computes a numerical signature of a string.  It just sums up the charCodes of all the characters of the input string.
 	 * @param{String} ofString  The string to calculate.
+         * 
+         * 
+         * CoffeeScript source can be found in /lib/helpers.coffee
 	 */
 	extend('codingstage.util.getSpeedySignature', function getSpeedySignature (ofString) {
-		var sum
-			,len
-			,i;
+            var addCharCode, sum;
+              sum = 0;
+                    
+            ofString += '';
+            addCharCode = function(prev, curr, i) {
+                return +prev + curr.charCodeAt(0);
+            };
 
-		sum = 0;
-		len = ofString.length;
+            return ofString.split('').reduce(addCharCode, 0);
+        });
 
-		for (i = 0; i < len; i++) {
-			sum += ofString.charCodeAt(i);
-		}
-
-		return sum;
-	});
-
-	$(window).bind("load", function() {
+	/*$(window).bind("load", function() {
 		
 		
 	
-	});
+	});*/
 	
 })(jQuery);
