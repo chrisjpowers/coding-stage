@@ -194,10 +194,7 @@
 				|| currentCursorPosition.column !== cursorPosition.column
 				|| currentCursorPosition.row !== cursorPosition.row) {
 				
-				//if (this.model.hasReceivedBufferData === true) {
-					session.setValue(contents);
-				//}	
-				
+        			session.setValue(contents);
 				this.updateCursorPosition(cursorPosition);
 			}
 		}
@@ -228,6 +225,11 @@
                 ,'replaceCurrentLineWith': function selectCurrentLine (newText) {
                     this.selectCurrentLine();
                     this.aceEditor.insert(newText);
+                }
+
+                ,'replaceLineWith': function replaceCurrentLineWith (lineNumber, newText) {
+                    this.aceEditor.gotoLine(lineNumber);
+                    this.replaceCurrentLineWith(newText);
                 }
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
