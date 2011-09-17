@@ -173,10 +173,14 @@ jQuery(function () {
 		}
 		
 		,'sendBufferDataToServer': function sendBufferDataToServer () {
+                        if (this.previouslySentLines) {
+                            this.getWhatChanged();
+                        }
+
 			this.previouslySentLines = this.get('lines');
-			
+
 			pusherInst.channel(this.channelName).trigger('editor-updated', {
-				'lines': this.get('lines')
+				'lines': this.previouslySentLines
 				,'cursorPosition': this.get('cursorPosition')
 			});
 		}
@@ -194,6 +198,28 @@ jQuery(function () {
 		,'removeUserBaton': function removeUserBaton () {
 			this.userHasBaton = false;
 		}
+
+                ,'getWhatChanged': function getWhatChanged () {
+                        var startPointOfModification
+                            ,currentLines
+                            ,previousLines // Ok, this is dumb.  Shouldn't be converting the lines back and forth from a String to an Array.
+                            ,endPointOfModification
+                            ,len, i;
+
+                        previousLines = this.previouslySentLines; 
+                        currentLines = this.get('lines');
+
+                        len = Math.min(currentLines.length, this.previouslySentLines.length);
+
+                        for (i = 0; i < len; i++) {
+                            if (previousLines[i] !== currentLines[i]) {
+                                startPointOfModification = i;
+                                break;
+                            }
+                        }
+
+                        //console.log(startPointOfModification);
+                }
 	}));
 
 } (this));
