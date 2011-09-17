@@ -83,6 +83,8 @@ jQuery(function () {
 			_.defaults(this, options);
 			this.previousRequestTimestamp = $.now();
 			this.hasReceivedBufferData = false;
+                        this.previouslySentLines = [];
+                        this.previouslyReceivedLines = [];
 			
 			if (pusherInst.connection.state === 'connected') {
 				this.pusherInit();
@@ -126,8 +128,9 @@ jQuery(function () {
 		,'getDataFromServer': function getDataFromServer (data) {
 			if (this.userHasBaton === false) {
 				if (typeof data['lines'] !== 'undefined') {
+                                        this.previouslyReceivedLines = data['lines'].join('\n');
 					this.hasReceivedBufferData = true;
-					this.view.overwriteContents(this.aceEditor, data['lines'].join('\n'), data['cursorPosition']);
+					this.view.overwriteContents(this.aceEditor, this.previouslyReceivedLines, data['cursorPosition']);
 				} else {
 					this.view.updateCursorPosition(data['cursorPosition']);
 				}

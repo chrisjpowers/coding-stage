@@ -301,18 +301,6 @@
 			var parentArticle
 				,parentSection;
 			
-			/*parentArticle = target.closest('article');
-			parentSection = target.closest('section');
-			parentArticle.remove();
-			
-			if (parentSection.children().length === 0) {
-				parentSection.remove();
-			}
-			
-			if (this.currentNotification.children().length === 0) {
-				this.destroyNotification();
-			}*/
-			
 			parentSection = target.closest('section');
 			parentSection.remove();
 			
