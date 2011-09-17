@@ -213,6 +213,22 @@
 			this.userHasBaton = false;
 			this.model.removeUserBaton();
 		}
+
+                ,'selectCurrentLine': function selectCurrentLine () {
+                    var i;
+                    
+                    // Needs to be done twice because of auto-indentation.
+                    for (i = 0; i < 2; i++) {
+                        this.aceEditor.selection.moveCursorLineStart();
+                    }
+
+                    this.aceEditor.selection.selectLineEnd();
+                }
+
+                ,'replaceCurrentLineWith': function selectCurrentLine (newText) {
+                    this.selectCurrentLine();
+                    this.aceEditor.insert(newText);
+                }
 	}));
 	////////////////////////////// ACE EDITOR VIEWS  //
 	
